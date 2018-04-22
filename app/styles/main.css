@@ -1,0 +1,184 @@
+.logo {
+  display: block;
+  width: 140px;
+}
+
+.search-box {
+  padding: 25px;
+  background-color: #f8f8f8;
+}
+
+form .main-error {
+  margin: 10px 10px 10px 0px;
+  color: red;
+}
+
+form .error {
+  color: red;
+}
+
+/* START LOGIN */
+#login {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.dropdown-menu a {
+  cursor: pointer;
+}
+
+.link-registro {
+  color: #999;
+}
+
+.fb-icon-login {
+  cursor: pointer;
+}
+
+/* START HOME */
+#home #headerHome {
+  background-image: url('../images/banners/banner.png');
+  width: 100%;
+  color: #fff;
+  background-size: cover;
+  justify-content: center;
+  min-height: 330px;
+  margin-bottom: 20px;
+}
+
+#headerHome .text-slider {
+  font-size: 30px;
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 60px;
+  height: 100px;
+  font-weight: bolder;
+  position: relative;
+}
+
+#headerHome .text-slider .item {
+  opacity: 0;
+  margin-top: -1000px;
+  position: absolute;
+  width: 100%;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#headerHome .text-slider .item.active {
+  opacity: 1;
+  margin-top: 0px;
+
+}
+
+#headerHome .search-container {
+  margin-top: 10px;
+  position: relative;
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#headerHome .search {
+  width: 100%;
+  text-align: center;
+}
+
+#headerHome .search-container input {
+  height: 55px;
+  border-radius: 9px;
+  font-size: 20px;
+}
+
+#headerHome .search-container button {
+  height: 55px;
+  border-top-right-radius: 10px;
+  left: -5px;
+  border-bottom-right-radius: 10px;
+}
+
+#subjectsHome{
+  margin-top:10px;
+  margin-bottom:40px;
+}
+#subjectsHome .subjects-item-container {
+  margin-top:40px;
+}
+
+#subjectsHome .subjects-item-container .item {
+}
+
+#subjectsHome .subjects-item-container .item .item-link {
+  display: inline-block;
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding-top: 42px;
+  color: white;
+  font-weight: bold;
+  font-size: 22px;
+  text-decoration: none;
+  background-position: center center;
+}
+
+#subjectsHome .subjects-item-container .item .item-link.computer {
+  background-image: url('../images/home/subjects/computer.jpg');
+}
+
+#subjectsHome .subjects-item-container .item .item-link.engineering {
+  background-image: url('../images/home/subjects/engineering.jpg');
+}
+
+#subjectsHome .subjects-item-container .item .item-link.biology {
+  background-image: url('../images/home/subjects/biology.jpg');
+}
+
+#subjectsHome .subjects-item-container .item .item-link.language {
+  background-image: url('../images/home/subjects/language.jpg');
+}
+
+#subjectsHome .subjects-item-container .item .item-link.economy {
+  background-image: url('../images/home/subjects/economy.jpg');
+}
+
+#subjectsHome .subjects-item-container .item .item-link.management {
+  background-image: url('../images/home/subjects/management.jpg');
+}
+
+#subjectsHome .subjects-item-container .item .item-link.history {
+  background-image: url('../images/home/subjects/history.jpg');
+}
+
+
+#subjectsHome .subjects-item-container .item .item-link.finance {
+  background-image: url('../images/home/subjects/computer.jpg');
+}
+
+
+#subjectsHome .button-find-search {
+  margin-top:30px;
+  text-align: center;
+}
+
+#subjectsHome .button-find-search .btn {
+  width: 350px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#howWorksHome .service-box{
+  margin-top:25px;
+  margin-bottom:50px;
+}
+
+#howWorksHome .service-box .service-box-heading {
+  padding: 12px 0;
+  height: 75px;
+}
+#howWorksHome .service-box .service-box-heading span {
+  margin-left: 0px;
+}
+#howWorksHome .service-box .service-box-heading span .icon {
+  margin-right:5px;
+}

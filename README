@@ -1,0 +1,8 @@
+1. sudo apt install npm
+2. sudo apt install nodejs-legacy
+3. sudo npm install bower
+4. sudo npm install -g grunt-cli 
+5. sudo npm install
+6. crear la carpeta "bower_components" en la raiz del proyecto (a la misma altura de app) y darle permisos con "sudo chmod 777 bower_components/"
+7. sudo bower install
+8. grunt serve
