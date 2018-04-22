@@ -9,7 +9,7 @@
  */
 angular.module('hubinFrontendApp')
   .controller('MainCtrl', function (sessionService, $interval) {
-    $interval(headerTextAnimation, 5000);
+    $interval(headerTextAnimation, 6000);
 
 
     function headerTextAnimation() {
