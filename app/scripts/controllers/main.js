@@ -20,5 +20,4 @@ angular.module('hubinFrontendApp')
       (currentItemNumber < maxSteps) ? currentItemNumber++ : (currentItemNumber = 1);
       $('.js-text-slider .item[data-step-number="' + currentItemNumber + '"]').addClass('active');
     }
-
   });

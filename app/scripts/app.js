@@ -30,14 +30,15 @@ angular
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
-      .when('/registro', {
-        templateUrl: 'views/registro.html',
-        controller: 'RegistroCtrl',
-        controllerAs: 'registro'
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'register'
       })
-      .when('/logout', {
-        controller: 'LogoutCtrl',
-        controllerAs: 'logout'
+      .when('/user', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl',
+        controllerAs: 'user'
       })
       .otherwise({
         redirectTo: '/'
@@ -46,9 +47,6 @@ angular
 
   })
   .run(function ($rootScope, $location, $http, $timeout, configService, securityService, sessionService) {
-    if ($rootScope.globals && $rootScope.globals.currentUser) {
-      $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-    }
     $rootScope.$on('$routeChangeStart', function (event) {
       var logged = securityService.isLogged();
       if (!logged) {
@@ -58,8 +56,8 @@ angular
         }
       }
     });
-    $rootScope.user = securityService.getUser();
 
+    $rootScope.user = securityService.getUser();
     $rootScope.logout = function () {
       sessionService.clearSession();
       $rootScope.user = null;
