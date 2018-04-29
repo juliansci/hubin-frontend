@@ -96,12 +96,13 @@ form .error {
   border-bottom-right-radius: 10px;
 }
 
-#subjectsHome{
-  margin-top:10px;
-  margin-bottom:40px;
+#subjectsHome {
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
+
 #subjectsHome .subjects-item-container {
-  margin-top:40px;
+  margin-top: 40px;
 }
 
 #subjectsHome .subjects-item-container .item {
@@ -150,14 +151,12 @@ form .error {
   background-image: url('../images/home/subjects/history.jpg');
 }
 
-
 #subjectsHome .subjects-item-container .item .item-link.finance {
   background-image: url('../images/home/subjects/computer.jpg');
 }
 
-
 #subjectsHome .button-find-search {
-  margin-top:30px;
+  margin-top: 30px;
   text-align: center;
 }
 
@@ -167,18 +166,75 @@ form .error {
   padding-bottom: 20px;
 }
 
-#howWorksHome .service-box{
-  margin-top:25px;
-  margin-bottom:50px;
+#howWorksHome .service-box {
+  margin-top: 25px;
+  margin-bottom: 50px;
 }
 
 #howWorksHome .service-box .service-box-heading {
   padding: 12px 0;
   height: 75px;
 }
+
 #howWorksHome .service-box .service-box-heading span {
   margin-left: 0px;
 }
+
 #howWorksHome .service-box .service-box-heading span .icon {
-  margin-right:5px;
+  margin-right: 5px;
 }
+
+/* END HOME */
+
+/* START PROFILE */
+#user {
+  margin-bottom: 60px;
+}
+
+
+#user #infoUser {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+#user #infoUser .image-user {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+#user #infoUser .user-username {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+#user #infoUser .user-field {
+  padding-top: 5px;
+}
+
+#user #infoUser .content-medals {
+  margin-top: 10px;
+}
+
+#user #infoUser .content-medals .medal {
+  width: 57px;
+  height: 57px;
+  background: url('../images/badges.png') 0 0;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+#user #infoUser .content-medals .medal.medal-begin {
+  background-position: -720px -120px;
+}
+
+#user #infoUser .content-medals .medal.medal-first-document {
+  background-position: -120px 0px;
+
+}
+
+#user #infoUser .content-medals .medal.medal-first-comment {
+  background-position: -480px -120px;
+}
+
+/* END PROFILE */
