@@ -6,18 +6,22 @@
           <img src="images/anon-user.jpg" class="img-responsive"/>
         </div>
         <div class="content-user col-md-6">
-          <div class="user-username">
-            Juliansci
+          <div class="user-username js-user-username">
+            {{userProfile.username}}
           </div>
-          <div class="user-field">
-            Julian Scialabba
+          <div class="edit-profile js-edit-profile">
+            Edit profile
           </div>
-          <div class="user-field">
-            julian.scialabba@gmail.com
+          <div class="user-field js-user-email">
+            {{userProfile.email ? userProfile.email : 'Ingrese su email'}}
           </div>
-
-          <div class="user-field">
-            Description: not have a description
+          <br>
+          <div class="user-field js-user-name">
+            {{userProfile.name ? userProfile.name : 'Ingrese su nombre'}}
+          </div>
+          <br>
+          <div class="user-field js-user-description">
+            {{userProfile.description ? userProfile.description: 'Ingrese una descripcion'}}
           </div>
         </div>
         <div class="col-md-4">

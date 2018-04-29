@@ -1,3 +1,6 @@
+.not-show{
+  opacity:0;
+}
 .logo {
   display: block;
   width: 140px;
@@ -204,11 +207,19 @@ form .error {
 
 #user #infoUser .user-username {
   font-size: 22px;
-  margin-bottom: 10px;
+  display: inline-block;
+
 }
 
+#user #infoUser .edit-profile {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #31708f;
+  cursor: pointer;
+}
 #user #infoUser .user-field {
   padding-top: 5px;
+  display: inline-block;
 }
 
 #user #infoUser .content-medals {
