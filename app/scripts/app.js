@@ -40,6 +40,11 @@ angular
         controller: 'UserCtrl',
         controllerAs: 'user'
       })
+      .when('/search', {
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl',
+        controllerAs: 'search'
+      })
       .otherwise({
         redirectTo: '/'
       });

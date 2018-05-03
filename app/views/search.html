@@ -1,0 +1,194 @@
+<section id="search">
+  <div id="headerSearch">
+    <div class="container">
+      <div class="row">
+        <div class="search-container">
+          <div class="search">
+            <form class="form-inline" action="#">
+              <div class="input-group">
+                <div class="input-cont">
+                  <input class="form-control" type="text" placeholder="¿Qué estás buscando?">
+                </div>
+                <span class="input-group-btn">
+                            <button class="btn btn-default theme-btn" type="submit">
+                                Buscar
+                                <i class="m-icon-swapright m-icon-white"></i>
+                            </button>
+                        </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="title-result">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Viewing x results</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="filtersSearch">
+    <div class="filters">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="filter">
+              <span>Sarasa</span>
+              <i class="fa fa-times close"></i>
+            </div>
+            <div class="filter">
+              <span>Sarasa</span>
+              <i class="fa fa-times close"></i>
+            </div>
+            <div class="filter">
+              <span>Sarasa</span>
+              <i class="fa fa-times close"></i>
+            </div>
+            <div class="filter">
+              <span>Sarasa</span>
+              <i class="fa fa-times close"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="contentSearch">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 filters-column">
+          <div class="title">Refine your search</div>
+{{1+2}}
+          <div class="filter-section" ng-repeat="(key, value) in filtersColumn">
+            aca
+            <div class="title" >
+              {{key}}
+            </div>
+            <div class="filters">
+              <div class="filter" ng-click="addFilter('matematica')">
+                Matematica
+              </div>
+              <br/>
+              <div class="filter" ng-click="addFilter('fisica')">
+                Fisica
+              </div>
+              <br/>
+              <div class="filter" ng-click="addFilter('quimica')">
+                Quimica
+              </div>
+            </div>
+          </div>
+          <div class="filter-section">
+            <div class="title">
+              Level
+            </div>
+            <div class="filters">
+              <div class="filter">
+                Inicial
+              </div>
+              <br/>
+              <div class="filter">
+                Medio
+              </div>
+              <br/>
+              <div class="filter">
+                Avanzado
+              </div>
+            </div>
+          </div>
+          <div class="filter-section">
+            <div class="title">
+              Language
+            </div>
+            <div class="filters">
+              <div class="filter">
+                Ingles
+              </div>
+              <br/>
+              <div class="filter">
+                Espanol
+              </div>
+              <br/>
+              <div class="filter">
+                Portugues
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 search-result">
+          <div class="item-result row">
+            <div class="col-md-4 col-sm-4">
+              <div class="image">
+                <img src="images/documents/img1.jpg" alt="">
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-8">
+              <div class="title">Documento 1</div>
+              <ul class="blog-info">
+                <li><i class="fa fa-calendar"></i> 25/07/2013</li>
+                <li><i class="fa fa-comments"></i> 17</li>
+                <li><i class="fa fa-tags"></i> Metronic, Keenthemes, UI Design</li>
+              </ul>
+              <div class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum
+                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend
+                enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing condimentum eleifend enim a feugiat.</div>
+              <a class="more" href="blog_item.html">Read more <i class="icon-angle-right"></i></a>
+            </div>
+          </div>
+          <div class="item-result row">
+            <div class="col-md-4 col-sm-4">
+              <div class="image">
+                <img src="images/documents/img1.jpg" alt="">
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-8">
+              <div class="title">Documento 1</div>
+              <ul class="blog-info">
+                <li><i class="fa fa-calendar"></i> 25/07/2013</li>
+                <li><i class="fa fa-comments"></i> 17</li>
+                <li><i class="fa fa-tags"></i> Metronic, Keenthemes, UI Design</li>
+              </ul>
+              <div class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum
+                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend
+                enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing condimentum eleifend enim a feugiat.</div>
+              <a class="more" href="blog_item.html">Read more <i class="icon-angle-right"></i></a>
+            </div>
+          </div>
+          <div class="item-result row">
+            <div class="col-md-4 col-sm-4">
+              <div class="image">
+                <img src="images/documents/img1.jpg" alt="">
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-8">
+              <div class="title">Documento 1</div>
+              <ul class="blog-info">
+                <li><i class="fa fa-calendar"></i> 25/07/2013</li>
+                <li><i class="fa fa-comments"></i> 17</li>
+                <li><i class="fa fa-tags"></i> Metronic, Keenthemes, UI Design</li>
+              </ul>
+              <div class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum
+                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend
+                enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing condimentum eleifend enim a feugiat.</div>
+              <a class="more" href="blog_item.html">Read more <i class="icon-angle-right"></i></a>
+            </div>
+          </div>
+
+
+          <!-- BEGIN CAROUSEL -->
+
+        </div>
+      </div>
+
+
+    </div>
+</section>
+
+
