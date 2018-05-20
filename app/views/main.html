@@ -13,10 +13,11 @@
               <form class="form-inline" action="#">
                 <div class="input-group">
                   <div class="input-cont">
-                    <input class="form-control" type="text" placeholder="¿Qué estás buscando?">
+                    <input class="form-control" type="text" placeholder="¿Qué estás buscando?"
+                           ng-model="searchDocumentName">
                   </div>
                   <span class="input-group-btn">
-                            <button class="btn btn-default theme-btn" type="submit">
+                            <button class="btn btn-default theme-btn" type="button" ng-click="searchDocument()">
                                 Buscar
                                 <i class="m-icon-swapright m-icon-white"></i>
                             </button>
@@ -105,13 +106,15 @@
           <div class="service-box-heading">
             <span><em class="icon"><i class="fa fa-group blue"></i></em>Compartí tu material con la comunidad</span>
           </div>
-          <p>La comunidad es el bien más valioso de Hubin y nuestro catálogo se nutre de ella.<br>¡Compartí tu material y sé parte!</p>
+          <p>La comunidad es el bien más valioso de Hubin y nuestro catálogo se nutre de ella.<br>¡Compartí tu material
+            y sé parte!</p>
         </div>
         <div class="col-md-4 col-sm-4">
           <div class="service-box-heading">
             <span><em class="icon"><i class="fa fa-trophy blue"></i></em>Participá y obtené beneficios</span>
           </div>
-          <p>Subí material, puntuá material existente y denunciá plagio o material inadecuado.<br/> ¡Participá en Hubin y obtené beneficios!</p>
+          <p>Subí material, puntuá material existente y denunciá plagio o material inadecuado.<br/> ¡Participá en Hubin
+            y obtené beneficios!</p>
         </div>
       </div>
     </div>

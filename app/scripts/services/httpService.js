@@ -13,7 +13,6 @@ angular.module('hubinFrontendApp').service('httpService', function ($http, sessi
     var token = sessionService.getItemSession('token');
     $http.defaults.headers.common['Authorization'] = 'Basic ' + token;
     $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
-    console.log($http.defaults.headers.common);
   };
 
   return {
