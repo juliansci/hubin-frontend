@@ -56,10 +56,7 @@ angular.module('hubinFrontendApp')
       var registerData = {
         username: username,
         email: email,
-        password: password,
-        dni: 36559671,
-        fechaNac: '31/05/1991-00:00:00',
-        foto: ''
+        password: password
       };
       securityService.register(registerData).then(function (response) {
         sessionService.setItemSession('user', response.data);
@@ -92,10 +89,7 @@ angular.module('hubinFrontendApp')
               var registerData = {
                 username: user.email,
                 email: user.email,
-                password: user.id,
-                dni: '',
-                fechaNac: '',
-                foto: ''
+                password: user.id
               };
               sessionService.clearSession();
               securityService.register(registerData).then(function (response) {

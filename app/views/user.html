@@ -6,22 +6,23 @@
           <img src="images/anon-user.jpg" class="img-responsive"/>
         </div>
         <div class="content-user col-md-6">
-          <div class="user-username js-user-username">
+          <div class="user-username">
             {{userProfile.username}}
           </div>
           <div class="edit-profile js-edit-profile">
-            Edit profile
+            <span ng-show="!onEditProfile">Edit profile</span>
+            <span ng-show="onEditProfile">Finish Edit profile</span>
           </div>
           <div class="user-field js-user-email">
             {{userProfile.email ? userProfile.email : 'Ingrese su email'}}
           </div>
           <br>
-          <div class="user-field js-user-name">
-            {{userProfile.name ? userProfile.name : 'Ingrese su nombre'}}
+          <div class="user-field js-user-name" editable-text="userProfile.name">
+            {{userProfile.nombre ? userProfile.nombre : 'Ingrese su nombre'}}
           </div>
           <br>
           <div class="user-field js-user-description">
-            {{userProfile.description ? userProfile.description: 'Ingrese una descripcion'}}
+            {{userProfile.presentacion ? userProfile.presentacion: 'Ingrese una descripcion'}}
           </div>
         </div>
         <div class="col-md-4">

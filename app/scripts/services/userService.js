@@ -21,6 +21,13 @@ angular.module('hubinFrontendApp').service('userService', function (configServic
         console.log(result);
         return result;
       });
+    },
+    updateUser: function(id, profile){
+      httpService.setHeaders();
+      return $http.put(configService.getUrlServer() + 'alumno/' + id, profile).then(function (result) {
+        console.log(result);
+        return result;
+      });
     }
   };
 
