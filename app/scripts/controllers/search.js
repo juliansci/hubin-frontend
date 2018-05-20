@@ -8,8 +8,8 @@
  * Controller of the hubinFrontendApp
  */
 angular.module('hubinFrontendApp')
-  .controller('SearchCtrl', function ($rootScope, $scope, $location, userService, securityService) {
-
+  .controller('SearchCtrl', function ($rootScope, $scope, $routeParams) {
+    console.log($routeParams);
     $scope.filters = [];
     $scope.filtersColumn = {
       subject: [
@@ -31,5 +31,5 @@ angular.module('hubinFrontendApp')
     $scope.addFilter = function (filter) {
       console.log('add filter');
       console.log(filter);
-    }
+    };
   });

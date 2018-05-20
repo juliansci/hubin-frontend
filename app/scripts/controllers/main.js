@@ -8,7 +8,7 @@
  * Controller of the hubinFrontendApp
  */
 angular.module('hubinFrontendApp')
-  .controller('MainCtrl', function ($scope, sessionService, $interval, searchService) {
+  .controller('MainCtrl', function ($scope, $location, sessionService, $interval) {
     $interval(headerTextAnimation, 6000);
     $scope.searchDocumentName = '';
 
@@ -22,13 +22,8 @@ angular.module('hubinFrontendApp')
     }
 
     $scope.searchDocument = function () {
-      var searchObject = {
-        nombre: $scope.searchDocumentName
-      };
-      searchService.search(searchObject).then(function (response) {
-        console.log(response);
-      }).catch(function (data) {
-        console.log(data);
-      });
+      if ($scope.searchDocumentName !== '') {
+        $location.path("/search").search({name: $scope.searchDocumentName});
+      }
     }
   });
