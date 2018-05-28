@@ -2,16 +2,21 @@
   <div class="container">
     <div id="infoUser" class="row">
       <div class="col-md-12">
-        <div class="image-user col-md-2">
-          <img src="images/anon-user.jpg" class="img-responsive"/>
+        <div class="image-user col-md-2 js-image-user">
+          <div class="edit-img js-edit-image"><i class="fa fa-pencil"></i></div>
+          <img ng-show="!userProfile.foto.base64Src" src="images/anon-user.jpg" class="img-responsive js-img-profile"/>
+          <img ng-show="userProfile.foto.base64Src" src="{{userProfile.foto.base64Src}}" class="img-responsive js-img-profile"/>
+          <form action={{"alumno/"+userProfile.id+"/profile/image"}} method="POST" enctype="multipart/form-data" class="hide">
+            <input class="js-add-image" type="file" name="profileImage" accept=".jpg,.jpeg"/>
+          </form>
         </div>
         <div class="content-user col-md-6">
           <div class="user-username">
             {{userProfile.username}}
           </div>
           <div class="edit-profile js-edit-profile">
-            <span ng-show="!onEditProfile">Edit profile</span>
-            <span ng-show="onEditProfile">Finish Edit profile</span>
+            <span ng-show="!onEditProfile">Editar perfil</span>
+            <span ng-show="onEditProfile">Terminar edicion de perfil</span>
           </div>
           <div class="user-field js-user-email">
             {{userProfile.email ? userProfile.email : 'Ingrese su email'}}

@@ -205,6 +205,26 @@ form .error {
   padding-left: 20px;
 }
 
+#user #infoUser .image-user .edit-img {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #24205A;
+  text-align: center;
+  padding-top: 5px;
+  font-size: 12px;
+  left: 50%;
+  margin-left: -15px;
+  top: 50%;
+  margin-top: -15px;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+}
+#user #infoUser .image-user .edit-img.visible {
+  opacity:0.9;
+}
+
 #user #infoUser .user-username {
   font-size: 22px;
   display: inline-block;
@@ -373,7 +393,7 @@ form .error {
 
 #contentSearch .search-result .item-result {
   margin-bottom: 20px;
-  width:100%;
+  width: 100%;
 }
 
 #contentSearch .search-result .item-result .image {

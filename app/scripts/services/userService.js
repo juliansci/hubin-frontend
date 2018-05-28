@@ -22,11 +22,21 @@ angular.module('hubinFrontendApp').service('userService', function (configServic
         return result;
       });
     },
-    updateUser: function(id, profile){
+    updateUser: function (id, profile) {
       httpService.setHeaders();
       return $http.put(configService.getUrlServer() + 'alumno/' + id, profile).then(function (result) {
         console.log(result);
         return result;
+      });
+    },
+    addImageProfile: function (action, formData) {
+      httpService.setHeadersMultipart();
+      return $http({
+        url: action,
+        data: formData,
+        processData: false,
+        contentType: undefined,
+        method: 'POST'
       });
     }
   };

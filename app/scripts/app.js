@@ -16,7 +16,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'toastr'
   ])
   .config(function ($routeProvider, $httpProvider, $locationProvider) {
     $routeProvider
@@ -73,8 +74,7 @@ angular
       var active = (path === $location.path());
       return active;
     };
-
-
+    $rootScope.urlServerBase = configService.getUrlServer();
   });
 
 
