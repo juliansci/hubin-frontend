@@ -15,9 +15,7 @@ angular.module('hubinFrontendApp')
     var user = securityService.getUser();
     userService.getUser(user.id).then(function (response) {
       $scope.userProfile = response.data;
-      console.log($scope.userProfile);
     }).catch(function (data) {
-      console.log(data);
     });
 
     $('.js-edit-profile').on('click', function () {
@@ -51,6 +49,7 @@ angular.module('hubinFrontendApp')
           presentacion: description
         };
         userService.updateUser(user.id, profileUpdate).then(function (response) {
+          $('.js-user-name, .js-user-email, .js-user-description').removeClass('editable-unsaved');
           $scope.userProfile = response.data;
         }).catch(function (data) {
           console.log(data);
