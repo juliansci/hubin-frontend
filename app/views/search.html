@@ -4,13 +4,14 @@
       <div class="row">
         <div class="search-container">
           <div class="search">
-            <form class="form-inline" action="#">
+            <form class="form-inline" action="#" ng-submit="searchDocumentByName()">
               <div class="input-group">
                 <div class="input-cont">
-                  <input class="form-control" type="text" placeholder="¿Qué estás buscando?">
+                  <input class="form-control" type="text" placeholder="¿Qué estás buscando?"
+                         ng-model="searchDocumentName">
                 </div>
                 <span class="input-group-btn">
-                            <button class="btn btn-default theme-btn" type="submit">
+                            <button class="btn btn-default theme-btn" type="button">
                                 Buscar
                                 <i class="m-icon-swapright m-icon-white"></i>
                             </button>
@@ -26,7 +27,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h3>Viewing x results</h3>
+          <h3>Se encontraron {{documents.length}} documentos</h3>
         </div>
       </div>
     </div>
@@ -36,21 +37,10 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="filter">
-              <span>Sarasa</span>
-              <i class="fa fa-times close"></i>
-            </div>
-            <div class="filter">
-              <span>Sarasa</span>
-              <i class="fa fa-times close"></i>
-            </div>
-            <div class="filter">
-              <span>Sarasa</span>
-              <i class="fa fa-times close"></i>
-            </div>
-            <div class="filter">
-              <span>Sarasa</span>
-              <i class="fa fa-times close"></i>
+            <div ng-repeat="(key, filter) in filters" class="filter">
+              <div class="section-filter">{{filter.section}}</div>
+              <div class="value-filter">{{filter.value}}</div>
+              <i class="fa fa-times close" ng-click="removeFilter(filter)"></i>
             </div>
           </div>
         </div>
@@ -61,72 +51,51 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 filters-column">
-          <div class="title">Refine your search</div>
-{{1+2}}
-          <div class="filter-section" ng-repeat="(key, value) in filtersColumn">
-            aca
+          <div class="title">Filtros de busqueda</div>
+          <div class="filter-section">
             <div class="title" >
-              {{key}}
+              Entidades educativas
             </div>
             <div class="filters">
-              <div class="filter" ng-click="addFilter('matematica')">
-                Matematica
+              <div ng-repeat="(key, value) in entities" class="filter" ng-click="addFilter(value, 'entity')">
+                {{value.code}}
               </div>
-              <br/>
-              <div class="filter" ng-click="addFilter('fisica')">
-                Fisica
-              </div>
-              <br/>
-              <div class="filter" ng-click="addFilter('quimica')">
-                Quimica
+            </div>
+          </div>
+          <div class="filter-section">
+            <div class="title" >
+              Materias
+            </div>
+            <div class="filters">
+              <div ng-repeat="(key, value) in subjects" class="filter" ng-click="addFilter(value, 'subject')">
+                {{value.code}}
               </div>
             </div>
           </div>
           <div class="filter-section">
             <div class="title">
-              Level
+              Nivel
             </div>
             <div class="filters">
-              <div class="filter">
-                Inicial
-              </div>
-              <br/>
-              <div class="filter">
-                Medio
-              </div>
-              <br/>
-              <div class="filter">
-                Avanzado
+              <div ng-repeat="(key, value) in levels" class="filter" ng-click="addFilter(value, 'level')">
+                {{value.code}}
               </div>
             </div>
           </div>
           <div class="filter-section">
             <div class="title">
-              Language
+              Idioma
             </div>
             <div class="filters">
-              <div class="filter">
-                Ingles
-              </div>
-              <br/>
-              <div class="filter">
-                Espanol
-              </div>
-              <br/>
-              <div class="filter">
-                Portugues
+              <div ng-repeat="(key, value) in languages" class="filter" ng-click="addFilter(value, 'language')">
+                {{value.code}}
               </div>
             </div>
           </div>
         </div>
         <div class="col-md-9 search-result">
           <div class="item-result row">
-            <div class="col-md-4 col-sm-4">
-              <div class="image">
-                <img src="images/documents/img1.jpg" alt="">
-              </div>
-            </div>
-            <div class="col-md-8 col-sm-8">
+            <div class="col-md-12 col-sm-12">
               <div class="title">Documento 1</div>
               <ul class="blog-info">
                 <li><i class="fa fa-calendar"></i> 25/07/2013</li>
@@ -140,50 +109,6 @@
               <a class="more" href="blog_item.html">Read more <i class="icon-angle-right"></i></a>
             </div>
           </div>
-          <div class="item-result row">
-            <div class="col-md-4 col-sm-4">
-              <div class="image">
-                <img src="images/documents/img1.jpg" alt="">
-              </div>
-            </div>
-            <div class="col-md-8 col-sm-8">
-              <div class="title">Documento 1</div>
-              <ul class="blog-info">
-                <li><i class="fa fa-calendar"></i> 25/07/2013</li>
-                <li><i class="fa fa-comments"></i> 17</li>
-                <li><i class="fa fa-tags"></i> Metronic, Keenthemes, UI Design</li>
-              </ul>
-              <div class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum
-                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend
-                enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur
-                adipiscing condimentum eleifend enim a feugiat.</div>
-              <a class="more" href="blog_item.html">Read more <i class="icon-angle-right"></i></a>
-            </div>
-          </div>
-          <div class="item-result row">
-            <div class="col-md-4 col-sm-4">
-              <div class="image">
-                <img src="images/documents/img1.jpg" alt="">
-              </div>
-            </div>
-            <div class="col-md-8 col-sm-8">
-              <div class="title">Documento 1</div>
-              <ul class="blog-info">
-                <li><i class="fa fa-calendar"></i> 25/07/2013</li>
-                <li><i class="fa fa-comments"></i> 17</li>
-                <li><i class="fa fa-tags"></i> Metronic, Keenthemes, UI Design</li>
-              </ul>
-              <div class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum
-                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend
-                enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur
-                adipiscing condimentum eleifend enim a feugiat.</div>
-              <a class="more" href="blog_item.html">Read more <i class="icon-angle-right"></i></a>
-            </div>
-          </div>
-
-
-          <!-- BEGIN CAROUSEL -->
-
         </div>
       </div>
 

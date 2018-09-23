@@ -21,7 +21,7 @@ angular.module('hubinFrontendApp').service('sessionService', function ($http, $w
 
   var setAuthentication = function (user) {
     var token = Base64.encode(user.username + ':' + user.password);
-    $http.defaults.headers.common['Authorization'] = 'Basic ' + token;;
+    $http.defaults.headers.common['Authorization'] = 'Basic ' + token;
     setItemSession('token', token);
   };
 

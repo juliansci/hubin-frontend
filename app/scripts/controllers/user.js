@@ -14,6 +14,8 @@ angular.module('hubinFrontendApp')
 
     var user = securityService.getUser();
     userService.getUser(user.id).then(function (response) {
+      console.log(response);
+      console.log(response.data);
       $scope.userProfile = response.data;
     }).catch(function (data) {
     });

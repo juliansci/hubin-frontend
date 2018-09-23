@@ -4,8 +4,8 @@
       <div class="col-md-12">
         <div class="image-user col-md-2 js-image-user">
           <div class="edit-img js-edit-image"><i class="fa fa-pencil"></i></div>
-          <img ng-show="!userProfile.foto.base64Src" src="images/anon-user.jpg" class="img-responsive js-img-profile"/>
-          <img ng-show="userProfile.foto.base64Src" src="{{userProfile.foto.base64Src}}" class="img-responsive js-img-profile"/>
+          <img ng-if="!userProfile.foto.base64Src" src="images/anon-user.jpg" class="img-responsive js-img-profile"/>
+          <img ng-if="userProfile.foto.base64Src" ng-src="{{userProfile.foto.base64Src}}" class="img-responsive js-img-profile"/>
           <form action={{"alumno/"+userProfile.id+"/profile/image"}} method="POST" enctype="multipart/form-data" class="hide">
             <input class="js-add-image" type="file" name="profileImage" accept=".jpg,.jpeg"/>
           </form>

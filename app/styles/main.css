@@ -317,27 +317,33 @@ form .error {
 }
 
 #filtersSearch .filters {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #filtersSearch .filters .filter {
   display: inline-block;
-  padding: 10px 40px 10px 20px;
+  padding: 2px 27px 5px 10px;
   background-color: #0362fd;
   color: white;
   margin-right: 10px;
-  font-size: 16px;
+  font-size: 14px;
   position: relative;
 }
+#filtersSearch .filters .filter .section-filter{
+  font-size: 10px;
+  color: #CCCCCC;
+}
+#filtersSearch .filters .filter .value-filter{}
 
 #filtersSearch .filters .filter .close {
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: 5px;
+  top: 3px;
   color: white;
-  font-size: 16px;
+  font-size: 11px;
   opacity: 1;
+  font-weight: normal;
 }
 
 #contentSearch {
@@ -385,6 +391,7 @@ form .error {
   position: relative;
   margin-top: 5px;
   cursor: pointer;
+  margin-right: 100%;
 }
 
 #contentSearch .search-result {
