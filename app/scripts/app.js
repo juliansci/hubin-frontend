@@ -17,9 +17,10 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'toastr'
+    'toastr',
+    'pascalprecht.translate'
   ])
-  .config(function ($routeProvider, $httpProvider, $locationProvider) {
+  .config(function ($routeProvider, $httpProvider, $locationProvider, $translateProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -50,7 +51,12 @@ angular
         redirectTo: '/'
       });
     $locationProvider.html5Mode(false).hashPrefix('');
-
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'translations/locale-',
+      suffix: '.json'
+    })
+      .useSanitizeValueStrategy('escape')
+      .preferredLanguage('es');
   })
   .run(function ($rootScope, $location, $http, $timeout, configService, securityService, sessionService) {
     $rootScope.$on('$routeChangeStart', function (event) {

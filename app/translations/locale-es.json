@@ -1,0 +1,38 @@
+{
+  "subject":{
+    "biology": "Biología",
+    "computer": "Computación",
+    "economy": "Economía",
+    "engineering": "Ingeniería",
+    "finance": "Finanzas",
+    "history": "Historia",
+    "language": "Idiomas",
+    "management": "Management"
+  },
+  "level":{
+    "initial": "Inicial",
+    "medium": "Medio",
+    "advanced": "Avanzado"
+  },
+  "language":{
+    "spanish": "Español",
+    "english": "Inglés",
+    "portuguese": "Portugués"
+  },
+  "search": {
+    "input_placeholder": "¿Qué estas buscando?",
+    "input_button": "Buscar",
+    "documents_find": "Se encontraron {{quantity}} documentos",
+    "filter_name": "Nombre",
+    "filter_entity": "Entidad educativa",
+    "filter_subject": "Materia",
+    "filter_level": "Nivel",
+    "filter_language": "Idioma",
+    "filter_section_title": "Filtros de busqueda",
+    "filter_section_entity": "Entidades educativas",
+    "filter_section_subject": "Materias",
+    "filter_section_language": "Idiomas",
+    "filter_section_level": "Niveles"
+  }
+
+}

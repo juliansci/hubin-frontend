@@ -7,12 +7,12 @@
             <form class="form-inline" action="#" ng-submit="searchDocumentByName()">
               <div class="input-group">
                 <div class="input-cont">
-                  <input class="form-control" type="text" placeholder="¿Qué estás buscando?"
+                  <input class="form-control" type="text" placeholder="{{'search.input_placeholder' | translate}}"
                          ng-model="searchDocumentName">
                 </div>
                 <span class="input-group-btn">
                             <button class="btn btn-default theme-btn" type="button">
-                                Buscar
+                               {{'search.input_button' | translate}}
                                 <i class="m-icon-swapright m-icon-white"></i>
                             </button>
                         </span>
@@ -27,7 +27,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h3>Se encontraron {{documents.length}} documentos</h3>
+          <h3>
+            {{'search.documents_find' | translate:{ quantity: documents.length } }}
+
+
+          </h3>
         </div>
       </div>
     </div>
@@ -38,8 +42,8 @@
         <div class="row">
           <div class="col-md-12">
             <div ng-repeat="(key, filter) in filters" class="filter">
-              <div class="section-filter">{{filter.section}}</div>
-              <div class="value-filter">{{filter.value}}</div>
+              <div class="section-filter">{{ ('search.filter_' + filter.section) | translate }}</div>
+              <div class="value-filter">{{filter.value | lowercase }}</div>
               <i class="fa fa-times close" ng-click="removeFilter(filter)"></i>
             </div>
           </div>
@@ -51,44 +55,47 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 filters-column">
-          <div class="title">Filtros de busqueda</div>
+          <div class="title">
+            {{ 'search.filter_section_title' | translate }}
+
+          </div>
           <div class="filter-section">
             <div class="title" >
-              Entidades educativas
+              {{ 'search.filter_section_entity' | translate }}
             </div>
             <div class="filters">
               <div ng-repeat="(key, value) in entities" class="filter" ng-click="addFilter(value, 'entity')">
-                {{value.code}}
+                {{value.nombre}}
               </div>
             </div>
           </div>
           <div class="filter-section">
             <div class="title" >
-              Materias
+              {{ 'search.filter_section_subject' | translate }}
             </div>
             <div class="filters">
               <div ng-repeat="(key, value) in subjects" class="filter" ng-click="addFilter(value, 'subject')">
-                {{value.code}}
+                {{'subject.' + value.code | translate }}
               </div>
             </div>
           </div>
           <div class="filter-section">
             <div class="title">
-              Nivel
+              {{ 'search.filter_section_level' | translate }}
             </div>
             <div class="filters">
               <div ng-repeat="(key, value) in levels" class="filter" ng-click="addFilter(value, 'level')">
-                {{value.code}}
+                {{'level.' + value.code | translate }}
               </div>
             </div>
           </div>
           <div class="filter-section">
             <div class="title">
-              Idioma
+              {{ 'search.filter_section_language' | translate }}
             </div>
             <div class="filters">
               <div ng-repeat="(key, value) in languages" class="filter" ng-click="addFilter(value, 'language')">
-                {{value.code}}
+                {{'language.' + value.code | translate }}
               </div>
             </div>
           </div>

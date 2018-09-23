@@ -1,0 +1,7 @@
+{
+  HEADLINE: 'What an awesome module!',
+  PARAGRAPH: 'Srslydasdasdas!',
+  NAMESPACE: {
+    PARAGRAPH: 'And it comes with awesome features!'
+  }
+}

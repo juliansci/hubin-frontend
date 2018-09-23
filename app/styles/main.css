@@ -334,7 +334,9 @@ form .error {
   font-size: 10px;
   color: #CCCCCC;
 }
-#filtersSearch .filters .filter .value-filter{}
+#filtersSearch .filters .filter .value-filter{
+  text-transform: capitalize;
+}
 
 #filtersSearch .filters .filter .close {
   position: absolute;
