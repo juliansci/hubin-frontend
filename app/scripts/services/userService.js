@@ -18,7 +18,6 @@ angular.module('hubinFrontendApp').service('userService', function (configServic
     getUser: function (id) {
       httpService.setHeaders();
       return $http.get(configService.getUrlServer() + 'alumno/' + id, {data: ''}).then(function (result) {
-        console.log(result);
         return result;
       });
     },

@@ -63,6 +63,8 @@ angular
       var logged = securityService.isLogged();
       if (!logged) {
         var restrictedUrls = securityService.getRestrictedUrls();
+        console.log(restrictedUrls);
+        console.log($location.path());
         if (restrictedUrls.indexOf($location.path()) >= 0) {
           $location.path('/login');
         }

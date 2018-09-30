@@ -11,7 +11,7 @@
                          ng-model="searchDocumentName">
                 </div>
                 <span class="input-group-btn">
-                            <button class="btn btn-default theme-btn" type="button">
+                            <button class="btn btn-default theme-btn" type="submit">
                                {{'search.input_button' | translate}}
                                 <i class="m-icon-swapright m-icon-white"></i>
                             </button>
@@ -29,8 +29,6 @@
         <div class="col-md-12">
           <h3>
             {{'search.documents_find' | translate:{ quantity: documents.length } }}
-
-
           </h3>
         </div>
       </div>
@@ -45,6 +43,9 @@
               <div class="section-filter">{{ ('search.filter_' + filter.section) | translate }}</div>
               <div class="value-filter">{{filter.value | lowercase }}</div>
               <i class="fa fa-times close" ng-click="removeFilter(filter)"></i>
+            </div>
+            <div ng-if="filters.length == 0" class="filter without-filter">
+              Sin filtros
             </div>
           </div>
         </div>
@@ -101,19 +102,19 @@
           </div>
         </div>
         <div class="col-md-9 search-result">
-          <div class="item-result row">
+          <div class="item-result row" ng-repeat="(key, document) in documents">
             <div class="col-md-12 col-sm-12">
-              <div class="title">Documento 1</div>
+              <div class="title">{{document.nombre}}</div>
               <ul class="blog-info">
-                <li><i class="fa fa-calendar"></i> 25/07/2013</li>
-                <li><i class="fa fa-comments"></i> 17</li>
-                <li><i class="fa fa-tags"></i> Metronic, Keenthemes, UI Design</li>
+                <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'MM/dd/yyyy' }}</li>
+                <li><i class="fa fa-comments"></i> 2</li>
+                <li><i class="fa fa-tags"></i> {{document.entidad.nombre}}, {{document.materia.nombre}}, {{ document.idioma.nombre}}</li>
               </ul>
-              <div class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui sint blanditiis prae sentium voluptatum
-                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non eleifend
-                enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur
-                adipiscing condimentum eleifend enim a feugiat.</div>
-              <a class="more" href="blog_item.html">Read more <i class="icon-angle-right"></i></a>
+              <div class="description">{{ document.descripcion }}</div>
+              <br/>
+              <a href="#">
+                <button class="btn green button-document-detail">Ver detalle</button>
+              </a>
             </div>
           </div>
         </div>

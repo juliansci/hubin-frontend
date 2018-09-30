@@ -330,6 +330,9 @@ form .error {
   font-size: 14px;
   position: relative;
 }
+#filtersSearch .filters .filter.without-filter {
+  padding-top: 5px;
+}
 #filtersSearch .filters .filter .section-filter{
   font-size: 10px;
   color: #CCCCCC;
@@ -403,6 +406,8 @@ form .error {
 #contentSearch .search-result .item-result {
   margin-bottom: 20px;
   width: 100%;
+  border-bottom: 1px solid #E0DFDF;
+  padding-bottom: 30px;
 }
 
 #contentSearch .search-result .item-result .image {
@@ -431,5 +436,10 @@ form .error {
   display: inline-block;
   margin-top: 2px;
 }
+
+#contentSearch .search-result .item-result .button-document-detail {
+  margin-top: 10px;
+}
+
 
 /* END SEARCH */

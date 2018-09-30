@@ -61,7 +61,7 @@ angular.module('hubinFrontendApp')
         }
         documentService.getAllByFilters(paramsWithIds).then(function(response){
           $scope.documents = response.data;
-          console.log($scope.documents);
+          $scope.matchEntitiesDocuments();
         });
 
       });
@@ -147,5 +147,18 @@ angular.module('hubinFrontendApp')
 
       });
       return itemsId.join(',');
-    }
+    };
+
+    $scope.matchEntitiesDocuments = function(){
+      for(var i = 0; i < $scope.documents.length; i++){
+        var currentDocument = $scope.documents[i];
+        $scope.documents[i]['entidad'] = $scope.entities.find(x => x.id == currentDocument['entidad']);
+        $scope.documents[i]['materia'] = $scope.subjects.find(x => x.id == currentDocument['materia']);
+        $scope.documents[i]['idioma'] = $scope.languages.find(x => x.id == currentDocument['idioma']);
+        $scope.documents[i]['nivel'] = $scope.levels.find(x => x.id == currentDocument['nivel']);
+      }
+    };
+
+
+
   });
