@@ -8,10 +8,13 @@
  * Controller of the hubinFrontendApp
  */
 angular.module('hubinFrontendApp')
-  .controller('MainCtrl', function ($scope, $location, sessionService, $interval) {
+  .controller('MainCtrl', function ($scope, $location, sessionService, $interval, subjectService) {
     $interval(headerTextAnimation, 6000);
     $scope.searchDocumentName = '';
-
+    $scope.subjectsOutstanding = [];
+    subjectService.getAllOutstanding().then(function(response){
+      $scope.subjectsOutstanding = response.data;
+    });
     function headerTextAnimation() {
       var maxSteps = 3;
       var currentItem = $('.js-text-slider .item.active');

@@ -25,7 +25,6 @@
                 </div>
               </form>
             </div>
-
           </div>
         </div>
       </div>
@@ -37,44 +36,9 @@
         <div class="col-md-12">
           <h1>Temas populares</h1>
           <div class="subjects-item-container">
-            <div class="item col-md-3">
-              <a href="#/subject/computer" class="item-link computer">
-                Computación
-              </a>
-            </div>
-            <div class="item col-md-3">
-              <a href="#/subject/language" class="item-link language">
-                Idiomas
-              </a>
-            </div>
-            <div class="item col-md-3">
-              <a href="#/subject/biology" class="item-link biology">
-                Biología
-              </a>
-            </div>
-            <div class="item col-md-3">
-              <a href="#/subject/engineering" class="item-link engineering">
-                Ingeniería
-              </a>
-            </div>
-            <div class="item col-md-3">
-              <a href="#/subject/economy" class="item-link economy">
-                Economía
-              </a>
-            </div>
-            <div class="item col-md-3">
-              <a href="#/subject/management" class="item-link management">
-                Management
-              </a>
-            </div>
-            <div class="item col-md-3">
-              <a href="#/subject/history" class="item-link history">
-                Historia
-              </a>
-            </div>
-            <div class="item col-md-3">
-              <a href="#/subject/finance" class="item-link finance">
-                Finanzas
+            <div class="item col-md-3" ng-repeat="(key, subject) in subjectsOutstanding">
+              <a href="#/subject/{{subject.code}}" class="item-link {{subject.code}}">
+                {{ subject.nombre }}
               </a>
             </div>
           </div>

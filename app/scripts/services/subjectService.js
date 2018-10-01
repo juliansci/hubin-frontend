@@ -5,9 +5,13 @@ angular.module('hubinFrontendApp').service('subjectService', function (configSer
     httpService.setHeaders();
       return $http.get(configService.getUrlServer() + 'materia', {data: ''});
   }
-
+  function getAllOutstanding() {
+    httpService.setHeaders();
+    return $http.get(configService.getUrlServer() + 'materia/destacadas', {data: ''});
+  }
   return {
-    getAll: getAll
+    getAll: getAll,
+    getAllOutstanding: getAllOutstanding
   }
     ;
 });
