@@ -4,21 +4,21 @@
       <div class="row">
         <div class=" col-md-offset-2 col-md-8">
           <div class="text-slider js-text-slider">
-            <div class="item active" data-step-number="1">¡Encontrá el material que buscás!</div>
-            <div class="item" data-step-number="2">¡Compartí tu material con otros!</div>
-            <div class="item" data-step-number="3">¡Formá parte y obtené beneficios!</div>
+            <div class="item active" data-step-number="1">{{'home.text_slider_1' | translate}}</div>
+            <div class="item" data-step-number="2">{{'home.text_slider_2' | translate}}</div>
+            <div class="item" data-step-number="3">{{'home.text_slider_3' | translate}}</div>
           </div>
           <div class="search-container">
             <div class="search">
               <form class="form-inline" action="#" ng-submit="searchDocument()">
                 <div class="input-group">
                   <div class="input-cont">
-                    <input class="form-control" type="text" placeholder="¿Qué estás buscando?"
+                    <input class="form-control" type="text" placeholder="{{'home.search_placeholder' | translate}}"
                            ng-model="searchDocumentName">
                   </div>
                   <span class="input-group-btn">
                             <button class="btn btn-default theme-btn" type="submit">
-                                Buscar
+                                {{'home.search_button' | translate}}
                                 <i class="m-icon-swapright m-icon-white"></i>
                             </button>
                         </span>
@@ -34,11 +34,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1>Temas populares</h1>
+          <h1>{{'home.subjects_outstanding' | translate}}</h1>
           <div class="subjects-item-container">
             <div class="item col-md-3" ng-repeat="(key, subject) in subjectsOutstanding">
               <a href="#/subject/{{subject.code}}" class="item-link {{subject.code}}">
-                {{ subject.nombre }}
+                {{'subject.'+ subject.code | translate}}
               </a>
             </div>
           </div>
@@ -48,7 +48,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="button-find-search">
-            <a href="#/search" class="btn btn-lg green">Encontrá lo que buscás</a>
+            <a href="#/search" class="btn btn-lg green">{{'home.find_text'| translate}}</a>
           </div>
         </div>
       </div>
@@ -56,29 +56,26 @@
   </div>
   <div id="howWorksHome">
     <div class="container">
-      <h1>¿Cómo funciona?</h1>
+      <h1 ng-bind-html="'home.how_works_title' | translate"></h1>
       <div class="row service-box">
         <div class="col-md-4 col-sm-4">
           <div class="service-box-heading">
-            <span><em class="icon"><i class="fa fa-book blue"></i></em>Encontrá lo que<br>buscás</span>
+            <span><em class="icon"><i class="fa fa-book blue"></i></em>
+              <span translate="home.how_works_subtitle_1"></span></span>
           </div>
-          <p>Hubin cuenta con información de calidad al servicio de la comunidad.<br/>
-            ¡Encontrá en nuestro catálogo lo que estás buscando!
-          </p>
+          <p translate='home.how_works_text_1'></p>
         </div>
         <div class="col-md-4 col-sm-4">
           <div class="service-box-heading">
-            <span><em class="icon"><i class="fa fa-group blue"></i></em>Compartí tu material con la comunidad</span>
+            <span><em class="icon"><i class="fa fa-group blue"></i></em><span translate="home.how_works_subtitle_2"></span></span>
           </div>
-          <p>La comunidad es el bien más valioso de Hubin y nuestro catálogo se nutre de ella.<br>¡Compartí tu material
-            y sé parte!</p>
+          <p translate="home.how_works_text_2"></p>
         </div>
         <div class="col-md-4 col-sm-4">
           <div class="service-box-heading">
-            <span><em class="icon"><i class="fa fa-trophy blue"></i></em>Participá y obtené beneficios</span>
+            <span><em class="icon"><i class="fa fa-trophy blue"></i></em><span translate="home.how_works_subtitle_3"></span></span>
           </div>
-          <p>Subí material, puntuá material existente y denunciá plagio o material inadecuado.<br/> ¡Participá en Hubin
-            y obtené beneficios!</p>
+          <p translate="home.how_works_text_3"></p>
         </div>
       </div>
     </div>

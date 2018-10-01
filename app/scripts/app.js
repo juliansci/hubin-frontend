@@ -55,16 +55,14 @@ angular
       prefix: 'translations/locale-',
       suffix: '.json'
     })
-      .useSanitizeValueStrategy('escape')
+      .useSanitizeValueStrategy(null)
       .preferredLanguage('es');
   })
-  .run(function ($rootScope, $location, $http, $timeout, configService, securityService, sessionService) {
+  .run(function ($rootScope, $location, $http, $timeout, $translate, configService, securityService, sessionService) {
     $rootScope.$on('$routeChangeStart', function (event) {
       var logged = securityService.isLogged();
       if (!logged) {
         var restrictedUrls = securityService.getRestrictedUrls();
-        console.log(restrictedUrls);
-        console.log($location.path());
         if (restrictedUrls.indexOf($location.path()) >= 0) {
           $location.path('/login');
         }
@@ -77,7 +75,9 @@ angular
       $rootScope.user = null;
       $location.path('/');
     };
-
+    $rootScope.changeLanguage = function(lang){
+      $translate.use(lang);
+    };
     $rootScope.isActive = function (path) {
       var active = (path === $location.path());
       return active;

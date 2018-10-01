@@ -30,6 +30,12 @@ form .error {
 .dropdown-menu a {
   cursor: pointer;
 }
+.navbar-collapse{
+  float: right;
+}
+.header .navbar-nav a.user-menu{
+  font-size: 16px;
+}
 
 .link-registro {
   color: #999;
@@ -38,6 +44,30 @@ form .error {
 .fb-icon-login {
   cursor: pointer;
 }
+
+.languages{
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+.languages .lang{
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.languages .lang img{
+  display: inline-block;
+  cursor: pointer;
+}
+.languages .lang-es img{
+  width: 34px;
+  position: relative;
+  top: 1px;
+}
+.languages .lang-en img{
+  width: 31px;
+}
+
 
 /* START HOME */
 #home #headerHome {
@@ -182,10 +212,12 @@ form .error {
 
 #howWorksHome .service-box .service-box-heading span {
   margin-left: 0px;
+  display: inline-block;
 }
 
 #howWorksHome .service-box .service-box-heading span .icon {
   margin-right: 5px;
+  float: left;
 }
 
 /* END HOME */

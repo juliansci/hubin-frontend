@@ -12,7 +12,6 @@ angular.module('hubinFrontendApp').service('securityService', function ($http, c
   var login = function (user) {
     sessionService.setAuthentication(user);
     return $http.post(configService.getUrlServer() + 'alumno/login/', user).then(function (result) {
-      console.log(result);
       return result;
     });
   };

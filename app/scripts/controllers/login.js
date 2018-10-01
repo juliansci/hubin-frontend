@@ -46,7 +46,6 @@ angular.module('hubinFrontendApp')
 
 
       }, function (response) {
-        console.log(response);
         sessionService.clearSession();
         if (response.data && response.data.message) {
           formError.text(response.data.message);

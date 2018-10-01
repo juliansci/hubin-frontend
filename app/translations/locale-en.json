@@ -1,0 +1,97 @@
+{
+  "header":{
+    "my_profile": "My profile",
+    "logout": "Logout"
+  },
+  "footer": {
+    "contact_us": "Contact us",
+    "send_your_suggest": "Send us your suggestion to",
+    "copyright": "All rights reserved.",
+    "privacy": "Privacy policies",
+    "terms_and_conditions": "Terms and conditions"
+  },
+  "login": {
+    "user_placeholder": "Enter your user",
+    "password_placeholder": "Enter your password",
+    "login_text": "Enter",
+    "login_text_social": "Or enter with",
+    "register_text": "I dont have account yet"
+  },
+  "register": {
+    "title": "Register",
+    "user_placeholder": "Enter your user",
+    "email_placeholder": "Enter your email",
+    "password_placeholder": "Enter your password",
+    "password_repeat_placeholder": "Repeat the password",
+    "register_button": "Register",
+    "register_text_social": "Or enter with"
+  },
+  "home":{
+    "text_slider_1": "Find the material you are looking for!",
+    "text_slider_2": "Share your material with others!",
+    "text_slider_3": "Become a part and get benefits!",
+    "search_placeholder": "What are you looking for?",
+    "search_button":"Search",
+    "subjects_outstanding": "Popular subjects",
+    "find_text": "Find what you are looking for",
+    "how_works_title": "¿How does it work?",
+    "how_works_subtitle_1": "Find what you<br/>are looking for",
+    "how_works_text_1":"Hubin has quality information at the service of the community. <br/> Find in our catalog what you are looking for!",
+    "how_works_subtitle_2":"Share your material <br/>with the community",
+    "how_works_text_2": "The community is the most valuable asset of Hubin and our catalog is nourished by it. <br/> Share your material and be a part!",
+    "how_works_subtitle_3": "Participate and obtain <br/>benefits",
+    "how_works_text_3": "You uploaded material, punctuated existing material and denounced plagiarism or inappropriate material. <br/> Participate in Hubin and get benefits!"
+  },
+  "subject":{
+    "biology": "Biology",
+    "computer": "Computer",
+    "economy": "Economy",
+    "engineering": "Engineering",
+    "finance": "Finance",
+    "history": "History",
+    "language": "Languages",
+    "management": "Management"
+  },
+  "level":{
+    "initial": "Initial",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "language":{
+    "spanish": "Spanish",
+    "english": "English",
+    "portuguese": "Portuguese"
+  },
+  "search": {
+    "input_placeholder": "What are you looking for?",
+    "input_button": "Search",
+    "documents_find": "Found {{quantity}} documents",
+    "filter_name": "Name",
+    "filter_entity": "Educational entity",
+    "filter_subject": "Subject",
+    "filter_level": "Level",
+    "filter_language": "Language",
+    "filter_section_title": "Search filters",
+    "filter_section_entity": "Educational entities",
+    "filter_section_subject": "Subjects",
+    "filter_section_language": "Languages",
+    "filter_section_level": "Levels",
+    "without_filters": "Without filters",
+    "without_documents": "No documents with the specified filters were found."
+  },
+  "user": {
+    "edit_profile" : "Edit profile",
+    "finish_edit_profile": "End profile edit",
+    "input_your_email":"Enter your email",
+    "input_your_name":"Enter your name",
+    "input_your_description":"Enter your description",
+    "medals_title": "Medals",
+    "my_documents":"My documents",
+    "without_documents": "You do not have documents uploaded.",
+    "my_activity": "My activity",
+    "without_activity": "You do not have recent activity.",
+    "my_favs": "My favourites",
+    "without_favs":"You do not have favorite documents."
+  }
+
+}

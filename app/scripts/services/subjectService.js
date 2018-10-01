@@ -6,7 +6,7 @@ angular.module('hubinFrontendApp').service('subjectService', function (configSer
       return $http.get(configService.getUrlServer() + 'materia', {data: ''});
   }
   function getAllOutstanding() {
-    httpService.setHeaders();
+    httpService.setHeadersNotLogged();
     return $http.get(configService.getUrlServer() + 'materia/destacadas', {data: ''});
   }
   return {

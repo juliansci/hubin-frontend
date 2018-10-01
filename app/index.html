@@ -39,6 +39,15 @@
       <a class="navbar-brand" href="#/">
         <img class="logo" src="images/logo.png" alt="Hubin"/>
       </a>
+
+    </div>
+    <div class="languages">
+      <div class="lang lang-es" ng-click="changeLanguage('es')">
+        <img src="images/lang-es.png"/>
+      </div>
+      <div class="lang lang-en" ng-click="changeLanguage('en')">
+        <img src="images/lang-en.png"/>
+      </div>
     </div>
 
     <div class="navbar-collapse collapse">
@@ -52,10 +61,10 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="/#/user">Mi perfil</a>
+              <a href="/#/user">{{'header.my_profile'| translate }}</a>
             </li>
             <li>
-              <a class="logout" ng-click="logout()">Logout</a>
+              <a class="logout" ng-click="logout()">{{'header.logout'| translate }}</a>
             </li>
           </ul>
         </li>
@@ -73,9 +82,9 @@
     <div class="row">
       <div class="col-md-4 col-sm-4 space-mobile">
         <!-- BEGIN CONTACTS -->
-        <h2>Contactanos</h2>
+        <h2>{{'footer.contact_us'| translate }}</h2>
         <address class="no-space">
-          Enviamos tu duda o surgerencia a:
+          {{'footer.send_your_suggest'| translate }}:
           <a href="mailto:info@hubin.com">info@hubin.com</a>
         </address>
         <!-- END CONTACTS -->
@@ -91,8 +100,8 @@
     <div class="row">
       <div class="col-md-8 col-sm-8">
         <p>
-          <span class="margin-right-10">Hubin 2018©. Todos los derechos reservados.</span>
-          <a href="#">Políticas de privacidad</a> | <a href="#">Términos y condiciones</a>
+          <span class="margin-right-10">Hubin 2019©. {{'footer.copyright'| translate }}</span>
+          <a href="#">{{'footer.privacy'| translate }}</a> | <a href="#">{{'footer.terms_and_conditions'| translate }}</a>
 
         </p>
       </div>

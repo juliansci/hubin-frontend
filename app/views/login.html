@@ -6,18 +6,18 @@
                 <div class="error main-error js-form-error"></div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input class="form-control js-user"  type="text" name="user" placeholder="Ingrese su usuario">
+                    <input class="form-control js-user"  type="text" name="user" placeholder="{{'login.user_placeholder' | translate}}">
                     <span class="error js-user-error"></span>
                 </div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control js-password" placeholder="Password" type="password" name="password">
+                    <input type="password" class="form-control js-password" placeholder="{{'login.password_placeholder' | translate}}" type="password" name="password">
                     <span class="error  js-password-error"></span>
                 </div>
 
                 <div class="row">
                     <div class="col-md-offset-6 col-sm-offset-6 col-md-6 col-sm-6">
-                        <button type="submit" class="btn theme-btn pull-right submit-login">Ingresar</button>
+                        <button type="submit" class="btn theme-btn pull-right submit-login">{{'login.login_text' | translate}}</button>
                     </div>
                 </div>
                 <hr>
@@ -27,14 +27,14 @@
                     <div class="col-md-6 col-sm-6">
 
                         <div class="login-socio">
-                            <p class="text-muted">O ingresar con:</p>
+                            <p class="text-muted">{{'login.login_text_social' | translate}}:</p>
                             <ul class="social-icons">
                                 <li><a class="fb-icon-login facebook js-login-fb" data-original-title="facebook" ></a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
-                        <a class="link-registro" href="#/register">Aún no tengo una cuenta</a>
+                        <a class="link-registro" href="#/register">{{'login.register_text' | translate}}</a>
                     </div>
                 </div>
             </form>

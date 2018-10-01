@@ -15,23 +15,23 @@
             {{userProfile.username}}
           </div>
           <div class="edit-profile js-edit-profile">
-            <span ng-show="!onEditProfile">Editar perfil</span>
-            <span ng-show="onEditProfile">Terminar edicion de perfil</span>
+            <span ng-show="!onEditProfile">{{'user.edit_profile' | translate}}</span>
+            <span ng-show="onEditProfile">{{'user.finish_edit_profile' | translate}}</span>
           </div>
           <div class="user-field js-user-email">
-            {{userProfile.email ? userProfile.email : 'Ingrese su email'}}
+            {{userProfile.email ? userProfile.email : 'user.input_your_email' | translate }}
           </div>
           <br>
           <div class="user-field js-user-name" editable-text="userProfile.name">
-            {{userProfile.nombre ? userProfile.nombre : 'Ingrese su nombre'}}
+            {{userProfile.nombre ? userProfile.nombre : 'user.input_your_name' | translate }}
           </div>
           <br>
           <div class="user-field js-user-description">
-            {{userProfile.presentacion ? userProfile.presentacion: 'Ingrese una descripcion'}}
+            {{userProfile.presentacion ? userProfile.presentacion: 'user.input_your_description' | translate }}
           </div>
         </div>
         <div class="col-md-4">
-          <h2 style="margin-top:0px;">Medallas</h2>
+          <h2 style="margin-top:0px;">{{'user.medals_title' | translate }}</h2>
           <div class="content-medals">
             <div class="medal medal-begin" title="Begin"></div>
             <div class="medal medal-first-document" title="First document"></div>
@@ -46,9 +46,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1>Mis documentos</h1>
+          <h1>{{'user.my_documents' | translate }}</h1>
           <div class="description">
-            No tiene documentos subidos.
+            {{'user.without_documents' | translate }}
           </div>
         </div>
       </div>
@@ -58,9 +58,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1>Mi actividad</h1>
+          <h1>{{'user.my_activity' | translate }}</h1>
           <div class="description">
-            No tiene actividad reciente.
+            {{'user.without_activity' | translate }}
           </div>
         </div>
       </div>
@@ -70,9 +70,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1>Mi favoritos</h1>
+          <h1>{{'user.my_favs' | translate }}</h1>
           <div class="description">
-            No tiene documentos favoritos.
+            {{'user.without_favs' | translate }}
           </div>
         </div>
       </div>

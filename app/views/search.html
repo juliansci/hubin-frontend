@@ -45,7 +45,7 @@
               <i class="fa fa-times close" ng-click="removeFilter(filter)"></i>
             </div>
             <div ng-if="filters.length == 0" class="filter without-filter">
-              Sin filtros
+              {{'search.without_filters' | translate }}
             </div>
           </div>
         </div>
@@ -118,7 +118,7 @@
             </div>
           </div>
           <div ng-if="documents.length == 0" class="filter without-documents">
-            No se encontraron documentos con los filtros especificados.
+            {{'search.without_documents' | translate }}
           </div>
         </div>
       </div>

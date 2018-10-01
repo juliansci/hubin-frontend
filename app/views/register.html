@@ -1,42 +1,42 @@
 <div id="login" class="section container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Registro</h1>
+            <h1>{{'register.title'| translate}}</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 login-signup-page">
             <form id="registerForm">
-                <h2>Registro</h2>
+                <h2>{{'register.title'| translate}}</h2>
                 <div class="error main-error js-form-error"></div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input class="form-control js-username"  type="text" name="usuario" placeholder="Usuario">
+                    <input class="form-control js-username"  type="text" name="usuario" placeholder="{{'register.user_placeholder'| translate}}">
                     <span class="error js-username-error"></span>
                 </div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input class="form-control js-email"  type="email" name="email" placeholder="Email">
+                    <input class="form-control js-email"  type="email" name="email" placeholder="{{'register.email_placeholder'| translate}}">
                     <span class="error js-email-error"></span>
                 </div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control js-password" placeholder="Password" type="password" name="password">
+                    <input type="password" class="form-control js-password" placeholder="{{'register.password_placeholder'| translate}}" type="password" name="password">
                     <span class="error js-password-error"></span>
                 </div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control js-password-repeat" placeholder="Repetir password" name="passwordRepeat">
+                    <input type="password" class="form-control js-password-repeat" placeholder="{{'register.repeat_password_placeholder'| translate}}" name="passwordRepeat">
                     <span class="error js-password-repeat-error"></span>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" class="btn theme-btn pull-right submit-register">Registrarse</button>
+                        <button type="submit" class="btn theme-btn pull-right submit-register">{{'register.register_button'| translate}}</button>
                     </div>
                 </div>
                 <hr>
                 <div class="login-socio">
-                    <p class="text-muted">o ingresar con:</p>
+                    <p class="text-muted">{{'register.register_text_social'| translate}}:</p>
                     <ul class="social-icons">
                         <li><a class="fb-icon-login facebook js-login-fb" data-original-title="facebook"></a></li>
                     </ul>
