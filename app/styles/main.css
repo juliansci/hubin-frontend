@@ -440,6 +440,11 @@ form .error {
 #contentSearch .search-result .item-result .button-document-detail {
   margin-top: 10px;
 }
+#contentSearch .search-result .without-documents {
+  font-size: 18px;
+  padding: 10px;
+  color: #444;
+}
 
 
 /* END SEARCH */
