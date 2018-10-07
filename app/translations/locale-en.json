@@ -97,6 +97,9 @@
     "header_title": "EDUCATIONAL ENTITY",
     "related_documents": "Related documents",
     "search_documents": "Search documents of this educational entity"
+  },
+  "subject_section": {
+    "related_documents": "Related documents of this subject",
+    "search_documents": "Search documents of this subject"
   }
-
 }

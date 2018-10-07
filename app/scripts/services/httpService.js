@@ -14,6 +14,8 @@ angular.module('hubinFrontendApp').service('httpService', function ($http, sessi
     $http.defaults.headers.patch['Content-Type'] = 'application/json; charset=utf-8';
     $http.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
     $http.defaults.headers.put['Content-Type'] = 'application/json; charset=utf-8';
+    $http.defaults.headers.common['Authorization'] = '';
+
   };
   var setHeaders = function () {
     var token = sessionService.getItemSession('token');

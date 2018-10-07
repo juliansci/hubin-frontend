@@ -52,6 +52,11 @@ angular
         controller: 'EntityCtrl',
         controllerAs: 'entity'
       })
+      .when('/subject/:id', {
+        templateUrl: 'views/subject.html',
+        controller: 'SubjectCtrl',
+        controllerAs: 'subject'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -67,10 +72,12 @@ angular
                  entityService, subjectService, levelService, languageService) {
     $rootScope.$on('$routeChangeStart', function (event) {
       var logged = securityService.isLogged();
-      console.log('is logged: ', logged );
       if (!logged) {
         var restrictedUrls = securityService.getRestrictedUrls();
-        if (restrictedUrls.indexOf($location.path()) >= 0) {
+        var urlFind = restrictedUrls.find(function(element) {
+          return $location.path().includes(element);
+        });
+        if (urlFind  !== undefined) {
           $location.path('/login');
         }
       }
@@ -86,8 +93,8 @@ angular
       $translate.use(lang);
     };
     $rootScope.isActive = function (path) {
-     // var active = (path === $location.path());
-   //   return active;
+      var active = (path === $location.path());
+      return active;
     };
     $rootScope.urlServerBase = configService.getUrlServer();
     $rootScope.entitiesLoaded = false;

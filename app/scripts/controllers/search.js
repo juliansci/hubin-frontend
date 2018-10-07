@@ -66,6 +66,10 @@ angular.module('hubinFrontendApp')
     };
     $rootScope.$watch('entitiesLoaded',function(newValue,oldValue) {
       if (newValue === true) {
+        $scope.entities = $rootScope.entities;
+        $scope.levels = $rootScope.levels;
+        $scope.languages = $rootScope.languages;
+        $scope.subjects = $rootScope.subjects;
         $scope.initFiltersFromParams($routeParams);
         return;
       }

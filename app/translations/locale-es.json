@@ -97,5 +97,9 @@
     "header_title": "ENTIDAD EDUCATIVA",
     "related_documents": "Documentos relacionados",
     "search_documents": "Buscá documentos de esta entidad educativa"
+  },
+  "subject_section": {
+    "related_documents": "Documentos relacionados a esta materia",
+    "search_documents": "Buscá documentos de esta materia"
   }
 }

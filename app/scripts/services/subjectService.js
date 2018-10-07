@@ -1,6 +1,10 @@
 'use strict';
 
 angular.module('hubinFrontendApp').service('subjectService', function (configService, $http, httpService) {
+  function getById(id) {
+    httpService.setHeaders();
+    return $http.get(configService.getUrlServer() + 'materia/' + id, {data: ''});
+  }
   function getAll() {
     httpService.setHeaders();
       return $http.get(configService.getUrlServer() + 'materia', {data: ''});
@@ -10,8 +14,9 @@ angular.module('hubinFrontendApp').service('subjectService', function (configSer
     return $http.get(configService.getUrlServer() + 'materia/destacadas', {data: ''});
   }
   return {
+    getById: getById,
     getAll: getAll,
     getAllOutstanding: getAllOutstanding
   }
-    ;
+
 });

@@ -37,7 +37,7 @@
           <h1>{{'home.subjects_outstanding' | translate}}</h1>
           <div class="subjects-item-container">
             <div class="item col-md-3" ng-repeat="(key, subject) in subjectsOutstanding">
-              <a href="#/subject/{{subject.code}}" class="item-link {{subject.code}}">
+              <a href="#/subject/{{subject.id}}" class="item-link {{subject.code}}">
                 {{'subject.'+ subject.code | translate}}
               </a>
             </div>

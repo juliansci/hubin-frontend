@@ -1,0 +1,77 @@
+<section id="subject">
+  <div id="headerSubject" class="{{subject.code}}">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="title">{{'subject.' + subject.code | translate }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>{{'subject_section.related_documents' | translate}}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="search-result">
+            <div class="item-result row" ng-repeat="(key, document) in documents">
+              <div class="col-md-12 col-sm-12">
+                <div class="title">{{document.nombre}}</div>
+                <ul class="blog-info">
+                  <li><i class="fa fa-calendar"></i>{{document.fechaCreacion}}</li>
+                  <li><i class="fa fa-comments"></i> 2</li>
+                  <li><i class="fa fa-tags"></i>
+                    <a href="#/entity/{{document.entidad.id}}" class="fa-tags-text">{{document.entidad.nombreCorto}}</a>,
+                    {{document.materia.nombre}},
+                    {{document.idioma.nombre}}
+                  </li>
+                </ul>
+                <div class="description">{{ document.descripcion }}</div>
+                <br/>
+                <a href="#">
+                  <button class="btn green button-document-detail">Ver detalle</button>
+                </a>
+              </div>
+            </div>
+            <div ng-if="documents.length == 0" class="filter without-documents">
+              {{'search.without_documents' | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="headerSearch">
+    <div class="container">
+      <div class="row">
+        <div class="search-container">
+          <div class="search">
+            <form class="form-inline" action="#" ng-submit="searchDocument($event)">
+              <div class="text">
+                {{'subject_section.search_documents' | translate}}
+              </div>
+              <div class="input-group">
+                <div class="input-cont">
+                  <input class="form-control" type="text" placeholder="{{'search.input_placeholder' | translate}}"
+                         ng-model="searchDocumentName">
+                </div>
+                <span class="input-group-btn">
+                            <button class="btn btn-default theme-btn" type="submit">
+                               {{'search.input_button' | translate}}
+                                <i class="m-icon-swapright m-icon-white"></i>
+                            </button>
+                        </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
