@@ -47,6 +47,11 @@ angular
         controller: 'SearchCtrl',
         controllerAs: 'search'
       })
+      .when('/entity/:id', {
+        templateUrl: 'views/entity.html',
+        controller: 'EntityCtrl',
+        controllerAs: 'entity'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -58,9 +63,11 @@ angular
       .useSanitizeValueStrategy(null)
       .preferredLanguage('es');
   })
-  .run(function ($rootScope, $location, $http, $timeout, $translate, configService, securityService, sessionService) {
+  .run(function ($rootScope, $location, $http, $timeout, $translate, $q, configService, securityService, sessionService,
+                 entityService, subjectService, levelService, languageService) {
     $rootScope.$on('$routeChangeStart', function (event) {
       var logged = securityService.isLogged();
+      console.log('is logged: ', logged );
       if (!logged) {
         var restrictedUrls = securityService.getRestrictedUrls();
         if (restrictedUrls.indexOf($location.path()) >= 0) {
@@ -79,11 +86,41 @@ angular
       $translate.use(lang);
     };
     $rootScope.isActive = function (path) {
-      var active = (path === $location.path());
-      return active;
+     // var active = (path === $location.path());
+   //   return active;
     };
     $rootScope.urlServerBase = configService.getUrlServer();
+    $rootScope.entitiesLoaded = false;
+    if ($rootScope.user !== undefined && $rootScope.entities === undefined) {
+      $rootScope.entities = [];
+      $rootScope.subjects = [];
+      $rootScope.levels = [];
+      $rootScope.languages = [];
+      var promises = [];
+      var promiseEntities = entityService.getAll().then(function (response) {
+        return response.data;
+      });
+      promises.push(promiseEntities);
+      var promiseSubjects = subjectService.getAll().then(function (response) {
+        return response.data;
+      });
+      promises.push(promiseSubjects);
+
+      var promiseLevels = levelService.getAll().then(function (response) {
+        return response.data;
+      });
+      promises.push(promiseLevels);
+
+      var promiseLanguages = languageService.getAll().then(function (response) {
+        return response.data;
+      });
+      promises.push(promiseLanguages);
+      $q.all(promises).then(function (res) {
+        $rootScope.entities = res[0];
+        $rootScope.subjects = res[1];
+        $rootScope.levels = res[2];
+        $rootScope.languages = res[3];
+        $rootScope.entitiesLoaded = true;
+      });
+    }
   });
-
-
-;

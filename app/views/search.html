@@ -4,7 +4,7 @@
       <div class="row">
         <div class="search-container">
           <div class="search">
-            <form class="form-inline" action="#" ng-submit="searchDocumentByName()">
+            <form class="form-inline" action="#" ng-submit="searchDocumentByName($event)">
               <div class="input-group">
                 <div class="input-cont">
                   <input class="form-control" type="text" placeholder="{{'search.input_placeholder' | translate}}"
@@ -66,7 +66,7 @@
             </div>
             <div class="filters">
               <div ng-repeat="(key, value) in entities" class="filter" ng-click="addFilter(value, 'entity')">
-                {{value.nombre}}
+                {{value.nombreCorto}}
               </div>
             </div>
           </div>
@@ -108,7 +108,10 @@
               <ul class="blog-info">
                 <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'MM/dd/yyyy' }}</li>
                 <li><i class="fa fa-comments"></i> 2</li>
-                <li><i class="fa fa-tags"></i> {{document.entidad.nombre}}, {{document.materia.nombre}}, {{ document.idioma.nombre}}</li>
+                <li><i class="fa fa-tags"></i>
+                  <a href="#/entity/{{document.entidad.id}}" class="fa-tags-text">{{document.entidad.nombreCorto}}</a>,
+                  {{document.materia.nombre}},
+                  {{document.idioma.nombre}}</li>
               </ul>
               <div class="description">{{ document.descripcion }}</div>
               <br/>

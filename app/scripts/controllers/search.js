@@ -8,43 +8,43 @@
  * Controller of the hubinFrontendApp
  */
 angular.module('hubinFrontendApp')
-  .controller('SearchCtrl', function ($rootScope, $scope, $routeParams, $location, $q,
-                                      documentService, entityService, subjectService,
-                                      levelService, languageService) {
+  .controller('SearchCtrl', function ($rootScope, $scope, $routeParams, $location, $q, $window,
+                                      documentService) {
     $scope.searchDocumentName = '';
     $scope.filters = [];
-    $scope.entities = [];
-    $scope.subjects = [];
-    $scope.levels = [];
-    $scope.languages = [];
     $scope.documents = [];
-    var promises = [];
-    var promiseEntities = entityService.getAll().then(function(response){
-      return response.data;
-    });
-    promises.push(promiseEntities);
-    var promiseSubjects = subjectService.getAll().then(function(response){
-      return response.data;
-    });
-    promises.push(promiseSubjects);
+    $window.scrollTo(0, 0);
+    $scope.returnIdByValueFilter = function(items, section){
+      if(section === 'name'){
+        return items[0];
+      }
+      var array = [];
+      if(section === 'entity'){
+        array = $rootScope.entities;
+      }
+      if(section === 'subject'){
+        array = $rootScope.subjects;
+      }
+      if(section === 'language'){
+        array = $rootScope.languages;
+      }
+      if(section === 'level'){
+        array = $rootScope.levels;
+      }
+      var itemsId = items.map(function(element){
+        for(var key in array) {
+          var itemWithId = array[key];
+          if(itemWithId.code === element){
+            return itemWithId.id;
+          }
+        }
 
-    var promiseLevels = levelService.getAll().then(function(response){
-      return response.data;
-    });
-    promises.push(promiseLevels);
+      });
+      return itemsId.join(',');
+    };
 
-    var promiseLanguages = languageService.getAll().then(function(response){
-      return response.data;
-    });
-    promises.push(promiseLanguages);
 
     $scope.initFiltersFromParams = function(params) {
-
-      $q.all(promises).then(function (res) {
-        $scope.entities = res[0];
-        $scope.subjects = res[1];
-        $scope.levels = res[2];
-        $scope.languages = res[3];
         var paramsWithIds = {};
         for (var currentKey in params) {
           var currentValue = params[currentKey].split(',');
@@ -63,17 +63,28 @@ angular.module('hubinFrontendApp')
           $scope.documents = response.data;
           $scope.matchEntitiesDocuments();
         });
-
-      });
     };
-
-    $scope.initFiltersFromParams($routeParams);
+    $rootScope.$watch('entitiesLoaded',function(newValue,oldValue) {
+      if (newValue === true) {
+        $scope.initFiltersFromParams($routeParams);
+        return;
+      }
+    });
 
     $scope.addFilter = function (filterObject, section) {
       var filter = {
         value: filterObject.code,
         section: section
       };
+      console.log($scope.filters);
+      console.log(filter);
+
+      for(var i = 0; i < $scope.filters.length; i++){
+        var currentFilter = $scope.filters[i];
+        if(currentFilter['value'] == filter['value']){
+          return false;
+        }
+      }
       $scope.filters.push(filter);
       $scope.refreshSearch();
     };
@@ -114,48 +125,23 @@ angular.module('hubinFrontendApp')
       $location.path("/search").search(query);
     };
 
-    $scope.searchDocumentByName = function () {
+    $scope.searchDocumentByName = function (e) {
       if ($scope.searchDocumentName !== '') {
         $location.path("/search").search({name: $scope.searchDocumentName});
       }
+      e.preventDefault();
+      return false;
     };
 
-    $scope.returnIdByValueFilter = function(items, section){
-      if(section === 'name'){
-        return items[0];
-      }
-      var array = [];
-      if(section === 'entity'){
-        array = $scope.entities;
-      }
-      if(section === 'subject'){
-        array = $scope.subjects;
-      }
-      if(section === 'language'){
-        array = $scope.languages;
-      }
-      if(section === 'level'){
-        array = $scope.levels;
-      }
-      var itemsId = items.map(function(element){
-        for(var key in array) {
-          var itemWithId = array[key];
-          if(itemWithId.code === element){
-            return itemWithId.id;
-          }
-        }
-
-      });
-      return itemsId.join(',');
-    };
 
     $scope.matchEntitiesDocuments = function(){
       for(var i = 0; i < $scope.documents.length; i++){
         var currentDocument = $scope.documents[i];
-        $scope.documents[i]['entidad'] = $scope.entities.find(x => x.id == currentDocument['entidad']);
-        $scope.documents[i]['materia'] = $scope.subjects.find(x => x.id == currentDocument['materia']);
-        $scope.documents[i]['idioma'] = $scope.languages.find(x => x.id == currentDocument['idioma']);
-        $scope.documents[i]['nivel'] = $scope.levels.find(x => x.id == currentDocument['nivel']);
+        $scope.documents[i]['entidad'] = $rootScope.entities.find(x => x.id == currentDocument['entidad']);
+        $scope.documents[i]['materia'] = $rootScope.subjects.find(x => x.id == currentDocument['materia']);
+        $scope.documents[i]['idioma'] = $rootScope.languages.find(x => x.id == currentDocument['idioma']);
+        $scope.documents[i]['nivel'] = $rootScope.levels.find(x => x.id == currentDocument['nivel']);
+        $scope.documents[i]['fechaCreacion'] = $scope.documents[i]['fechaCreacion'].split("-")[0];
       }
     };
 

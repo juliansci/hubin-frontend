@@ -92,6 +92,11 @@
     "without_activity": "You do not have recent activity.",
     "my_favs": "My favourites",
     "without_favs":"You do not have favorite documents."
+  },
+  "entity": {
+    "header_title": "EDUCATIONAL ENTITY",
+    "related_documents": "Related documents",
+    "search_documents": "Search documents of this educational entity"
   }
 
 }

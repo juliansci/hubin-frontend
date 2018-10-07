@@ -92,6 +92,10 @@
     "without_activity": "No tiene actividad reciente.",
     "my_favs": "Mi favoritos",
     "without_favs":"No tiene documentos favoritos."
+  },
+  "entity": {
+    "header_title": "ENTIDAD EDUCATIVA",
+    "related_documents": "Documentos relacionados",
+    "search_documents": "Buscá documentos de esta entidad educativa"
   }
-
 }
