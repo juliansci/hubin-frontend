@@ -756,8 +756,8 @@ form .error {
 
 /* END SUBJECT */
 
-/* BEGIN DOCUMENT */
-#document #headerDocument {
+/* BEGIN DOCUMENT EDIT */
+#documentEdit #headerDocumentEdit {
   width: 100%;
   color: #fff;
   background-size: cover;
@@ -767,32 +767,32 @@ form .error {
   background-image: url('../images/banners/subjects/banner_engineering.jpg');
 }
 
-#document #headerDocument .title {
+#documentEdit #headerDocumentEdit .title {
   font-size: 40px;
   margin-top: 100px;
   font-weight: bolder;
   text-shadow: 1px 1px #62707f;
 }
 
-#document #content {
+#documentEdit #content {
 
 }
 
-#document #content #formDocument {
+#documentEdit #content #formDocument {
   margin-top: 20px;
   margin-bottom: 50px;
 }
 
-#document #content #formDocument .radio input[type="radio"],
-#document #content #formDocument .radio-inline input[type="radio"],
-#document #content #formDocument .checkbox input[type="checkbox"],
-#document #content #formDocument .checkbox-inline input[type="checkbox"] {
+#documentEdit #content #formDocument .radio input[type="radio"],
+#documentEdit #content #formDocument .radio-inline input[type="radio"],
+#documentEdit #content #formDocument .checkbox input[type="checkbox"],
+#documentEdit #content #formDocument .checkbox-inline input[type="checkbox"] {
   float: none;
   margin-left: 0px;
 }
 
-#document #content #formDocument .error {
+#documentEdit #content #formDocument .error {
   border: 1px solid red;
 }
 
-/* END DOCUMENT */
+/* END DOCUMENT EDIT*/

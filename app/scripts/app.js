@@ -57,11 +57,23 @@ angular
         controller: 'SubjectCtrl',
         controllerAs: 'subject'
       })
-      .when('/document', {
+
+      .when('/document/new', {
+        templateUrl: 'views/documentEdit.html',
+        controller: 'DocumentEditCtrl',
+        controllerAs: 'documentEdit'
+      })
+      .when('/document/edit/:id', {
+        templateUrl: 'views/documentEdit.html',
+        controller: 'DocumentEditCtrl',
+        controllerAs: 'documentEdit'
+      })
+      .when('/document/:id', {
         templateUrl: 'views/document.html',
         controller: 'DocumentCtrl',
         controllerAs: 'document'
       })
+
       .otherwise({
         redirectTo: '/'
       });
@@ -79,10 +91,10 @@ angular
       var logged = securityService.isLogged();
       if (!logged) {
         var restrictedUrls = securityService.getRestrictedUrls();
-        var urlFind = restrictedUrls.find(function(element) {
+        var urlFind = restrictedUrls.find(function (element) {
           return $location.path().includes(element);
         });
-        if (urlFind  !== undefined) {
+        if (urlFind !== undefined) {
           $location.path('/login');
         }
       }
@@ -94,7 +106,7 @@ angular
       $rootScope.user = null;
       $location.path('/');
     };
-    $rootScope.changeLanguage = function(lang){
+    $rootScope.changeLanguage = function (lang) {
       $translate.use(lang);
     };
     $rootScope.isActive = function (path) {

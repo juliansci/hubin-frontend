@@ -1,6 +1,7 @@
 {
   "header":{
     "my_profile": "Mi perfil",
+    "load_document": "Nuevo documento",
     "logout": "Salir"
   },
   "footer": {
