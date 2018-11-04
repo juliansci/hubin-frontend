@@ -57,6 +57,11 @@ angular
         controller: 'SubjectCtrl',
         controllerAs: 'subject'
       })
+      .when('/document', {
+        templateUrl: 'views/document.html',
+        controller: 'DocumentCtrl',
+        controllerAs: 'document'
+      })
       .otherwise({
         redirectTo: '/'
       });

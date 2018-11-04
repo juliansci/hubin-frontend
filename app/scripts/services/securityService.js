@@ -24,7 +24,7 @@ angular.module('hubinFrontendApp').service('securityService', function ($http, c
 
 
   var getRestrictedUrls = function () {
-    return ['/home', '/user', '/search', '/entity', '/subject'];
+    return ['/home', '/user', '/search', '/entity', '/subject', '/document'];
   };
 
   var isLogged = function () {

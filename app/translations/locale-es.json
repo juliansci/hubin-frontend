@@ -101,5 +101,8 @@
   "subject_section": {
     "related_documents": "Documentos relacionados a esta materia",
     "search_documents": "Buscá documentos de esta materia"
+  },
+  "document": {
+    "form_invalid_name": "Ingrese un nombre valido"
   }
 }

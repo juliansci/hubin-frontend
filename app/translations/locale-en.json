@@ -101,5 +101,8 @@
   "subject_section": {
     "related_documents": "Related documents of this subject",
     "search_documents": "Search documents of this subject"
+  },
+  "document": {
+    "form_invalid_name": "Input a valid name"
   }
 }

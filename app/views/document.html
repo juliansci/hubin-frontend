@@ -1,0 +1,99 @@
+<section id="document">
+  <div id="headerDocument">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="title">Nuevo documento</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>Nuevo documento</h3>
+          <p>Complete los siguientes datos para cargar el nuevo documento.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form id="formDocument" class="form-horizontal" role="form" ng-submit="sendDocument()">
+            <div class="form-body">
+              <div class="form-group">
+                <label class="col-md-2 control-label">Nombre</label>
+                <div class="col-md-10">
+                  <input ng-model="documentForm.name" type="text" class="form-control" placeholder="Ingrese un nombre"
+                         ng-class="{'error': documentFormError.name}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Descripcion</label>
+                <div class="col-md-10">
+                  <textarea ng-model="documentForm.description" class="form-control" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Entidad educativa</label>
+                <div class="col-md-10">
+                  <select class="form-control" ng-model="documentForm.entity">
+                    <option ng-repeat="entity in entities" value="{{entity.id}}">{{entity.nombre}}</option>
+                  </select>
+                  <span class="help-block">Si la entidad educativa no se encuentra en el listado puede solicitar agregarla desde <a
+                    href="#">aqui</a>.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Materia</label>
+                <div class="col-md-10">
+                  <select class="form-control" ng-model="documentForm.subject">
+                    <option ng-repeat="subject in subjects" value="{{subject.id}}">{{subject.nombre}}</option>
+                  </select>
+                  <span
+                    class="help-block">Si la materia no se encuentra en el listado puede solicitar agregarla desde <a
+                    href="#">aqui</a>.</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Idioma</label>
+                <div class="col-md-10">
+                  <div class="radio-list">
+                    <label ng-repeat="language in languages" class="radio-inline">
+                      <input ng-model="documentForm.language" type="radio" name="languageOptions"
+                             value="{{language.id}}"> {{language.nombre}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Nivel</label>
+                <div class="col-md-10">
+                  <div class="radio-list">
+                    <label ng-repeat="level in levels" class="radio-inline">
+                      <input ng-model="documentForm.level" type="radio" name="levelOptions" value="{{level.id}}">
+                      {{level.nombre}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-md-2 control-label">Archivo</label>
+                <div class="col-md-10">
+                  <input class="js-document-file" type="file">
+                  <p class="help-block">Debe pesar menos de 25mb.</p>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12 text-center">
+                  <button type="submit" class="btn btn-lg green">Enviar</button>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+
