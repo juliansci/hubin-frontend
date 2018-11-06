@@ -31,6 +31,11 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     });
   }
 
+  function download(documentId, versionId){
+    httpService.setHeaders();
+    return $http.get(configService.getUrlServer() + 'documento/'+documentId + '/version/' + versionId, {data: ''});
+  }
+
   function generateQueryParams(params) {
     var paramsStr = '';
     var i = 0;
@@ -51,7 +56,8 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     getAllByFilters: getAllByFilters,
     save: save,
     update: update,
-    addFileToDocument: addFileToDocument
+    addFileToDocument: addFileToDocument,
+    download: download
   }
     ;
 });

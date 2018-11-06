@@ -1,0 +1,15 @@
+<div class="document-list-item col-md-12 col-sm-12">
+  <div class="title">{{document.nombre}}</div>
+  <ul class="blog-info">
+    <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'MM/dd/yyyy' }}</li>
+    <li><i class="fa fa-comments"></i> 2</li>
+    <li><i class="fa fa-tags"></i>
+      <a href="#/entity/{{document.entidad.id}}" class="fa-tags-text">{{document.entidad.nombreCorto}}</a>,
+      {{document.materia.nombre}},
+      {{document.idioma.nombre}}
+    </li>
+  </ul>
+  <div class="description">{{ document.descripcion }}</div>
+  <br/>
+  <button class="btn green button-document-detail" ng-disabled="!documentWithFile" ng-click="downloadDocument()">Descargar</button>
+</div>
