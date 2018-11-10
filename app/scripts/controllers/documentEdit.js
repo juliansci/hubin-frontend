@@ -9,7 +9,7 @@
  */
 angular.module('hubinFrontendApp')
   .controller('DocumentEditCtrl', function ($rootScope, $scope, $routeParams, $location, $q, $translate,
-                                            documentService, toastr) {
+                                            documentService, toastr,$uibModal) {
     $scope.documentForm = {
       level: "1",
       language: "1",
@@ -113,6 +113,20 @@ angular.module('hubinFrontendApp')
         isValid = false;
       }
       return isValid;
+    }
+    $scope.showAlert = function () {
+      console.log('open popiup');
+      var modalInstance = $uibModal.open({
+        templateUrl: 'views/modalFeedback.html',
+        controller: 'ModalFeedbackCtrl',
+        controllerAs: '$modalCtrl'
+
+      });
+      /*modalInstance.result.then(function (selectedItem) {
+        console.log(selectedItem);
+      }, function () {
+        console.log('aca');
+      });*/
     }
 
   });

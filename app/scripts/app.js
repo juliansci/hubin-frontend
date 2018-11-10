@@ -18,7 +18,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'toastr',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider, $httpProvider, $locationProvider, $translateProvider) {
     $routeProvider
