@@ -9,7 +9,6 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
       replace: true,
       controller: function ($scope, $element, $attrs, $transclude) {
         $scope.documentWithFile = false;
-        console.log($scope.document);
         if ($scope.document.versiones.length > 0) {
           $scope.documentWithFile = true;
         }
@@ -18,17 +17,17 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
           if (versiones.length > 0) {
             var currentVersion = versiones[versiones.length - 1];
             documentService.download($scope.document.id, currentVersion).then(function (data) {
-              console.log('ok');
-              console.log(data);
-              var contentType = 'image/jpeg';
-              var blob = $scope.base64ToBlob(data.data.data, contentType);
+              var version = data.data;
+              var extension = version.extension;
+              var base64 = version.data;
+              var contentType = $scope.getContentTypeByExtension(extension);
+              var blob = $scope.base64ToBlob(base64, contentType);
               var blobUrl = URL.createObjectURL(blob);
               var a = document.createElement('a');
               a.href = blobUrl;
               a.target = '_blank';
-              a.download = 'file.jpeg';
-              console.log(a);
-              $('.description').append(a);
+              a.download = $scope.document.nombre + '.'+extension;
+              $('.js-file').append(a);
               a.click();
             }).catch(function (error) {
               console.log('error');
@@ -59,6 +58,20 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
 
           var blob = new Blob(byteArrays, {type: contentType});
           return blob;
+        }
+        $scope.getContentTypeByExtension = function(extension){
+          var contentType = 'text/plain';
+          if(extension === 'jpg' || extension === 'JPG' ||
+            extension === 'jpeg' || extension === 'JPEG'){
+            return 'image/jpeg';
+          }
+          if(extension === 'png' || extension === 'PNG'){
+            return 'image/png';
+          }
+          if(extension === 'pdf' || extension === 'PDF'){
+            return 'application/pdf';
+          }
+          return contentType;
         }
       },
       link: function ($scope, iElm, iAttrs, controller) {
