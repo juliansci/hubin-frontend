@@ -105,5 +105,34 @@
   },
   "document": {
     "form_invalid_name": "Input a valid name"
+  },
+  "edit_document": {
+    "title_new": "New Document",
+    "description_new": "Fill next inputs to load a new document.",
+    "label_name": "Name",
+    "placeholder_name": "Input a name",
+    "label_description":"Description",
+    "placeholder_description":"Input a description",
+    "label_entity": "Educational entity",
+    "help_entity": "If you have not found your education entity you can request add it from",
+    "feedback_here": "here",
+    "label_subject": "Subject",
+    "help_subject": "If you have not found your subject you can request add it from",
+    "label_language": "Language",
+    "help_language": "If you have not found your language you can request add it from",
+    "label_level": "Level",
+    "label_file": "File",
+    "help_file": "The format file accepted is pdf",
+    "send": "Send"
+  },
+  "modal_feedback": {
+    "title": "Feedback",
+    "title_entity": "Educational Entity",
+    "title_subject": "Subject",
+    "title_contact": "Contact",
+    "label_message": "Message",
+    "placeholder_message": "Input a feedback message",
+    "cancel": "Cancel",
+    "send": "Send"
   }
 }

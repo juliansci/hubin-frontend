@@ -756,7 +756,10 @@ form .error {
 #documentEdit #content #formDocument .error {
   border: 1px solid red;
 }
-
+#documentEdit #content .link-popup{
+  cursor:pointer;
+  font-weight: bolder;
+}
 /* END DOCUMENT EDIT*/
 
 
@@ -802,8 +805,12 @@ form .error {
 /* END DIRECTIVE DOCUMENT LIST ITEM */
 
 /* BEGIN POPUP */
-#popup{}
-#popup{}
-#popup{}
-#popup{}
+#popup .modal-body{
+  padding-left: 45px;
+  padding-right: 45px;
+}
+#popup textarea{
+  resize: none;
+  height: 100px;
+}
 /* END POPUP*/

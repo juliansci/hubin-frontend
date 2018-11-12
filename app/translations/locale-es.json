@@ -105,5 +105,34 @@
   },
   "document": {
     "form_invalid_name": "Ingrese un nombre valido"
+  },
+  "edit_document": {
+    "title_new": "Nuevo Documento",
+    "description_new": "Complete los siguientes datos para cargar el nuevo documento.",
+    "label_name": "Nombre",
+    "placeholder_name": "Ingrese un nombre",
+    "label_description":"Descripción",
+    "placeholder_description":"Ingrese una descripción",
+    "label_entity": "Entidad educativa",
+    "help_entity": "Si la entidad educativa no se encuentra en el listado puede solicitar agregarla desde",
+    "feedback_here": "aquí",
+    "label_subject": "Materia",
+    "help_subject": "Si la materia no se encuentra en el listado puede solicitar agregarla desde",
+    "label_language": "Idioma",
+    "help_language": "Si el lenguaje no se encuentra en el listado puede solicitar agregarlo desde",
+    "label_level": "Nivel",
+    "label_file": "Archivo",
+    "help_file": "El formato aceptado es pdf",
+    "send": "Enviar"
+  },
+  "modal_feedback": {
+    "title": "Feedback",
+    "title_entity": "Entidad educativa",
+    "title_subject": "Materia",
+    "title_contact": "Contacto",
+    "label_message": "Mensaje",
+    "placeholder_message": "Ingrese un mensaje de feedback",
+    "cancel": "Cancelar",
+    "send": "Enviar"
   }
 }

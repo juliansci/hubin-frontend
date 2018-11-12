@@ -8,12 +8,24 @@
  * Controller of the hubinFrontendApp
  */
 angular.module('hubinFrontendApp')
-  .controller('ModalFeedbackCtrl', function ($rootScope, $scope, $routeParams, $location, $q) {
-    console.log('modal feedback');
-    $scope.ok = function(){
-      console.log('hola');
+  .controller('ModalFeedbackCtrl', function ($scope, $uibModalInstance, feedbackService) {
+    $scope.feedback = {
+      tipo: $scope.feedbackType,
+      mensaje: ''
     };
-    $scope.close = function(){
-      console.log('close');
+    $scope.close = function () {
+      $uibModalInstance.dismiss('cancel');
+    };
+    $scope.send = function () {
+      if($scope.feedback.mensaje === ''){
+        return false;
+      }
+      console.log($scope.feedback);
+      feedbackService.save($scope.feedback).then(function(response){
+        $uibModalInstance.close('ok');
+      })
+      .catch(function(error){
+        $uibModalInstance.close('error');
+      });
     };
   });

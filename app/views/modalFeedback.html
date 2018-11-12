@@ -1,13 +1,24 @@
 <div id="popup">
   <div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Feedback</h3>
+    <h3 class="modal-title" id="modal-title">{{'modal_feedback.title' | translate}} -
+      <span ng-show="feedback.tipo === 'entity'">{{'modal_feedback.title_entity' | translate}}</span>
+      <span ng-show="feedback.tipo === 'subject'">{{'modal_feedback.title_subject' | translate}}</span>
+      <span ng-show="feedback.tipo === 'general'">{{'modal_feedback.title_contact' | translate}}</span></h3>
+
   </div>
   <div class="modal-body" id="modal-body">
-
-
+    <div class="row">
+      <div class="form-group">
+        <label class="col-md-2 control-label">{{'modal_feedback.label_message' | translate}}</label>
+        <div class="col-md-10">
+          <textarea ng-model="feedback.mensaje" class="form-control"
+                    placeholder="{{'modal_feedback.placeholder_message' | translate}}"></textarea>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-    <button class="btn btn-warning" type="button" ng-click="close()">Cancel</button>
+    <button class="btn btn-primary" type="button" ng-click="close()">{{'modal_feedback.cancel' | translate}}</button>
+    <button class="btn btn-success" type="button" ng-click="send()">{{'modal_feedback.send' | translate}}</button>
   </div>
 </div>
