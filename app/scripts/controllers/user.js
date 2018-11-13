@@ -14,8 +14,6 @@ angular.module('hubinFrontendApp')
 
     var user = securityService.getUser();
     userService.getUser(user.id).then(function (response) {
-      console.log(response);
-      console.log(response.data);
       $scope.userProfile = response.data;
     }).catch(function (data) {
     });
@@ -25,6 +23,10 @@ angular.module('hubinFrontendApp')
         $scope.onEditProfile = !$scope.onEditProfile;
       });
       if ($scope.onEditProfile) {
+        $('.js-user-username').editable({
+          type: 'text',
+          title: 'Ingrese su usuario'
+        });
         $('.js-user-name').editable({
           type: 'text',
           title: 'Ingrese su nombre'
@@ -38,20 +40,31 @@ angular.module('hubinFrontendApp')
           title: 'Ingrese una descripcion'
         });
       } else {
-        $('.js-user-name, .js-user-email, .js-user-description').editable('destroy');
+        $('.js-user-name, .js-user-email, .js-user-description, .js-user-username').editable('destroy');
+        var username = $('.js-user-username').text().trim();
         var name = $('.js-user-name').text().trim();
         var email = $('.js-user-email').text().trim();
         var description = $('.js-user-description').text().trim();
+        var usernameChanged = username !== $scope.userProfile.username;
+        username = (username === 'Ingrese su usuario') ? '' : username;
         name = (name === 'Ingrese su nombre') ? '' : name;
         description = (description === 'Ingrese una descripcion') ? '' : description;
         email = (email === 'Ingrese su email') ? '' : email;
         var profileUpdate = {
+          username: username,
           nombre: name,
           email: email,
           presentacion: description
         };
         userService.updateUser(user.id, profileUpdate).then(function (response) {
-          $('.js-user-name, .js-user-email, .js-user-description').removeClass('editable-unsaved');
+          $('.js-user-username, .js-user-name, .js-user-email, .js-user-description').removeClass('editable-unsaved');
+          console.log('usernameChanged: ', usernameChanged);
+          if(usernameChanged){
+            toastr.success('Usuario modificado. Ingrese con el nuevo usuario.');
+            $rootScope.logout();
+            $location.path('/login');
+
+          }
           $scope.userProfile = response.data;
         }).catch(function (data) {
           console.log(data);

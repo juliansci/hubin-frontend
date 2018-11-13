@@ -83,6 +83,7 @@
   "user": {
     "edit_profile" : "Edit profile",
     "finish_edit_profile": "End profile edit",
+    "input_your_username":"Enter your user",
     "input_your_email":"Enter your email",
     "input_your_name":"Enter your name",
     "input_your_description":"Enter your description",

@@ -83,6 +83,7 @@
   "user": {
     "edit_profile" : "Editar perfil",
     "finish_edit_profile": "Terminar edicion de perfil",
+    "input_your_username":"Ingrese su usuario",
     "input_your_email":"Ingrese su email",
     "input_your_name":"Ingrese su nombre",
     "input_your_description":"Ingrese su descripcion",

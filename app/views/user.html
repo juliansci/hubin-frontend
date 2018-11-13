@@ -11,8 +11,8 @@
           </form>
         </div>
         <div class="content-user col-md-6">
-          <div class="user-username">
-            {{userProfile.username}}
+          <div class="user-username js-user-username">
+            {{userProfile.username ? userProfile.username : 'user.input_your_username' | translate}}
           </div>
           <div class="edit-profile js-edit-profile">
             <span ng-show="!onEditProfile">{{'user.edit_profile' | translate}}</span>
