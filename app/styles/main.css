@@ -756,12 +756,13 @@ form .error {
 #documentEdit #content #formDocument .error {
   border: 1px solid red;
 }
-#documentEdit #content .link-popup{
-  cursor:pointer;
+
+#documentEdit #content .link-popup {
+  cursor: pointer;
   font-weight: bolder;
 }
-/* END DOCUMENT EDIT*/
 
+/* END DOCUMENT EDIT*/
 
 /* DIRECTIVE DOCUMENT LIST ITEM */
 
@@ -802,15 +803,45 @@ form .error {
 .document-list-item .button-document-detail {
   margin-top: 10px;
 }
+
+.document-list-item .score {
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.document-list-item .score label {
+  color: grey;
+}
+
+.document-list-item .score input[type = "radio"] {
+  display: none;
+}
+
+.document-list-item .score  {
+  direction: rtl; /* right to left */
+  unicode-bidi: bidi-override; /* bidi de bidireccional */
+}
+
+.document-list-item .score label:hover {
+  color: orange;
+}
+
+.document-list-item .score label:hover ~ label{color:orange;}
+
+.document-list-item .score input[type = "radio"]:checked ~ label{color:orange;}
+
 /* END DIRECTIVE DOCUMENT LIST ITEM */
 
 /* BEGIN POPUP */
-#popup .modal-body{
+#popup .modal-body {
   padding-left: 45px;
   padding-right: 45px;
 }
-#popup textarea{
+
+#popup textarea {
   resize: none;
   height: 100px;
 }
+
 /* END POPUP*/

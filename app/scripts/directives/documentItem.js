@@ -7,7 +7,8 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
       restrict: 'E',
       templateUrl: 'views/directives/documentItem.html',
       replace: true,
-      controller: function ($scope, $element, $attrs, $transclude) {
+      controller: function ($scope, $element, $attrs, $transclude, scoreService) {
+        console.log($scope.document);
         $scope.documentWithFile = false;
         if ($scope.document.versiones.length > 0) {
           $scope.documentWithFile = true;
@@ -72,7 +73,20 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
             return 'application/pdf';
           }
           return contentType;
-        }
+        };
+        $scope.sendScore = function(score){
+          console.log(score);
+          var scoreToSend = {
+            puntuacion: score,
+            idDocumento: $scope.document.id
+          };
+          scoreService.save(scoreToSend).then(function(result){
+            console.log(result);
+          }).catch(function(error){
+            console.log(error);
+          });
+
+        };
       },
       link: function ($scope, iElm, iAttrs, controller) {
 
