@@ -1,5 +1,8 @@
 <div class="document-list-item col-md-12 col-sm-12">
   <div class="title">{{document.nombre}}</div>
+  <div class="complaint" ng-click="reportDocument()">
+    <img src="images/complaint-icon.png" alt="Denunciar">
+  </div>
   <div class="score">
     <input id="d{{document.id}}-score5" type="radio" name="d{{document.id}}-score" value="5" ng-click="sendScore(5)" ng-checked="isScored && documentScore === 5"><label for="d{{document.id}}-score5">★</label>
     <input id="d{{document.id}}-score4" type="radio" name="d{{document.id}}-score" value="4" ng-click="sendScore(4)" ng-checked="isScored && documentScore === 4"><label for="d{{document.id}}-score4">★</label>

@@ -7,7 +7,8 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
       restrict: 'E',
       templateUrl: 'views/directives/documentItem.html',
       replace: true,
-      controller: function ($rootScope, $scope, $element, $attrs, $transclude, scoreService, userService) {
+      controller: function ($rootScope, $scope, $element, $attrs, $transclude, $uibModal, toastr,
+                            scoreService, userService) {
         $scope.documentWithFile = false;
         if ($scope.document.versiones.length > 0) {
           $scope.documentWithFile = true;
@@ -100,6 +101,22 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
           });
 
         };
+        $scope.reportDocument = function(){
+          $scope.feedbackType = 'report';
+          var modalInstance = $uibModal.open({
+            templateUrl: 'views/modalFeedback.html',
+            controller: 'ModalFeedbackCtrl',
+            controllerAs: '$modalCtrl',
+            scope: $scope
+          });
+          modalInstance.result.then(function (data) {
+            if(data === 'ok'){
+              toastr.success('Denuncia enviada');
+            }else{
+              toastr.error('Ha ocurrido un error. Intente luego.');
+            }
+          }, function(error){});
+        }
 
       },
       link: function ($scope, iElm, iAttrs, controller) {
