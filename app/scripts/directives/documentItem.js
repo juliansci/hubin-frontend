@@ -7,12 +7,23 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
       restrict: 'E',
       templateUrl: 'views/directives/documentItem.html',
       replace: true,
-      controller: function ($scope, $element, $attrs, $transclude, scoreService) {
-        console.log($scope.document);
+      controller: function ($rootScope, $scope, $element, $attrs, $transclude, scoreService, userService) {
         $scope.documentWithFile = false;
         if ($scope.document.versiones.length > 0) {
           $scope.documentWithFile = true;
         }
+        $scope.isScored = false;
+        $scope.documentScore = 0;
+        $scope.processScores = function(){
+          for(var i = 0; i < $rootScope.scores.length; i++){
+            var currentScore = $rootScope.scores[i];
+            if(currentScore['idDocumento'] === $scope.document.id){
+              $scope.isScored = true;
+              $scope.documentScore = parseInt(currentScore['puntuacion']);
+            }
+          }
+        };
+        $scope.processScores();
         $scope.downloadDocument = function () {
           var versiones = $scope.document.versiones;
           if (versiones.length > 0) {
@@ -27,17 +38,16 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
               var a = document.createElement('a');
               a.href = blobUrl;
               a.target = '_blank';
-              a.download = $scope.document.nombre + '.'+extension;
+              a.download = $scope.document.nombre + '.' + extension;
               $('.js-file').append(a);
               a.click();
             }).catch(function (error) {
-              console.log('error');
               console.log(error);
             });
           }
 
         }
-        $scope.base64ToBlob  = function(b64Data, contentType, sliceSize) {
+        $scope.base64ToBlob = function (b64Data, contentType, sliceSize) {
           contentType = contentType || '';
           sliceSize = sliceSize || 512;
 
@@ -60,33 +70,37 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
           var blob = new Blob(byteArrays, {type: contentType});
           return blob;
         }
-        $scope.getContentTypeByExtension = function(extension){
+        $scope.getContentTypeByExtension = function (extension) {
           var contentType = 'text/plain';
-          if(extension === 'jpg' || extension === 'JPG' ||
-            extension === 'jpeg' || extension === 'JPEG'){
+          if (extension === 'jpg' || extension === 'JPG' ||
+            extension === 'jpeg' || extension === 'JPEG') {
             return 'image/jpeg';
           }
-          if(extension === 'png' || extension === 'PNG'){
+          if (extension === 'png' || extension === 'PNG') {
             return 'image/png';
           }
-          if(extension === 'pdf' || extension === 'PDF'){
+          if (extension === 'pdf' || extension === 'PDF') {
             return 'application/pdf';
           }
           return contentType;
         };
-        $scope.sendScore = function(score){
-          console.log(score);
+        $scope.sendScore = function (score) {
           var scoreToSend = {
             puntuacion: score,
             idDocumento: $scope.document.id
           };
-          scoreService.save(scoreToSend).then(function(result){
-            console.log(result);
-          }).catch(function(error){
+          scoreService.save(scoreToSend).then(function (result) {
+            userService.getScores().then(function (result) {
+              $rootScope.scores = result.data;
+            }).catch(function (error) {
+              console.log(error);
+            })
+          }).catch(function (error) {
             console.log(error);
           });
 
         };
+
       },
       link: function ($scope, iElm, iAttrs, controller) {
 

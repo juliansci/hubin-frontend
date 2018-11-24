@@ -28,6 +28,13 @@ angular.module('hubinFrontendApp').service('userService', function (configServic
         return result;
       });
     },
+    getScores: function () {
+      httpService.setHeaders();
+      return $http.get(configService.getUrlServer() + 'alumno/puntuaciones', {data: ''}).then(function (result) {
+        console.log(result);
+        return result;
+      });
+    },
     addImageProfile: function (action, formData) {
       httpService.setHeadersMultipart();
       return $http({

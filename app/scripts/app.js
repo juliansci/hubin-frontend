@@ -87,7 +87,7 @@ angular
       .preferredLanguage('es');
   })
   .run(function ($rootScope, $location, $http, $timeout, $translate, $q, configService, securityService, sessionService,
-                 entityService, subjectService, levelService, languageService) {
+                 entityService, subjectService, levelService, languageService, userService) {
     $rootScope.$on('$routeChangeStart', function (event) {
       var logged = securityService.isLogged();
       if (!logged) {
@@ -140,11 +140,17 @@ angular
         return response.data;
       });
       promises.push(promiseLanguages);
+
+      var promiseScores = userService.getScores().then(function (response) {
+        return response.data;
+      });
+      promises.push(promiseScores);
       $q.all(promises).then(function (res) {
         $rootScope.entities = res[0];
         $rootScope.subjects = res[1];
         $rootScope.levels = res[2];
         $rootScope.languages = res[3];
+        $rootScope.scores = res[4];
         $rootScope.entitiesLoaded = true;
       });
     }
