@@ -78,7 +78,7 @@
 
 <div class="page-container">
   <div ng-view=""></div>
-  <feedback></feedback>
+  <feedback ng-if="user != undefined"></feedback>
 </div>
 
 <div class="footer">

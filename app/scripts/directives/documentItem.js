@@ -93,11 +93,14 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
           scoreService.save(scoreToSend).then(function (result) {
             userService.getScores().then(function (result) {
               $rootScope.scores = result.data;
+              toastr.success('El documento ha sido puntuado exitosamente!');
             }).catch(function (error) {
               console.log(error);
+              toastr.error('Ha ocurrido un error. Intente luego.');
             })
           }).catch(function (error) {
             console.log(error);
+            toastr.error('Ha ocurrido un error. Intente luego.');
           });
 
         };
