@@ -1,0 +1,24 @@
+<div id="popup">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">
+      <span>{{'modal_report.title' | translate}}</span>
+    </h3>
+    <h5 style="font-size: 14px;margin-top: -5px;">{{document.nombre}}</h5>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <div class="row">
+      <div class="form-group">
+
+        <label class="col-md-2 control-label">{{'modal_report.label_message' | translate}}</label>
+        <div class="col-md-10">
+          <textarea ng-model="report.mensaje" class="form-control"
+                    placeholder="{{'modal_report.placeholder_message' | translate}}"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="close()">{{'modal_report.cancel' | translate}}</button>
+    <button class="btn btn-success" type="button" ng-click="send()">{{'modal_report.send' | translate}}</button>
+  </div>
+</div>

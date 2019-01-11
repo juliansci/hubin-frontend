@@ -2,25 +2,25 @@
 
 /**
  * @ngdoc function
- * @name hubinFrontendApp.controller:ModalFeedbackCtrl
+ * @name hubinFrontendApp.controller:ModalReportCtrl
  * @description
- * # ModalFeedbackCtrl
+ * # ModalReportCtrl
  * Controller of the hubinFrontendApp
  */
 angular.module('hubinFrontendApp')
-  .controller('ModalFeedbackCtrl', function ($scope, $uibModalInstance, feedbackService) {
-    $scope.feedback = {
-      tipo: $scope.feedbackType,
-      mensaje: ''
+  .controller('ModalReportCtrl', function ($scope, $uibModalInstance, reportService) {
+    $scope.report = {
+      mensaje: '',
+      idDocumento: $scope.reportDocumentId
     };
     $scope.close = function () {
       $uibModalInstance.dismiss('cancel');
     };
     $scope.send = function () {
-      if($scope.feedback.mensaje === ''){
+      if($scope.report.mensaje === ''){
         return false;
       }
-      feedbackService.save($scope.feedback).then(function(response){
+      reportService.save($scope.report).then(function(response){
         $uibModalInstance.close('ok');
       })
       .catch(function(error){

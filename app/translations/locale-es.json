@@ -131,11 +131,15 @@
     "title_entity": "Entidad educativa",
     "title_subject": "Materia",
     "title_contact": "Contacto",
-    "title_report": "Denuncia de documento",
     "label_message": "Mensaje",
-    "label_report_message": "Denuncia",
     "placeholder_message": "Ingrese un mensaje de feedback",
-    "placeholder_report_message": "¿Cuál es su denuncia?",
+    "cancel": "Cancelar",
+    "send": "Enviar"
+  },
+  "modal_report": {
+    "title": "Denuncia de documento",
+    "label_message": "Denuncia",
+    "placeholder_message": "¿Cuál es su denuncia?",
     "cancel": "Cancelar",
     "send": "Enviar"
   }

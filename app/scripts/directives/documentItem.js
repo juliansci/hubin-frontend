@@ -105,10 +105,10 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
 
         };
         $scope.reportDocument = function(){
-          $scope.feedbackType = 'report';
+          $scope.reportDocumentId = $scope.document.id;
           var modalInstance = $uibModal.open({
-            templateUrl: 'views/modalFeedback.html',
-            controller: 'ModalFeedbackCtrl',
+            templateUrl: 'views/modalReport.html',
+            controller: 'ModalReportCtrl',
             controllerAs: '$modalCtrl',
             scope: $scope
           });

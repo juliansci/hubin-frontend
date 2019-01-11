@@ -4,7 +4,6 @@
       <span ng-show="feedback.tipo === 'entity'">{{'modal_feedback.title' | translate}} - {{'modal_feedback.title_entity' | translate}}</span>
       <span ng-show="feedback.tipo === 'subject'">{{'modal_feedback.title' | translate}} - {{'modal_feedback.title_subject' | translate}}</span>
       <span ng-show="feedback.tipo === 'general'">{{'modal_feedback.title' | translate}} - {{'modal_feedback.title_contact' | translate}}</span>
-      <span ng-show="feedback.tipo === 'report'">{{'modal_feedback.title_report' | translate}}</span>
     </h3>
     <h5 style="font-size: 14px;margin-top: -5px;">{{document.nombre}}</h5>
 
@@ -14,13 +13,10 @@
   <div class="modal-body" id="modal-body">
     <div class="row">
       <div class="form-group">
-        <label class="col-md-2 control-label" ng-show="feedback.tipo !== 'report'">{{'modal_feedback.label_message' | translate}}</label>
-        <label class="col-md-2 control-label" ng-show="feedback.tipo === 'report'">{{'modal_feedback.label_report_message' | translate}}</label>
+        <label class="col-md-2 control-label">{{'modal_feedback.label_message' | translate}}</label>
         <div class="col-md-10">
-          <textarea ng-show="feedback.tipo !== 'report'" ng-model="feedback.mensaje" class="form-control"
+          <textarea ng-model="feedback.mensaje" class="form-control"
                     placeholder="{{'modal_feedback.placeholder_message' | translate}}"></textarea>
-          <textarea ng-show="feedback.tipo === 'report'" ng-model="feedback.mensaje" class="form-control"
-                    placeholder="{{'modal_feedback.placeholder_report_message' | translate}}"></textarea>
         </div>
       </div>
     </div>

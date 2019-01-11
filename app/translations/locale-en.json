@@ -131,11 +131,15 @@
     "title_entity": "Educational Entity",
     "title_subject": "Subject",
     "title_contact": "Contact",
-    "title_report": "Report document",
     "label_message": "Message",
-    "label_report_message": "Complaint",
     "placeholder_message": "Input a feedback message",
-    "placeholder_report_message": "What is your complaint?",
+    "cancel": "Cancel",
+    "send": "Send"
+  },
+  "modal_report": {
+    "title": "Report document",
+    "label_message": "Complaint",
+    "placeholder_message": "What is your complaint?",
     "cancel": "Cancel",
     "send": "Send"
   }
