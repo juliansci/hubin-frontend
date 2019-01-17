@@ -51,13 +51,19 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     return paramsStr;
   }
 
+  function getComments(documentId){
+    httpService.setHeaders();
+    return $http.get(configService.getUrlServer() + 'documento/'+documentId + '/comentarios', {data: ''});
+  }
+
   return {
     getById: getById,
     getAllByFilters: getAllByFilters,
     save: save,
     update: update,
     addFileToDocument: addFileToDocument,
-    download: download
+    download: download,
+    getComments: getComments
   }
     ;
 });

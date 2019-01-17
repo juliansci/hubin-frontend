@@ -1,24 +1,95 @@
 <section id="document">
-  <div id="headerDocument">
+  <div id="headerDocument" class="{{currentSubject.code}}">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <div class="title">Nombre documento</div>
+        <div class="col-md-12">
+          <div class="title">{{document.nombre}}</div>
         </div>
       </div>
     </div>
   </div>
   <div id="content">
-    <div class="container">
-      <div class="row">
+    <div class="container blog-item">
+      <div id="contentDocument" class="row">
         <div class="col-md-12">
-          <h3>Nombre documento</h3>
-          <p>Descripcion del documento.</p>
+          <div class="title">{{document.nombre}}</div>
+          <div class="complaint" ng-click="reportDocument()">
+            <img src="images/complaint-icon.png" alt="Denunciar">
+          </div>
+          <div class="score">
+            <input id="d{{document.id}}-score5" type="radio" name="d{{document.id}}-score" value="5"
+                   ng-click="sendScore(5)" ng-checked="isScored && documentScore === 5"><label
+            for="d{{document.id}}-score5">★</label>
+            <input id="d{{document.id}}-score4" type="radio" name="d{{document.id}}-score" value="4"
+                   ng-click="sendScore(4)" ng-checked="isScored && documentScore === 4"><label
+            for="d{{document.id}}-score4">★</label>
+            <input id="d{{document.id}}-score3" type="radio" name="d{{document.id}}-score" value="3"
+                   ng-click="sendScore(3)" ng-checked="isScored && documentScore === 3"><label
+            for="d{{document.id}}-score3">★</label>
+            <input id="d{{document.id}}-score2" type="radio" name="d{{document.id}}-score" value="2"
+                   ng-click="sendScore(2)" ng-checked="isScored && documentScore === 2"><label
+            for="d{{document.id}}-score2">★</label>
+            <input id="d{{document.id}}-score1" type="radio" name="d{{document.id}}-score" value="1"
+                   ng-click="sendScore(1)" ng-checked="isScored && documentScore === 1"><label
+            for="d{{document.id}}-score1">★</label>
+          </div>
+          <div class="description">{{document.descripcion}}</div>
+          <button class="btn green button-document-detail" ng-disabled="!documentWithFile"
+                  ng-click="downloadDocument()">
+            Descargar
+          </button>
+          <ul class="blog-info">
+            <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'yyyy/dd/MM' }}</li>
+            <li><i class="fa fa-comments"></i> {{document.comments.length}}</li>
+            <li><i class="fa fa-tags"></i>
+              <a href="#/entity/{{currentEntity.id}}">{{currentEntity.nombreCorto}}</a>,
+              <a href="#/subject/{{currentSubject.id}}">{{currentSubject.nombre}}</a>,
+              {{currentLanguage.nombre}}
+            </li>
+            <li ng-if="document.puntuacionCantidad >= 1"><i class="fa fa-star"></i> {{document.puntuacion}}
+              ({{document.puntuacionCantidad}} <i class="fa fa-user"></i>)
+            </li>
+
+          </ul>
+          <div class="hide js-file"></div>
         </div>
+
       </div>
       <div class="row">
-        <div class="col-md-12">
-          ACA
+        <div class="col-md-6">
+          <h3>{{'document.comments' | translate }}</h3>
+          <div class="comments-container">
+            <div class="media" ng-repeat="(key, comment) in document.comments">
+              <a href="#" class="pull-left">
+                <img ng-if="!comment.creador.foto.base64Src" src="images/anon-user.jpg">
+                <img ng-if="comment.creador.foto.base64Src" ng-src="{{comment.creador.foto.base64Src}}"/>
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">
+                  <span>{{comment.fecha}}</span>
+                </h4>
+                <p>
+                  {{comment.mensaje}}
+                </p>
+              </div>
+            </div>
+            <div class="add-comment-container media">
+              <a href="#" class="pull-left">
+                <img ng-if="!user.foto.base64Src" src="images/anon-user.jpg" alt="">
+                <img ng-if="user.foto.base64Src" ng-src="{{user.foto.base64Src}}"/>
+              </a>
+              <div class="media-body">
+                <textarea class="form-control" placeholder="Ingrese un comentario" ng-model="currentCommentStr"/>
+                <button class="btn btn-md btn-primary pull-right" ng-click="sendComment()">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3>{{'document.related_documents' | translate }}</h3>
+          <div class="description">
+            Documentos relacionados
+          </div>
         </div>
       </div>
     </div>

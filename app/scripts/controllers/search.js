@@ -145,7 +145,6 @@ angular.module('hubinFrontendApp')
         $scope.documents[i]['materia'] = $rootScope.subjects.find(x => x.id == currentDocument['materia']);
         $scope.documents[i]['idioma'] = $rootScope.languages.find(x => x.id == currentDocument['idioma']);
         $scope.documents[i]['nivel'] = $rootScope.levels.find(x => x.id == currentDocument['nivel']);
-        $scope.documents[i]['fechaCreacion'] = $scope.documents[i]['fechaCreacion'].split("-")[0];
       }
     };
 

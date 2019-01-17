@@ -1,5 +1,7 @@
 <div class="document-list-item col-md-12 col-sm-12">
-  <div class="title">{{document.nombre}}</div>
+  <a href="#/document/{{document.id}}" >
+    <div class="title">{{document.nombre}}</div>
+  </a>
   <div class="complaint" ng-click="reportDocument()">
     <img src="images/complaint-icon.png" alt="Denunciar">
   </div>
@@ -21,10 +23,13 @@
     <li ng-if="document.puntuacionCantidad >= 1"><i class="fa fa-star"></i> {{document.puntuacion}} ({{document.puntuacionCantidad}} <i class="fa fa-user"></i>)</li>
 
   </ul>
+
   <div class="description">{{ document.descripcion }}</div>
   <br/>
-  <button class="btn green button-document-detail" ng-disabled="!documentWithFile" ng-click="downloadDocument()">
+  <!--<button class="btn green button-document-detail" ng-disabled="!documentWithFile" ng-click="downloadDocument()">
     Descargar
   </button>
+
   <div class="hide js-file"></div>
+  -->
 </div>

@@ -142,5 +142,9 @@
     "placeholder_message": "¿Cuál es su denuncia?",
     "cancel": "Cancelar",
     "send": "Enviar"
+  },
+  "document": {
+    "comments": "Comentarios",
+    "related_documents": "Documentos relacionados"
   }
 }
