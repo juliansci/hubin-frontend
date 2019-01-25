@@ -9,9 +9,9 @@
  */
 angular.module('hubinFrontendApp').service('userService', function (configService, $http, httpService) {
   return {
-    getDocuments: function (id) {
+    getDocuments: function () {
       httpService.setHeaders();
-      return $http.get(configService.getUrlServer() + 'usuario/documentos/' + id).then(function (result) {
+      return $http.get(configService.getUrlServer() + 'alumno/documentos', {data: ''}).then(function (result) {
         return result;
       });
     },

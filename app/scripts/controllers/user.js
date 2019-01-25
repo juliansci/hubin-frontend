@@ -8,7 +8,8 @@
  * Controller of the hubinFrontendApp
  */
 angular.module('hubinFrontendApp')
-  .controller('UserCtrl', function ($rootScope, $scope, $location, $http, userService, securityService, toastr) {
+  .controller('UserCtrl', function ($rootScope, $scope, $location, $http,
+                                    userService, securityService, toastr) {
 
     $scope.onEditProfile = false;
 
@@ -17,7 +18,18 @@ angular.module('hubinFrontendApp')
       $scope.userProfile = response.data;
     }).catch(function (data) {
     });
-
+    $scope.uploadedDocuments = [];
+    $scope.sharedDocuments = [];
+    userService.getDocuments()
+      .then(function (response) {
+        $scope.uploadedDocuments = response.data.documentosCreados;
+        $scope.matchEntitiesDocuments($scope.uploadedDocuments);
+        $scope.sharedDocuments = response.data.documentosConAcceso;
+        $scope.matchEntitiesDocuments($scope.sharedDocuments);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     $('.js-edit-profile').on('click', function () {
       $scope.$apply(function () {
         $scope.onEditProfile = !$scope.onEditProfile;
@@ -59,7 +71,7 @@ angular.module('hubinFrontendApp')
         userService.updateUser(user.id, profileUpdate).then(function (response) {
           $('.js-user-username, .js-user-name, .js-user-email, .js-user-description').removeClass('editable-unsaved');
           console.log('usernameChanged: ', usernameChanged);
-          if(usernameChanged){
+          if (usernameChanged) {
             toastr.success('Usuario modificado. Ingrese con el nuevo usuario.');
             $rootScope.logout();
             $location.path('/login');
@@ -113,5 +125,15 @@ angular.module('hubinFrontendApp')
         toastr.error('Ha ocurrido un error. Intente luego.');
       });
     }
+    $scope.matchEntitiesDocuments = function(documents){
+      for(var i = 0; i < documents.length; i++){
+        var currentDocument = documents[i];
+        documents[i]['entidad'] = $rootScope.entities.find(x => x.id == currentDocument['entidad']);
+        documents[i]['materia'] = $rootScope.subjects.find(x => x.id == currentDocument['materia']);
+        documents[i]['idioma'] = $rootScope.languages.find(x => x.id == currentDocument['idioma']);
+        documents[i]['nivel'] = $rootScope.levels.find(x => x.id == currentDocument['nivel']);
+        documents[i]['fechaCreacion'] = documents[i]['fechaCreacion'].split("-")[0];
 
+      }
+    };
   });

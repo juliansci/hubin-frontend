@@ -5,7 +5,7 @@
   <div class="complaint" ng-click="reportDocument()">
     <img src="images/complaint-icon.png" alt="Denunciar">
   </div>
-  <div class="score">
+  <div class="score" ng-if="document['creador'] !== user['id']">
     <input id="d{{document.id}}-score5" type="radio" name="d{{document.id}}-score" value="5" ng-click="sendScore(5)" ng-checked="isScored && documentScore === 5"><label for="d{{document.id}}-score5">★</label>
     <input id="d{{document.id}}-score4" type="radio" name="d{{document.id}}-score" value="4" ng-click="sendScore(4)" ng-checked="isScored && documentScore === 4"><label for="d{{document.id}}-score4">★</label>
     <input id="d{{document.id}}-score3" type="radio" name="d{{document.id}}-score" value="3" ng-click="sendScore(3)" ng-checked="isScored && documentScore === 3"><label for="d{{document.id}}-score3">★</label>
@@ -16,20 +16,16 @@
     <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'MM/dd/yyyy' }}</li>
     <li><i class="fa fa-comments"></i> {{document.comments.length}}</li>
     <li><i class="fa fa-tags"></i>
-      <a href="#/entity/{{document.entidad.id}}" class="fa-tags-text">{{document.entidad.nombreCorto}}</a>,
-      <a href="#/subject/{{document.materia.id}}"  class="fa-tags-text">{{document.materia.nombre}}</a>,
+      <a href="#/entity/{{document.entidad.id}}" >{{document.entidad.nombreCorto}}</a>,
+      <a href="#/subject/{{document.materia.id}}" >{{document.materia.nombre}}</a>,
       {{document.idioma.nombre}}
     </li>
+
     <li ng-if="document.puntuacionCantidad >= 1"><i class="fa fa-star"></i> {{document.puntuacion}} ({{document.puntuacionCantidad}} <i class="fa fa-user"></i>)</li>
 
   </ul>
 
   <div class="description">{{ document.descripcion }}</div>
   <br/>
-  <!--<button class="btn green button-document-detail" ng-disabled="!documentWithFile" ng-click="downloadDocument()">
-    Descargar
-  </button>
-
-  <div class="hide js-file"></div>
-  -->
 </div>
+

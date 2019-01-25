@@ -93,7 +93,11 @@
     "my_activity": "My activity",
     "without_activity": "You do not have recent activity.",
     "my_favs": "My favourites",
-    "without_favs":"You do not have favorite documents."
+    "without_favs":"You do not have favorite documents.",
+    "uploaded_documents": "Uploaded documents",
+    "without_uploaded_documents": "Without uploaded documents",
+    "shared_documents": "Shared documents with you",
+    "without_shared_documents": "No documents have been shared with you"
   },
   "entity": {
     "header_title": "EDUCATIONAL ENTITY",

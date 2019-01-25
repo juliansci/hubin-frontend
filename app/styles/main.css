@@ -986,7 +986,7 @@ form .error {
   height: 22px;
 }
 
-#document .blog-info a {
+.blog-info li a {
   text-decoration: none;
   color: #555;
 }

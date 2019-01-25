@@ -1,5 +1,5 @@
 {
-  "header":{
+  "header": {
     "my_profile": "Mi perfil",
     "load_document": "Nuevo documento",
     "logout": "Salir"
@@ -27,23 +27,23 @@
     "register_button": "Registrarse",
     "register_text_social": "O ingresar con"
   },
-  "home":{
+  "home": {
     "text_slider_1": "¡Encontrá el material que buscás!",
     "text_slider_2": "¡Compartí tu material con otros!",
     "text_slider_3": "¡Formá parte y obtené beneficios!",
     "search_placeholder": "¿Qué estás buscando?",
-    "search_button":"Buscar",
+    "search_button": "Buscar",
     "subjects_outstanding": "Materias populares",
     "find_text": "Encontrá lo que buscás",
     "how_works_title": "¿Cómo funciona?",
     "how_works_subtitle_1": "Encontrá lo que<br/>buscás",
-    "how_works_text_1":"Hubin cuenta con información de calidad al servicio de la comunidad.<br/>Encontrá en nuestro catálogo lo que estás buscando!",
-    "how_works_subtitle_2":"Compartí tu material <br/>con la comunidad",
+    "how_works_text_1": "Hubin cuenta con información de calidad al servicio de la comunidad.<br/>Encontrá en nuestro catálogo lo que estás buscando!",
+    "how_works_subtitle_2": "Compartí tu material <br/>con la comunidad",
     "how_works_text_2": "La comunidad es el bien más valioso de Hubin y nuestro catálogo se nutre de ella.<br>¡Compartí tu material y sé parte!",
     "how_works_subtitle_3": "Participá y obtené<br/>beneficios",
     "how_works_text_3": "Subí material, puntuá material existente y denunciá plagio o material inadecuado.<br/> ¡Participá en Hubin y obtené beneficios!"
   },
-  "subject":{
+  "subject": {
     "biology": "Biología",
     "computer": "Computación",
     "economy": "Economía",
@@ -53,12 +53,12 @@
     "language": "Idiomas",
     "management": "Management"
   },
-  "level":{
+  "level": {
     "initial": "Inicial",
     "intermediate": "Intermedio",
     "advanced": "Avanzado"
   },
-  "language":{
+  "language": {
     "spanish": "Español",
     "english": "Inglés",
     "portuguese": "Portugués"
@@ -81,19 +81,23 @@
     "without_documents": "No se encontraron documentos con los filtros especificados."
   },
   "user": {
-    "edit_profile" : "Editar perfil",
+    "edit_profile": "Editar perfil",
     "finish_edit_profile": "Terminar edicion de perfil",
-    "input_your_username":"Ingrese su usuario",
-    "input_your_email":"Ingrese su email",
-    "input_your_name":"Ingrese su nombre",
-    "input_your_description":"Ingrese su descripcion",
+    "input_your_username": "Ingrese su usuario",
+    "input_your_email": "Ingrese su email",
+    "input_your_name": "Ingrese su nombre",
+    "input_your_description": "Ingrese su descripcion",
     "medals_title": "Medallas",
-    "my_documents":"Mis documentos",
+    "my_documents": "Mis documentos",
     "without_documents": "No tiene documentos subidos.",
     "my_activity": "Mi actividad",
     "without_activity": "No tiene actividad reciente.",
     "my_favs": "Mi favoritos",
-    "without_favs":"No tiene documentos favoritos."
+    "without_favs": "No tiene documentos favoritos.",
+    "uploaded_documents": "Documentos subidos",
+    "without_uploaded_documents": "No has subido ningun documento",
+    "shared_documents": "Documentos compartidos contigo",
+    "without_shared_documents": "No se han compartido documentos contigo"
   },
   "entity": {
     "header_title": "ENTIDAD EDUCATIVA",
@@ -112,8 +116,8 @@
     "description_new": "Complete los siguientes datos para cargar el nuevo documento.",
     "label_name": "Nombre",
     "placeholder_name": "Ingrese un nombre",
-    "label_description":"Descripción",
-    "placeholder_description":"Ingrese una descripción",
+    "label_description": "Descripción",
+    "placeholder_description": "Ingrese una descripción",
     "label_entity": "Entidad educativa",
     "help_entity": "Si la entidad educativa no se encuentra en el listado puede solicitar agregarla desde",
     "feedback_here": "aquí",
