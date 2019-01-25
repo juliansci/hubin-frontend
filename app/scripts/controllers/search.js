@@ -59,6 +59,7 @@ angular.module('hubinFrontendApp')
           paramsWithIds[currentKey] = $scope.returnIdByValueFilter(currentValue, currentKey);
 
         }
+        console.log('paramsWithIds: ', paramsWithIds);
         documentService.getAllByFilters(paramsWithIds).then(function(response){
           $scope.documents = response.data;
           $scope.matchEntitiesDocuments();
@@ -80,9 +81,6 @@ angular.module('hubinFrontendApp')
         value: filterObject.code,
         section: section
       };
-      console.log($scope.filters);
-      console.log(filter);
-
       for(var i = 0; i < $scope.filters.length; i++){
         var currentFilter = $scope.filters[i];
         if(currentFilter['value'] == filter['value']){

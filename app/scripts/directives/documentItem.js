@@ -8,7 +8,7 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
       templateUrl: 'views/directives/documentItem.html',
       replace: true,
       controller: function ($rootScope, $scope, $element, $attrs, $transclude, $uibModal, toastr,
-                            scoreService, userService) {
+                            scoreService, userService, documentService) {
         $scope.documentWithFile = false;
         if ($scope.document.versiones.length > 0) {
           $scope.documentWithFile = true;
@@ -24,7 +24,17 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
             }
           }
         };
+        $scope.loadComments = function(){
+          documentService.getComments($scope.document.id)
+            .then(function (response) {
+              $scope.document.comments = response.data;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        };
         $scope.processScores();
+        $scope.loadComments();
         $scope.downloadDocument = function () {
           var versiones = $scope.document.versiones;
           if (versiones.length > 0) {

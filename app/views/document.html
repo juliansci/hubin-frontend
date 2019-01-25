@@ -87,8 +87,29 @@
         </div>
         <div class="col-md-6">
           <h3>{{'document.related_documents' | translate }}</h3>
-          <div class="description">
-            Documentos relacionados
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row" ng-repeat="(key, document) in relatedDocuments" style="margin-bottom: 35px;">
+                <div class="document-list-item document-list-item-small col-md-12 col-sm-12">
+                  <a href="#/document/{{document.id}}" >
+                    <div class="title">
+                      {{document.nombre}}
+                      <span class="puntuaction" ng-if="document.puntuacionCantidad >= 1"><i class="fa fa-star"></i> {{document.puntuacion}} ({{document.puntuacionCantidad}} <i class="fa fa-user"></i>)</span>
+                    </div>
+                  </a>
+                  <ul class="blog-info">
+                    <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'MM/dd/yyyy' }}</li>
+                    <li><i class="fa fa-tags"></i>
+                        <a href="#/entity/{{document.entidad.id}}">{{document.entidad.nombreCorto}}</a>,
+                        <a href="#/subject/{{document.materia.id}}">{{document.materia.nombre}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div ng-if="relatedDocuments.length == 0" class="filter without-documents">
+                {{'search.without_documents' | translate }}
+              </div>
+            </div>
           </div>
         </div>
       </div>

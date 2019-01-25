@@ -14,10 +14,10 @@
   </div>
   <ul class="blog-info">
     <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'MM/dd/yyyy' }}</li>
-    <li><i class="fa fa-comments"></i> 2</li>
+    <li><i class="fa fa-comments"></i> {{document.comments.length}}</li>
     <li><i class="fa fa-tags"></i>
       <a href="#/entity/{{document.entidad.id}}" class="fa-tags-text">{{document.entidad.nombreCorto}}</a>,
-      {{document.materia.nombre}},
+      <a href="#/subject/{{document.materia.id}}"  class="fa-tags-text">{{document.materia.nombre}}</a>,
       {{document.idioma.nombre}}
     </li>
     <li ng-if="document.puntuacionCantidad >= 1"><i class="fa fa-star"></i> {{document.puntuacion}} ({{document.puntuacionCantidad}} <i class="fa fa-user"></i>)</li>

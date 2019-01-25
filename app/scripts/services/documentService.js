@@ -10,7 +10,10 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     var params = generateQueryParams(filters);
     return $http.get(configService.getUrlServer() + 'documento' + params, {data: ''});
   }
-
+  function getRelatedDocuments(documentId) {
+    httpService.setHeaders();
+    return $http.get(configService.getUrlServer() + 'documento/'+documentId+'/relacionados', {data: ''});
+  }
   function save(document) {
     httpService.setHeaders();
     return $http.post(configService.getUrlServer() + 'documento', document);
@@ -63,7 +66,8 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     update: update,
     addFileToDocument: addFileToDocument,
     download: download,
-    getComments: getComments
+    getComments: getComments,
+    getRelatedDocuments: getRelatedDocuments
   }
     ;
 });

@@ -31,7 +31,6 @@ angular.module('hubinFrontendApp')
       documentService.getComments($scope.document.id)
         .then(function (response) {
           $scope.document.comments = response.data;
-          console.log($scope.document);
         })
         .catch(function (error) {
           console.log(error);
@@ -42,16 +41,22 @@ angular.module('hubinFrontendApp')
         documentService.getById($routeParams.id)
           .then(function (response) {
             $scope.document = response.data;
-            $scope.currentEntity = $scope.entities[$scope.document['entidad']];
-            $scope.currentSubject = $scope.subjects[$scope.document['materia']];
-            $scope.currentLanguage = $scope.languages[$scope.document['idioma']];
+            $scope.currentEntity = $scope.entities.find(function(e){
+              if($scope.document['entidad'] == e['id']) return e;
+            });
+            $scope.currentSubject = $scope.subjects.find(function(e){
+              if($scope.document['materia'] == e['id']) return e;
+            });
+            $scope.currentLanguage = $scope.languages.find(function(e){
+              if($scope.document['idioma'] == e['id']) return e;
+            });
             $scope.document['fechaCreacion'] = $scope.document['fechaCreacion'].split("-")[0];
-            console.log($scope.currentSubject);
             if ($scope.document.versiones.length > 0) {
               $scope.documentWithFile = true;
             }
             $scope.processScores();
             $scope.refreshComments();
+            $scope.getRelatedDocuments();
 
           })
           .catch(function (error) {
@@ -60,6 +65,24 @@ angular.module('hubinFrontendApp')
       }
     });
 
+    $scope.getRelatedDocuments = function(){
+      $scope.relatedDocuments = [];
+      documentService.getRelatedDocuments($scope.document.id).then(function(response){
+        $scope.relatedDocuments = response.data;
+        $scope.matchEntitiesDocuments();
+      });
+    }
+    $scope.matchEntitiesDocuments = function(){
+      for(var i = 0; i < $scope.relatedDocuments.length; i++){
+        var currentDocument = $scope.relatedDocuments[i];
+        $scope.relatedDocuments[i]['entidad'] = $rootScope.entities.find(x => x.id == currentDocument['entidad']);
+        $scope.relatedDocuments[i]['materia'] = $rootScope.subjects.find(x => x.id == currentDocument['materia']);
+        $scope.relatedDocuments[i]['idioma'] = $rootScope.languages.find(x => x.id == currentDocument['idioma']);
+        $scope.relatedDocuments[i]['nivel'] = $rootScope.levels.find(x => x.id == currentDocument['nivel']);
+        $scope.relatedDocuments[i]['fechaCreacion'] = $scope.relatedDocuments[i]['fechaCreacion'].split("-")[0];
+
+      }
+    };
 
     $scope.downloadDocument = function () {
       var versiones = $scope.document.versiones;
@@ -160,14 +183,11 @@ angular.module('hubinFrontendApp')
 
     $scope.sendComment = function(){
       if($scope.currentCommentStr){
-        console.log('send comment');
-        console.log($scope.currentCommentStr);
         var comment = {
           mensaje: $scope.currentCommentStr,
           idDocumento: $scope.document.id
         };
         commentService.create(comment).then(function (result) {
-          console.log(result);
           $scope.currentCommentStr = '';
           $scope.refreshComments();
           toastr.success('Comentario enviado correctamente!');

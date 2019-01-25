@@ -809,7 +809,7 @@ form .error {
   font-size: 16px;
   margin-left: 10px;
   position: relative;
-  top:-3px;
+  top: -3px;
 }
 
 .document-list-item .score label {
@@ -820,7 +820,7 @@ form .error {
   display: none;
 }
 
-.document-list-item .score  {
+.document-list-item .score {
   direction: rtl; /* right to left */
   unicode-bidi: bidi-override; /* bidi de bidireccional */
 }
@@ -829,21 +829,26 @@ form .error {
   color: orange;
 }
 
-.document-list-item .score label:hover ~ label{color:orange;}
+.document-list-item .score label:hover ~ label {
+  color: orange;
+}
 
-.document-list-item .score input[type = "radio"]:checked ~ label{color:orange;}
-
+.document-list-item .score input[type = "radio"]:checked ~ label {
+  color: orange;
+}
 
 .document-list-item .complaint {
   display: inline-block;
   position: relative;
-  top:-4px;
+  top: -4px;
   cursor: pointer;
 }
+
 .document-list-item .complaint img {
   width: 22px;
   height: 22px;
 }
+
 /* END DIRECTIVE DOCUMENT LIST ITEM */
 
 /* BEGIN POPUP */
@@ -860,6 +865,7 @@ form .error {
 #popup label {
   margin-top: 7px;
 }
+
 /* END POPUP*/
 
 /* BEGIN DOCUMENT */
@@ -940,9 +946,8 @@ form .error {
   font-size: 16px;
   margin-left: 10px;
   position: relative;
-  top:-3px;
+  top: -3px;
 }
-
 
 #document .score label {
   color: grey;
@@ -952,7 +957,7 @@ form .error {
   display: none;
 }
 
-#document .score  {
+#document .score {
   direction: rtl; /* right to left */
   unicode-bidi: bidi-override; /* bidi de bidireccional */
 }
@@ -961,45 +966,83 @@ form .error {
   color: orange;
 }
 
-#document .score label:hover ~ label{color:orange;}
+#document .score label:hover ~ label {
+  color: orange;
+}
 
-#document .score input[type = "radio"]:checked ~ label{color:orange;}
+#document .score input[type = "radio"]:checked ~ label {
+  color: orange;
+}
 
 #document .complaint {
   display: inline-block;
   position: relative;
-  top:-4px;
+  top: -4px;
   cursor: pointer;
 }
+
 #document .complaint img {
   width: 22px;
   height: 22px;
 }
 
-#document .blog-info a{
+#document .blog-info a {
   text-decoration: none;
   color: #555;
 }
 
-#document .comments-container{
+#document .comments-container {
   margin-bottom: 20px;
   margin-top: 10px;
 }
-#document .comments-container img{
+
+#document .comments-container img {
   width: 60px;
   position: relative;
 }
-#document .comments-container .add-comment-container{
+
+#document .comments-container .add-comment-container {
   margin-top: 30px;
 }
-#document .comments-container .add-comment-container img{
+
+#document .comments-container .add-comment-container img {
   width: 60px;
   position: relative;
 }
-#document .comments-container .add-comment-container textarea{
+
+#document .comments-container .add-comment-container textarea {
   resize: none;
 }
-#document .comments-container .add-comment-container button{
+
+#document .comments-container .add-comment-container button {
   margin-top: 5px;
 }
+
+.document-list-item-small {
+  border-bottom: 1px solid #E0DFDF;
+  margin-bottom: 0px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.document-list-item-small .title {
+  font-size: 20px !important;
+  margin-top: 10px !important;
+}
+
+.document-list-item-small .title .puntuaction {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.document-list-item-small .title .puntuaction i {
+  color: #0da3e2;
+}
+
+.document-list-item-small .blog-info {
+  margin: 4px 0 !important;
+  padding: 0px 0 !important;
+  border: none !important;
+}
+
 /* END DOCUMENT */
