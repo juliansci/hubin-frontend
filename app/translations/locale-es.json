@@ -150,5 +150,8 @@
   "document": {
     "comments": "Comentarios",
     "related_documents": "Documentos relacionados"
+  },
+  "document_item": {
+    "uploaded_by": "Subido por"
   }
 }

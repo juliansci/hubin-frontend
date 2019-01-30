@@ -146,5 +146,8 @@
     "placeholder_message": "What is your complaint?",
     "cancel": "Cancel",
     "send": "Send"
+  },
+  "document_item": {
+    "uploaded_by": "Uploaded by"
   }
 }

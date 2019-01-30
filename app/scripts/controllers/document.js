@@ -16,7 +16,6 @@ angular.module('hubinFrontendApp')
 
     $scope.isScored = false;
     $scope.documentScore = 0;
-    $scope.currentCommentStr = '';
 
     $scope.processScores = function () {
       for (var i = 0; i < $rootScope.scores.length; i++) {
@@ -26,15 +25,6 @@ angular.module('hubinFrontendApp')
           $scope.documentScore = parseInt(currentScore['puntuacion']);
         }
       }
-    };
-    $scope.refreshComments = function(){
-      documentService.getComments($scope.document.id)
-        .then(function (response) {
-          $scope.document.comments = response.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
     };
     $rootScope.$watch('entitiesLoaded', function (newValue) {
       if (newValue === true) {
@@ -55,7 +45,6 @@ angular.module('hubinFrontendApp')
               $scope.documentWithFile = true;
             }
             $scope.processScores();
-            $scope.refreshComments();
             $scope.getRelatedDocuments();
 
           })
@@ -179,22 +168,5 @@ angular.module('hubinFrontendApp')
         }
       }, function (error) {
       });
-    }
-
-    $scope.sendComment = function(){
-      if($scope.currentCommentStr){
-        var comment = {
-          mensaje: $scope.currentCommentStr,
-          idDocumento: $scope.document.id
-        };
-        commentService.create(comment).then(function (result) {
-          $scope.currentCommentStr = '';
-          $scope.refreshComments();
-          toastr.success('Comentario enviado correctamente!');
-        }).catch(function (error) {
-          console.log(error);
-          toastr.error('Ha ocurrido un error. Intente luego.');
-        });
-      }
     }
   });

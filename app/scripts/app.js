@@ -43,6 +43,11 @@ angular
         controller: 'UserCtrl',
         controllerAs: 'user'
       })
+      .when('/user/:id', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl',
+        controllerAs: 'user'
+      })
       .when('/search', {
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl',

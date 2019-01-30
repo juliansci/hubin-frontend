@@ -1,0 +1,26 @@
+<div class="comments-container">
+  <div class="media" ng-repeat="(key, comment) in entity.comments">
+    <a href="#" class="pull-left">
+      <img ng-if="!comment.creador.foto.base64Src" src="images/anon-user.jpg">
+      <img ng-if="comment.creador.foto.base64Src" ng-src="{{comment.creador.foto.base64Src}}"/>
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">
+        <span>{{comment.fecha}}</span>
+      </h4>
+      <p>
+        {{comment.mensaje}}
+      </p>
+    </div>
+  </div>
+  <div class="add-comment-container media">
+    <a href="#" class="pull-left">
+      <img ng-if="!user.foto.base64Src" src="images/anon-user.jpg" alt="">
+      <img ng-if="user.foto.base64Src" ng-src="{{user.foto.base64Src}}"/>
+    </a>
+    <div class="media-body">
+      <textarea class="form-control" placeholder="Ingrese un comentario" ng-model="currentCommentStr"/>
+      <button class="btn btn-md btn-primary pull-right" ng-click="sendComment()">Enviar</button>
+    </div>
+  </div>
+</div>
