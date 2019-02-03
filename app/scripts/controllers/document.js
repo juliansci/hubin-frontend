@@ -9,8 +9,7 @@
  */
 angular.module('hubinFrontendApp')
   .controller('DocumentCtrl', function ($rootScope, $scope, $routeParams, $location, $q, $translate,
-                                        documentService, $uibModal, toastr, scoreService, userService,
-                                        commentService) {
+                                        documentService, $uibModal, toastr, scoreService, userService) {
 
     $scope.documentWithFile = false;
 

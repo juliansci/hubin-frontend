@@ -23,6 +23,7 @@ angular.module('hubinFrontendApp')
               $scope.documents = response.data;
               $scope.matchEntitiesDocuments();
             });
+            console.log($scope.subject);
           })
           .catch(function(error){
             console.log(error);

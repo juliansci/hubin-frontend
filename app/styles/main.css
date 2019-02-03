@@ -989,30 +989,30 @@ form .error {
   color: #555;
 }
 
-#document .comments-container {
+.comments-container {
   margin-bottom: 20px;
   margin-top: 10px;
 }
 
-#document .comments-container img {
+.comments-container img {
   width: 60px;
   position: relative;
 }
 
-#document .comments-container .add-comment-container {
+.comments-container .add-comment-container {
   margin-top: 30px;
 }
 
-#document .comments-container .add-comment-container img {
+.comments-container .add-comment-container img {
   width: 60px;
   position: relative;
 }
 
-#document .comments-container .add-comment-container textarea {
+.comments-container .add-comment-container textarea {
   resize: none;
 }
 
-#document .comments-container .add-comment-container button {
+.comments-container .add-comment-container button {
   margin-top: 5px;
 }
 
@@ -1044,3 +1044,6 @@ form .error {
 }
 
 /* END DOCUMENT */
+.blog-item h4.media-heading{
+  height: 15px;
+}

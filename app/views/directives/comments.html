@@ -1,5 +1,5 @@
 <div class="comments-container">
-  <div class="media" ng-repeat="(key, comment) in entity.comments">
+  <div class="media" ng-repeat="(key, comment) in entity.comentarios">
     <a href="#" class="pull-left">
       <img ng-if="!comment.creador.foto.base64Src" src="images/anon-user.jpg">
       <img ng-if="comment.creador.foto.base64Src" ng-src="{{comment.creador.foto.base64Src}}"/>

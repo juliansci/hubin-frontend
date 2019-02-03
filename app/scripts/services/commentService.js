@@ -6,8 +6,19 @@ angular.module('hubinFrontendApp').service('commentService', function (configSer
     httpService.setHeaders();
     return $http.post(configService.getUrlServer() + 'comentario', comment);
   }
+  function createSubject(comment) {
+    httpService.setHeaders();
+    return $http.post(configService.getUrlServer() + 'comentario/materia', comment);
+  }
+  function createEntity(comment) {
+    httpService.setHeaders();
+    return $http.post(configService.getUrlServer() + 'comentario/entidad', comment);
+  }
   return {
-    create: create
+    create: create,
+    createSubject: createSubject,
+    createEntity: createEntity
+
   }
     ;
 });
