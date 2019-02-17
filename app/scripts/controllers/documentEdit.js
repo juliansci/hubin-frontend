@@ -22,14 +22,18 @@ angular.module('hubinFrontendApp')
       $scope.onEdit = true;
       documentService.getById($routeParams.id)
         .then(function (response) {
-          var document = response.data;
+          $scope.document = response.data;
+          if($scope.document.creador.id !== $scope.user.id){
+            $location.path('/');
+          }
+          console.log('document: ', $scope.document);
           $scope.documentForm = {
-            name: document.nombre,
-            description: document.descripcion,
-            level: String(document.nivel),
-            subject: String(document.materia),
-            entity: String(document.entidad),
-            language: String(document.idioma)
+            name: $scope.document.nombre,
+            description: $scope.document.descripcion,
+            level: String($scope.document.nivel),
+            subject: String($scope.document.materia),
+            entity: String($scope.document.entidad),
+            language: String($scope.document.idioma)
           };
         })
         .catch(function (error) {
@@ -48,7 +52,7 @@ angular.module('hubinFrontendApp')
         };
         if ($scope.onEdit) {
           documentService.update($routeParams.id, documentSave).then(function (documentUpdated) {
-            console.log(documentUpdated);
+            console.log('documentUpdated: ', documentUpdated);
             /*$scope.sendDocumentFile($($('.js-document-file')[0]), documentCreated.data.id)
               .then(function (response) {
                 toastr.success('Documento creado correctamente');
@@ -80,9 +84,7 @@ angular.module('hubinFrontendApp')
             console.log(error);
             toastr.error('Ha ocurrido un error. Intente luego.');
           });
-
         }
-
       }
     };
 
@@ -107,6 +109,7 @@ angular.module('hubinFrontendApp')
         toastr.error('Ingrese una descripcion del documento valida');
         isValid = false;
       }
+
       var inputFile = $('.js-document-file')[0];
       if (!inputFile.files || !inputFile.files[0]) {
         toastr.error('Ingrese un archivo');

@@ -97,7 +97,8 @@
     "uploaded_documents": "Uploaded documents",
     "without_uploaded_documents": "Without uploaded documents",
     "shared_documents": "Shared documents with you",
-    "without_shared_documents": "No documents have been shared with you"
+    "without_shared_documents": "No documents have been shared with you",
+    "edit_document": "Edit document"
   },
   "entity": {
     "header_title": "EDUCATIONAL ENTITY",
@@ -113,6 +114,8 @@
   },
   "edit_document": {
     "title_new": "New Document",
+    "title_edit": "Edit Document",
+    "description_edit": "Edit next inputs of document",
     "description_new": "Fill next inputs to load a new document.",
     "label_name": "Name",
     "placeholder_name": "Input a name",

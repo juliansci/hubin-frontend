@@ -7,7 +7,7 @@
           <img ng-if="!userProfile.foto.base64Src" src="images/anon-user.jpg" class="img-responsive js-img-profile"/>
           <img ng-if="userProfile.foto.base64Src" ng-src="{{userProfile.foto.base64Src}}"
                class="img-responsive js-img-profile"/>
-          <form ng-if="isProfileUserLogged" #user #infoUser .user-usernameaction={{"alumno/"+userProfile.id+"/profile/image"}} method="POST" enctype="multipart/form-data"
+          <form ng-if="isProfileUserLogged" action={{"alumno/"+userProfile.id+"/profile/image"}} method="POST" enctype="multipart/form-data"
                 class="hide">
             <input  class="js-add-image" type="file" name="profileImage" accept=".jpg,.jpeg"/>
           </form>
@@ -53,6 +53,8 @@
             <div class="document-list-item col-md-12 col-sm-12">
               <a href="#/document/{{document.id}}" >
                 <div class="title">{{document.nombre}}</div>
+
+
               </a>
               <ul class="blog-info">
                 <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'MM/dd/yyyy' }}</li>
@@ -65,6 +67,11 @@
               </ul>
               <div class="description">{{ document.descripcion }}</div>
               <br/>
+              <a ng-if="isProfileUserLogged" href="#/document/edit/{{document.id}}">
+                <button class="btn green btn-sm" style="margin-top: 10px;">
+                  {{'user.edit_document' | translate}}
+                </button>
+              </a>
             </div>
 
 

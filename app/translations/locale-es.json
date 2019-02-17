@@ -97,7 +97,8 @@
     "uploaded_documents": "Documentos subidos",
     "without_uploaded_documents": "No has subido ningun documento",
     "shared_documents": "Documentos compartidos contigo",
-    "without_shared_documents": "No se han compartido documentos contigo"
+    "without_shared_documents": "No se han compartido documentos contigo",
+    "edit_document": "Editar documento"
   },
   "entity": {
     "header_title": "ENTIDAD EDUCATIVA",
@@ -113,7 +114,9 @@
   },
   "edit_document": {
     "title_new": "Nuevo Documento",
+    "title_edit": "Edición de Documento",
     "description_new": "Complete los siguientes datos para cargar el nuevo documento.",
+    "description_edit": "Edite los campos del documento",
     "label_name": "Nombre",
     "placeholder_name": "Ingrese un nombre",
     "label_description": "Descripción",

@@ -23,7 +23,6 @@ angular.module('hubinFrontendApp')
         $scope.isProfileUserLogged = true;
         initEdition();
       }
-      console.log('user profile: ', $scope.userProfile);
     }).catch(function (data) {
     });
     $scope.uploadedDocuments = [];
@@ -31,7 +30,6 @@ angular.module('hubinFrontendApp')
     userService.getDocuments()
       .then(function (response) {
         $scope.uploadedDocuments = response.data.documentosCreados;
-        console.log($scope.uploadedDocuments);
         $scope.matchEntitiesDocuments($scope.uploadedDocuments);
         $scope.sharedDocuments = response.data.documentosConAcceso;
         $scope.matchEntitiesDocuments($scope.sharedDocuments);
@@ -42,7 +40,7 @@ angular.module('hubinFrontendApp')
 
 
       function initEdition() {
-        $('.js-edit-profile').on('click', function () {
+        $('body').on('click','.js-edit-profile', function () {
           $scope.$apply(function () {
             $scope.onEditProfile = !$scope.onEditProfile;
           });
@@ -80,14 +78,12 @@ angular.module('hubinFrontendApp')
               email: email,
               presentacion: description
             };
-            userService.updateUser(user.id, profileUpdate).then(function (response) {
+            userService.updateUser(securityService.getUser().id, profileUpdate).then(function (response) {
               $('.js-user-username, .js-user-name, .js-user-email, .js-user-description').removeClass('editable-unsaved');
-              console.log('usernameChanged: ', usernameChanged);
               if (usernameChanged) {
                 toastr.success('Usuario modificado. Ingrese con el nuevo usuario.');
                 $rootScope.logout();
                 $location.path('/login');
-
               }
               $scope.userProfile = response.data;
             }).catch(function (data) {
@@ -96,23 +92,22 @@ angular.module('hubinFrontendApp')
           }
 
         });
-        $('.js-image-user').on('mouseenter', function () {
+        $('body').on('mouseenter', '.js-image-user', function () {
           $('.js-edit-image').addClass('visible');
         });
-        $('.js-image-user').on('mouseleave', function () {
+        $('body').on('mouseleave', '.js-image-user', function () {
           $('.js-edit-image').removeClass('visible');
         });
-        $('.js-edit-image').on('click', function () {
+        $('body').on('click', '.js-edit-image', function () {
           $('.js-add-image').click();
         })
-        $('.js-add-image').on('change', function () {
+        $('body').on('change', '.js-add-image', function () {
           var input = this;
           var $input = $(this);
           if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
               var imagen = e.target.result;
-              console.log(e.target);
               $input.parents('.js-img-profile').attr('src', imagen);
               sendImageAjax($input, true, imagen);
             };
@@ -155,8 +150,6 @@ angular.module('hubinFrontendApp')
         documents[i]['nivel'] = $rootScope.levels.find(function (x) {
           return x.id == currentDocument['nivel']
         });
-        console.log('currentDocument: ', currentDocument);
-
         documents[i]['fechaCreacion'] = documents[i]['fechaCreacion'].split("-")[0];
 
       }

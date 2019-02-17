@@ -3,7 +3,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <div class="title">{{'edit_document.title_new' | translate}}</div>
+          <div class="title" ng-if="!onEdit">{{'edit_document.title_new' | translate}}</div>
+          <div class="title" ng-if="onEdit">{{'edit_document.title_edit' | translate}}</div>
         </div>
       </div>
     </div>
@@ -12,8 +13,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h3>{{'edit_document.title_new' | translate}}</h3>
-          <p>{{'edit_document.description_new' | translate}}</p>
+          <h3 ng-if="!onEdit">{{'edit_document.title_new' | translate}}</h3>
+          <h3 ng-if="onEdit">{{'edit_document.title_edit' | translate}}</h3>
+          <p ng-if="!onEdit">{{'edit_document.description_new' | translate}}</p>
+          <p ng-if="onEdit">{{'edit_document.description_edit' | translate}}</p>
+
         </div>
       </div>
       <div class="row">
@@ -57,27 +61,17 @@
               <div class="form-group">
                 <label class="col-md-2 control-label">{{'edit_document.label_language' | translate}}</label>
                 <div class="col-md-10">
-                  <div class="radio-list">
-                    <label ng-repeat="language in languages" class="radio-inline">
-                      <input ng-model="documentForm.language" type="radio" name="languageOptions"
-                             value="{{language.id}}"> {{language.nombre}}
-                    </label>
-
-                  </div>
-                  <span
-                    class="help-block">{{'edit_document.help_language' | translate}}
-                    <span ng-click="showFeedback('language')">{{'edit_document.feedback_here' | translate}}</span>.</span>
+                  <select class="form-control" ng-model="documentForm.language">
+                    <option ng-repeat="language in languages" value="{{language.id}}">{{language.nombre}}</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-md-2 control-label">{{'edit_document.label_level' | translate}}</label>
                 <div class="col-md-10">
-                  <div class="radio-list">
-                    <label ng-repeat="level in levels" class="radio-inline">
-                      <input ng-model="documentForm.level" type="radio" name="levelOptions" value="{{level.id}}">
-                      {{level.nombre}}
-                    </label>
-                  </div>
+                  <select class="form-control" ng-model="documentForm.level">
+                    <option ng-repeat="level in levels" value="{{level.id}}">{{level.nombre}}</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group">

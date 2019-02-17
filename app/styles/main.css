@@ -265,6 +265,7 @@ form .error {
 
 #user #infoUser .user-username {
   font-size: 22px;
+  display: inline-block;
 }
 
 #user #infoUser .edit-profile {
