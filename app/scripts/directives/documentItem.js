@@ -39,7 +39,7 @@ angular.module('hubinFrontendApp').directive('documentItem', ['$translate', 'toa
           var versiones = $scope.document.versiones;
           if (versiones.length > 0) {
             var currentVersion = versiones[versiones.length - 1];
-            documentService.download($scope.document.id, currentVersion).then(function (data) {
+            documentService.download($scope.document.id, currentVersion.id).then(function (data) {
               var version = data.data;
               var extension = version.extension;
               var base64 = version.data;

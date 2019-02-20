@@ -72,6 +72,14 @@
                   {{'user.edit_document' | translate}}
                 </button>
               </a>
+              <a ng-if="isProfileUserLogged" href="#/document/edit/versions/{{document.id}}">
+                <button class="btn blue btn-sm" style="margin-top: 10px;">
+                  Administrar versiones
+                </button>
+              </a>
+              <button class="btn red btn-sm js-remove-document" data-id="{{document.id}}" style="margin-top: 10px;">
+                  Eliminar
+              </button>
             </div>
 
 

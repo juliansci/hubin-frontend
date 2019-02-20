@@ -23,7 +23,7 @@ angular.module('hubinFrontendApp')
       documentService.getById($routeParams.id)
         .then(function (response) {
           $scope.document = response.data;
-          if($scope.document.creador.id !== $scope.user.id){
+          if ($scope.document.creador.id !== $scope.user.id) {
             $location.path('/');
           }
           console.log('document: ', $scope.document);
@@ -50,18 +50,26 @@ angular.module('hubinFrontendApp')
           "idEntidad": $scope.documentForm.entity,
           "idIdioma": $scope.documentForm.language
         };
+
         if ($scope.onEdit) {
+          console.log('onEdit');
+          console.log('$routeParams.id: ', $routeParams.id);
           documentService.update($routeParams.id, documentSave).then(function (documentUpdated) {
-            console.log('documentUpdated: ', documentUpdated);
-            /*$scope.sendDocumentFile($($('.js-document-file')[0]), documentCreated.data.id)
-              .then(function (response) {
-                toastr.success('Documento creado correctamente');
-                $location.path("/document/" + documentCreated.data.id);
-              }).catch(function (error) {
-              console.log('error');
-              console.log(error);
-              toastr.error('Ha ocurrido un error. Intente luego.');
-            });*/
+            var inputFile = $('.js-document-file')[0];
+            if (inputFile.files && inputFile.files[0]) {
+              $scope.sendDocumentFile($(inputFile), documentUpdated.data.id)
+                .then(function (response) {
+                  toastr.success('Documento actualizado correctamente');
+                  $location.path("/document/" + documentUpdated.data.id);
+                }).catch(function (error) {
+                console.log('error');
+                console.log(error);
+                toastr.error('Ha ocurrido un error. Intente luego.');
+              });
+            }else{
+              toastr.success('Documento actualizado correctamente');
+              $location.path("/document/" + documentUpdated.data.id);
+            }
           }).catch(function (error) {
             console.log('error');
             console.log(error);
@@ -109,12 +117,14 @@ angular.module('hubinFrontendApp')
         toastr.error('Ingrese una descripcion del documento valida');
         isValid = false;
       }
-
-      var inputFile = $('.js-document-file')[0];
-      if (!inputFile.files || !inputFile.files[0]) {
-        toastr.error('Ingrese un archivo');
-        isValid = false;
+      if (!$scope.onEdit) {
+        var inputFile = $('.js-document-file')[0];
+        if (!inputFile.files || !inputFile.files[0]) {
+          toastr.error('Ingrese un archivo');
+          isValid = false;
+        }
       }
+
       return isValid;
     }
     $scope.showFeedback = function (type) {
@@ -126,12 +136,13 @@ angular.module('hubinFrontendApp')
         scope: $scope
       });
       modalInstance.result.then(function (data) {
-        if(data === 'ok'){
+        if (data === 'ok') {
           toastr.success('Feedback enviado');
-        }else{
+        } else {
           toastr.error('Ha ocurrido un error. Intente luego.');
         }
-      }, function(error){});
+      }, function (error) {
+      });
     }
 
   });

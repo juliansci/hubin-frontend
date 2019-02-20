@@ -129,7 +129,7 @@
     "label_language": "Language",
     "help_language": "If you have not found your language you can request add it from",
     "label_level": "Level",
-    "label_file": "File",
+    "label_file": "New version of file",
     "help_file": "The format file accepted is pdf",
     "send": "Send"
   },
