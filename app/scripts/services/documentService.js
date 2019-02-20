@@ -22,7 +22,14 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     httpService.setHeaders();
     return $http.put(configService.getUrlServer() + 'documento/'+id, document);
   }
-
+  function remove(document) {
+    httpService.setHeaders();
+    return $http.delete(configService.getUrlServer() + 'documento/'+document.id, {data: ''});
+  }
+  function restore(document) {
+    httpService.setHeaders();
+    return $http.post(configService.getUrlServer() + 'documento/restore/'+document.id, {data: ''});
+  }
   function addFileToDocument(data, documentId) {
     httpService.setHeadersMultipart();
     return $http({
@@ -67,7 +74,9 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     addFileToDocument: addFileToDocument,
     download: download,
     getComments: getComments,
-    getRelatedDocuments: getRelatedDocuments
+    getRelatedDocuments: getRelatedDocuments,
+    remove: remove,
+    restore: restore
   }
     ;
 });

@@ -8,9 +8,9 @@
  * Controller of the hubinFrontendApp
  */
 angular.module('hubinFrontendApp')
-  .controller('UserCtrl', function ($rootScope, $scope, $location, $http,
+  .controller('UserCtrl', function ($rootScope, $scope, $location, $http, $route,
                                     userService, securityService, toastr,
-                                    $routeParams) {
+                                    $routeParams, documentService) {
     var userId = securityService.getUser().id;
     if ($routeParams.id) {
       userId = $routeParams.id;
@@ -27,12 +27,15 @@ angular.module('hubinFrontendApp')
     });
     $scope.uploadedDocuments = [];
     $scope.sharedDocuments = [];
+    $scope.removedDocuments = [];
     userService.getDocuments()
       .then(function (response) {
         $scope.uploadedDocuments = response.data.documentosCreados;
         $scope.matchEntitiesDocuments($scope.uploadedDocuments);
         $scope.sharedDocuments = response.data.documentosConAcceso;
         $scope.matchEntitiesDocuments($scope.sharedDocuments);
+        $scope.removedDocuments = response.data.documentosEliminados;
+        $scope.matchEntitiesDocuments($scope.removedDocuments);
       })
       .catch(function (error) {
         console.log(error);
@@ -154,4 +157,21 @@ angular.module('hubinFrontendApp')
 
       }
     };
+
+      $scope.removeDocument = function(document){
+        documentService.remove(document).then(function successCallback(response) {
+          toastr.success('El documento ha sido eliminado.');
+          $('#documentId'+document.id).remove();
+        }, function errorCallback(error) {
+          toastr.error('Ha ocurrido un error. Intente luego.');
+        });
+      }
+    $scope.restoreDocument = function(document){
+      documentService.restore(document).then(function successCallback(response) {
+        toastr.success('El documento ha sido recuperado.');
+        $route.reload();
+        }, function errorCallback(error) {
+        toastr.error('Ha ocurrido un error. Intente luego.');
+      });
+    }
   });

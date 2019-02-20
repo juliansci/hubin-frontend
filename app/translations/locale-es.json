@@ -98,7 +98,13 @@
     "without_uploaded_documents": "No has subido ningun documento",
     "shared_documents": "Documentos compartidos contigo",
     "without_shared_documents": "No se han compartido documentos contigo",
-    "edit_document": "Editar documento"
+    "edit_document": "Editar documento",
+    "admin_versions_document": "Administrar versiones",
+    "admin_shared_document": "Administrar compartidos",
+    "remove_document": "Eliminar",
+    "removed_documents": "Documentos eliminados",
+    "restore_document": "Recuperar"
+
   },
   "entity": {
     "header_title": "ENTIDAD EDUCATIVA",

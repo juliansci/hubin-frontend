@@ -98,7 +98,12 @@
     "without_uploaded_documents": "Without uploaded documents",
     "shared_documents": "Shared documents with you",
     "without_shared_documents": "No documents have been shared with you",
-    "edit_document": "Edit document"
+    "edit_document": "Edit document",
+    "admin_versions_document": "Manage versions",
+    "admin_shared_document": "Manage shared",
+    "remove_document": "Remove",
+    "removed_documents": "Removed documents",
+    "restore_document": "Restore"
   },
   "entity": {
     "header_title": "EDUCATIONAL ENTITY",
