@@ -94,7 +94,6 @@ angular
   .run(function ($rootScope, $location, $http, $timeout, $translate, $q, configService, securityService, sessionService,
                  entityService, subjectService, levelService, languageService, userService) {
     $rootScope.$on('$routeChangeStart', function (event) {
-      console.log('paso por aca');
       var logged = securityService.isLogged();
       if (!logged) {
         var restrictedUrls = securityService.getRestrictedUrls();
