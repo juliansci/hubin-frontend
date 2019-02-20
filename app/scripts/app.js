@@ -94,6 +94,7 @@ angular
   .run(function ($rootScope, $location, $http, $timeout, $translate, $q, configService, securityService, sessionService,
                  entityService, subjectService, levelService, languageService, userService) {
     $rootScope.$on('$routeChangeStart', function (event) {
+      console.log('paso por aca');
       var logged = securityService.isLogged();
       if (!logged) {
         var restrictedUrls = securityService.getRestrictedUrls();
@@ -101,8 +102,46 @@ angular
           return $location.path().includes(element);
         });
         if (urlFind !== undefined) {
-          $location.path('/login');
+          return $location.path('/login');
         }
+      }
+      if ($rootScope.user !== null && $rootScope.entities === undefined) {
+        $rootScope.entities = [];
+        $rootScope.subjects = [];
+        $rootScope.levels = [];
+        $rootScope.languages = [];
+        var promises = [];
+        var promiseEntities = entityService.getAll().then(function (response) {
+          return response.data;
+        });
+        promises.push(promiseEntities);
+        var promiseSubjects = subjectService.getAll().then(function (response) {
+          return response.data;
+        });
+        promises.push(promiseSubjects);
+
+        var promiseLevels = levelService.getAll().then(function (response) {
+          return response.data;
+        });
+        promises.push(promiseLevels);
+
+        var promiseLanguages = languageService.getAll().then(function (response) {
+          return response.data;
+        });
+        promises.push(promiseLanguages);
+
+        var promiseScores = userService.getScores().then(function (response) {
+          return response.data;
+        });
+        promises.push(promiseScores);
+        $q.all(promises).then(function (res) {
+          $rootScope.entities = res[0];
+          $rootScope.subjects = res[1];
+          $rootScope.levels = res[2];
+          $rootScope.languages = res[3];
+          $rootScope.scores = res[4];
+          $rootScope.entitiesLoaded = true;
+        });
       }
     });
 
@@ -121,42 +160,4 @@ angular
     };
     $rootScope.urlServerBase = configService.getUrlServer();
     $rootScope.entitiesLoaded = false;
-    if ($rootScope.user !== undefined && $rootScope.entities === undefined) {
-      $rootScope.entities = [];
-      $rootScope.subjects = [];
-      $rootScope.levels = [];
-      $rootScope.languages = [];
-      var promises = [];
-      var promiseEntities = entityService.getAll().then(function (response) {
-        return response.data;
-      });
-      promises.push(promiseEntities);
-      var promiseSubjects = subjectService.getAll().then(function (response) {
-        return response.data;
-      });
-      promises.push(promiseSubjects);
-
-      var promiseLevels = levelService.getAll().then(function (response) {
-        return response.data;
-      });
-      promises.push(promiseLevels);
-
-      var promiseLanguages = languageService.getAll().then(function (response) {
-        return response.data;
-      });
-      promises.push(promiseLanguages);
-
-      var promiseScores = userService.getScores().then(function (response) {
-        return response.data;
-      });
-      promises.push(promiseScores);
-      $q.all(promises).then(function (res) {
-        $rootScope.entities = res[0];
-        $rootScope.subjects = res[1];
-        $rootScope.levels = res[2];
-        $rootScope.languages = res[3];
-        $rootScope.scores = res[4];
-        $rootScope.entitiesLoaded = true;
-      });
-    }
   });

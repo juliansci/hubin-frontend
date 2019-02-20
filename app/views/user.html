@@ -77,6 +77,11 @@
                   Administrar versiones
                 </button>
               </a>
+              <a ng-if="isProfileUserLogged" href="#/document/edit/versions/{{document.id}}">
+                <button class="btn btn-default btn-sm" style="margin-top: 10px;">
+                  Administrar compartidos
+                </button>
+              </a>
               <button class="btn red btn-sm js-remove-document" data-id="{{document.id}}" style="margin-top: 10px;">
                   Eliminar
               </button>
