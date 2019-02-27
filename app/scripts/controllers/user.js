@@ -10,7 +10,7 @@
 angular.module('hubinFrontendApp')
   .controller('UserCtrl', function ($rootScope, $scope, $location, $http, $route,
                                     userService, securityService, toastr,
-                                    $routeParams, documentService) {
+                                    $routeParams, documentService, $uibModal) {
     var userId = securityService.getUser().id;
     if ($routeParams.id) {
       userId = $routeParams.id;
@@ -42,82 +42,82 @@ angular.module('hubinFrontendApp')
       });
 
 
-      function initEdition() {
-        $('body').on('click','.js-edit-profile', function () {
-          $scope.$apply(function () {
-            $scope.onEditProfile = !$scope.onEditProfile;
+    function initEdition() {
+      $('body').on('click', '.js-edit-profile', function () {
+        $scope.$apply(function () {
+          $scope.onEditProfile = !$scope.onEditProfile;
+        });
+        if ($scope.onEditProfile) {
+          $('.js-user-username').editable({
+            type: 'text',
+            title: 'Ingrese su usuario'
           });
-          if ($scope.onEditProfile) {
-            $('.js-user-username').editable({
-              type: 'text',
-              title: 'Ingrese su usuario'
-            });
-            $('.js-user-name').editable({
-              type: 'text',
-              title: 'Ingrese su nombre'
-            });
-            $('.js-user-email').editable({
-              type: 'text',
-              title: 'Ingrese su email'
-            });
-            $('.js-user-description').editable({
-              type: 'text',
-              title: 'Ingrese una descripcion'
-            });
-          } else {
-            $('.js-user-name, .js-user-email, .js-user-description, .js-user-username').editable('destroy');
-            var username = $('.js-user-username').text().trim();
-            var name = $('.js-user-name').text().trim();
-            var email = $('.js-user-email').text().trim();
-            var description = $('.js-user-description').text().trim();
-            var usernameChanged = username !== $scope.userProfile.username;
-            username = (username === 'Ingrese su usuario') ? '' : username;
-            name = (name === 'Ingrese su nombre') ? '' : name;
-            description = (description === 'Ingrese una descripcion') ? '' : description;
-            email = (email === 'Ingrese su email') ? '' : email;
-            var profileUpdate = {
-              username: username,
-              nombre: name,
-              email: email,
-              presentacion: description
-            };
-            userService.updateUser(securityService.getUser().id, profileUpdate).then(function (response) {
-              $('.js-user-username, .js-user-name, .js-user-email, .js-user-description').removeClass('editable-unsaved');
-              if (usernameChanged) {
-                toastr.success('Usuario modificado. Ingrese con el nuevo usuario.');
-                $rootScope.logout();
-                $location.path('/login');
-              }
-              $scope.userProfile = response.data;
-            }).catch(function (data) {
-              console.log(data);
-            });
-          }
+          $('.js-user-name').editable({
+            type: 'text',
+            title: 'Ingrese su nombre'
+          });
+          $('.js-user-email').editable({
+            type: 'text',
+            title: 'Ingrese su email'
+          });
+          $('.js-user-description').editable({
+            type: 'text',
+            title: 'Ingrese una descripcion'
+          });
+        } else {
+          $('.js-user-name, .js-user-email, .js-user-description, .js-user-username').editable('destroy');
+          var username = $('.js-user-username').text().trim();
+          var name = $('.js-user-name').text().trim();
+          var email = $('.js-user-email').text().trim();
+          var description = $('.js-user-description').text().trim();
+          var usernameChanged = username !== $scope.userProfile.username;
+          username = (username === 'Ingrese su usuario') ? '' : username;
+          name = (name === 'Ingrese su nombre') ? '' : name;
+          description = (description === 'Ingrese una descripcion') ? '' : description;
+          email = (email === 'Ingrese su email') ? '' : email;
+          var profileUpdate = {
+            username: username,
+            nombre: name,
+            email: email,
+            presentacion: description
+          };
+          userService.updateUser(securityService.getUser().id, profileUpdate).then(function (response) {
+            $('.js-user-username, .js-user-name, .js-user-email, .js-user-description').removeClass('editable-unsaved');
+            if (usernameChanged) {
+              toastr.success('Usuario modificado. Ingrese con el nuevo usuario.');
+              $rootScope.logout();
+              $location.path('/login');
+            }
+            $scope.userProfile = response.data;
+          }).catch(function (data) {
+            console.log(data);
+          });
+        }
 
-        });
-        $('body').on('mouseenter', '.js-image-user', function () {
-          $('.js-edit-image').addClass('visible');
-        });
-        $('body').on('mouseleave', '.js-image-user', function () {
-          $('.js-edit-image').removeClass('visible');
-        });
-        $('body').on('click', '.js-edit-image', function () {
-          $('.js-add-image').click();
-        })
-        $('body').on('change', '.js-add-image', function () {
-          var input = this;
-          var $input = $(this);
-          if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              var imagen = e.target.result;
-              $input.parents('.js-img-profile').attr('src', imagen);
-              sendImageAjax($input, true, imagen);
-            };
-            reader.readAsDataURL(input.files[0]);
-          }
-        });
-      }
+      });
+      $('body').on('mouseenter', '.js-image-user', function () {
+        $('.js-edit-image').addClass('visible');
+      });
+      $('body').on('mouseleave', '.js-image-user', function () {
+        $('.js-edit-image').removeClass('visible');
+      });
+      $('body').on('click', '.js-edit-image', function () {
+        $('.js-add-image').click();
+      })
+      $('body').on('change', '.js-add-image', function () {
+        var input = this;
+        var $input = $(this);
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            var imagen = e.target.result;
+            $input.parents('.js-img-profile').attr('src', imagen);
+            sendImageAjax($input, true, imagen);
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      });
+    }
 
     function sendImageAjax($input, imagen) {
       var form = $input.parents('form');
@@ -141,8 +141,8 @@ angular.module('hubinFrontendApp')
       for (var i = 0; i < documents.length; i++) {
         var currentDocument = documents[i];
         documents[i]['entidad'] = $rootScope.entities.find(function (x) {
-         return x.id == currentDocument['entidad'];
-      });
+          return x.id == currentDocument['entidad'];
+        });
 
         documents[i]['materia'] = $rootScope.subjects.find(function (x) {
           return x.id == currentDocument['materia']
@@ -158,20 +158,33 @@ angular.module('hubinFrontendApp')
       }
     };
 
-      $scope.removeDocument = function(document){
-        documentService.remove(document).then(function successCallback(response) {
-          toastr.success('El documento ha sido eliminado.');
-          $('#documentId'+document.id).remove();
-        }, function errorCallback(error) {
-          toastr.error('Ha ocurrido un error. Intente luego.');
-        });
-      }
-    $scope.restoreDocument = function(document){
+    $scope.removeDocument = function (document) {
+      documentService.remove(document).then(function successCallback(response) {
+        toastr.success('El documento ha sido eliminado.');
+        $('#documentId' + document.id).remove();
+      }, function errorCallback(error) {
+        toastr.error('Ha ocurrido un error. Intente luego.');
+      });
+    };
+    $scope.restoreDocument = function (document) {
       documentService.restore(document).then(function successCallback(response) {
         toastr.success('El documento ha sido recuperado.');
         $route.reload();
-        }, function errorCallback(error) {
+      }, function errorCallback(error) {
         toastr.error('Ha ocurrido un error. Intente luego.');
       });
+    };
+    $scope.openManageVersions = function (document) {
+      console.log('manage versions: ', document);
+      $scope.documentVersions = document;
+        var modalInstance = $uibModal.open({
+          templateUrl: 'views/modalVersions.html',
+          controller: 'ModalVersionsCtrl',
+          controllerAs: '$modalCtrl',
+          scope: $scope
+        });
+        modalInstance.result.then(function (data) {
+          console.log(data);
+        }, function(error){});
     }
   });

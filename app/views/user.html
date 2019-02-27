@@ -73,8 +73,8 @@
                   {{'user.edit_document' | translate}}
                 </button>
               </a>
-              <a ng-if="isProfileUserLogged" href="#/document/edit/versions/{{document.id}}">
-                <button class="btn blue btn-sm" style="margin-top: 10px;">
+              <a ng-if="isProfileUserLogged">
+                <button class="btn blue btn-sm" style="margin-top: 10px;" ng-click="openManageVersions(document)">
                   {{'user.admin_versions_document' | translate }}
                 </button>
               </a>
@@ -173,6 +173,8 @@
       </div>
     </div>
   </div>
+  <div class="hide js-file"></div>
+
 
 </section>
 

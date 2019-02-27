@@ -1048,3 +1048,37 @@ form .error {
 .blog-item h4.media-heading{
   height: 15px;
 }
+
+
+.modal-body-versions{
+  padding-top: 0px;
+}
+.modal-body-versions .versions-container{margin-top: 10px; margin-bottom: 10px}
+.modal-body-versions .versions-container .header-versions{
+  border-bottom: 1px solid #CCCCCC;
+  padding: 5px 8px 5px 8px;
+  font-weight: bolder;
+}
+.modal-body-versions .versions-container .header-versions .date{
+  display: inline-block;
+  width: 420px;
+}
+.modal-body-versions .versions-container .header-versions .download{
+  display: inline-block;
+  width: 90px;
+  text-align: center;
+}
+.modal-body-versions .versions-container .document-version{
+  padding: 8px;
+  border-bottom: 1px solid #CCCCCC;
+
+}
+.modal-body-versions .versions-container .document-version .version-date{
+  display: inline-block;
+  width: 420px;
+}
+.modal-body-versions .versions-container .document-version .version-download{
+  display: inline-block;
+  width: 90px;
+  text-align: center;
+}

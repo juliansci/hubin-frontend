@@ -66,6 +66,11 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     return $http.get(configService.getUrlServer() + 'documento/'+documentId + '/comentarios', {data: ''});
   }
 
+  function removeVersion(documentId,versionId) {
+    httpService.setHeaders();
+    return $http.delete(configService.getUrlServer() + 'documento/'+documentId+'/version/'+versionId, {data: ''});
+  }
+
   return {
     getById: getById,
     getAllByFilters: getAllByFilters,
@@ -76,7 +81,8 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     getComments: getComments,
     getRelatedDocuments: getRelatedDocuments,
     remove: remove,
-    restore: restore
+    restore: restore,
+    removeVersion: removeVersion
   }
     ;
 });

@@ -1,0 +1,37 @@
+<div id="popup">
+  <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">
+      <span>Administrar versiones </span>
+    </h3>
+    <h5 style="font-size: 14px;margin-top: -5px;">{{documentVersions.nombre}}</h5>
+  </div>
+  <div class="modal-body modal-body-versions" id="modal-body">
+    <div class="row">
+      <div class="title">
+        <h2>Versiones</h2>
+
+      </div>
+      <div class="versions-container">
+        <div class="header-versions">
+          <div class="date">Fecha</div>
+          <div class="download">Acciones</div>
+
+        </div>
+        <div ng-repeat="(key, currentVersion) in documentVersions.versiones.slice().reverse()" class="document-version" id="versionId-{{currentVersion.id}}">
+          <div class="version-date">{{currentVersion.fecha}}</div>
+          <div class="version-download">
+            <button class="btn btn-success btn-sm" ng-click="downloadVersion(currentVersion)">
+              <i class="fa fa-download"/>
+            </button>
+            <button class="btn btn-danger btn-sm" ng-click="removeVersion(currentVersion)">
+              <i class="fa fa-trash-o"/>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="close()">{{'modal_feedback.cancel' | translate}}</button>
+  </div>
+</div>
