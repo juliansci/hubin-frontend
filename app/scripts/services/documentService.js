@@ -71,6 +71,19 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     return $http.delete(configService.getUrlServer() + 'documento/'+documentId+'/version/'+versionId, {data: ''});
   }
 
+  function getUsersToShare(document){
+    httpService.setHeaders();
+    return $http.get(configService.getUrlServer() + 'documento/compartir/alumnos/' + document.id , {data: ''});
+  }
+
+  function addUserShare(documentId, alumnoId){
+    httpService.setHeaders();
+    return $http.post(configService.getUrlServer() + 'documento/shared/'+documentId+'/alumno/'+alumnoId, {data: ''});
+  }
+  function removeUserShare(documentId, alumnoId){
+    httpService.setHeaders();
+    return $http.delete(configService.getUrlServer() + 'documento/shared/'+documentId+'/alumno/'+alumnoId, {data: ''});
+  }
   return {
     getById: getById,
     getAllByFilters: getAllByFilters,
@@ -82,7 +95,10 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     getRelatedDocuments: getRelatedDocuments,
     remove: remove,
     restore: restore,
-    removeVersion: removeVersion
+    removeVersion: removeVersion,
+    getUsersToShare: getUsersToShare,
+    addUserShare: addUserShare,
+    removeUserShare: removeUserShare
   }
     ;
 });

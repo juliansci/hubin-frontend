@@ -175,7 +175,6 @@ angular.module('hubinFrontendApp')
       });
     };
     $scope.openManageVersions = function (document) {
-      console.log('manage versions: ', document);
       $scope.documentVersions = document;
         var modalInstance = $uibModal.open({
           templateUrl: 'views/modalVersions.html',
@@ -186,5 +185,17 @@ angular.module('hubinFrontendApp')
         modalInstance.result.then(function (data) {
           console.log(data);
         }, function(error){});
+    }
+    $scope.openManageShared = function (document) {
+      $scope.documentShared = document;
+      var modalInstance = $uibModal.open({
+        templateUrl: 'views/modalShared.html',
+        controller: 'ModalSharedCtrl',
+        controllerAs: '$modalCtrl',
+        scope: $scope
+      });
+      modalInstance.result.then(function (data) {
+        console.log(data);
+      }, function(error){});
     }
   });

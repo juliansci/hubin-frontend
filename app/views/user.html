@@ -73,16 +73,14 @@
                   {{'user.edit_document' | translate}}
                 </button>
               </a>
-              <a ng-if="isProfileUserLogged">
-                <button class="btn blue btn-sm" style="margin-top: 10px;" ng-click="openManageVersions(document)">
-                  {{'user.admin_versions_document' | translate }}
-                </button>
-              </a>
-              <a ng-if="isProfileUserLogged" href="#/document/edit/versions/{{document.id}}">
-                <button class="btn btn-default btn-sm" style="margin-top: 10px;">
-                  {{'user.admin_shared_document' | translate }}
-                </button>
-              </a>
+              <button ng-if="isProfileUserLogged" class="btn blue btn-sm" style="margin-top: 10px;"
+                      ng-click="openManageVersions(document)">
+                {{'user.admin_versions_document' | translate }}
+              </button>
+              <button ng-if="isProfileUserLogged" class="btn btn-default btn-sm" style="margin-top: 10px;"
+                      ng-click="openManageShared(document)">
+                {{'user.admin_shared_document' | translate }}
+              </button>
               <button class="btn red btn-sm" ng-click="removeDocument(document)" style="margin-top: 10px;">
                 {{'user.remove_document' | translate }}
 
