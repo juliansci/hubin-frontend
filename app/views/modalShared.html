@@ -18,16 +18,18 @@
           </div>
         </div>
       </div>
-
       <div style="margin-top: 27px;">
         <div class="title">
           <h3>Compartidos</h3>
         </div>
-        <div class="users-shared">
+        <div ng-if="documentShared.compartidos.length > 0" class="users-shared">
           <div class="user-shared" ng-repeat="(key, userShared) in documentShared.compartidos">
             {{userShared.username}}
             <i class="fa fa-times" data-id="{{userShared.id}}" ng-click="removeShared(documentShared.id, userShared.id)"/>
           </div>
+        </div>
+        <div ng-if="documentShared.compartidos.length == 0">
+          El documento no es compartido con ningun usuario.
         </div>
       </div>
     </div>
