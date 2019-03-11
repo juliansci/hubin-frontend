@@ -41,7 +41,7 @@
           <ul class="blog-info">
             <li><i class="fa fa-user"></i>{{'document_item.uploaded_by' | translate }} <a href="#/user/{{document.creador.id}}">{{ document.creador.username }}</a></li>
             <li><i class="fa fa-calendar"></i>{{ document.fechaCreacion | date:'yyyy/dd/MM' }}</li>
-            <li><i class="fa fa-comments"></i> {{document.comments.length}}</li>
+            <li><i class="fa fa-comments"></i> {{document.comentarios.length}}</li>
             <li><i class="fa fa-tags"></i>
               <a href="#/entity/{{currentEntity.id}}">{{currentEntity.nombreCorto}}</a>,
               <a href="#/subject/{{currentSubject.id}}">{{currentSubject.nombre}}</a>,

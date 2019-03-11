@@ -11,8 +11,13 @@ angular.module('hubinFrontendApp').directive('comments', ['$translate', 'toastr'
       templateUrl: 'views/directives/comments.html',
       replace: true,
       controller: function ($rootScope, $scope, $element, $attrs, $transclude, $uibModal, toastr,
-                            commentService, subjectService, entityService) {
+                            commentService, subjectService, entityService, userService) {
         $scope.currentCommentStr = '';
+        userService.getUser($scope.user.id).then(function (result) {
+          $scope.user = result.data;
+        }).catch(function (error) {
+          console.log(error);
+        });
         $scope.sendComment = function () {
           if ($scope.currentCommentStr) {
             if($scope.type === 'document'){

@@ -47,11 +47,10 @@ angular.module('hubinFrontendApp')
       .then(function (response) {
         $scope.objectives = response.data;
         setTimeout(function(){
-          console.log('.tooltip-medal');
           $('.tooltip-medal').tooltip({
             placement: 'bottom'
             });
-          }, 3000);
+          }, 1000);
       })
       .catch(function (error) {
         console.log(error);

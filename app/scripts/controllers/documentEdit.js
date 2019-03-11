@@ -26,7 +26,6 @@ angular.module('hubinFrontendApp')
           if ($scope.document.creador.id !== $scope.user.id) {
             $location.path('/');
           }
-          console.log('document: ', $scope.document);
           $scope.documentForm = {
             name: $scope.document.nombre,
             description: $scope.document.descripcion,
@@ -52,8 +51,6 @@ angular.module('hubinFrontendApp')
         };
 
         if ($scope.onEdit) {
-          console.log('onEdit');
-          console.log('$routeParams.id: ', $routeParams.id);
           documentService.update($routeParams.id, documentSave).then(function (documentUpdated) {
             var inputFile = $('.js-document-file')[0];
             if (inputFile.files && inputFile.files[0]) {

@@ -114,9 +114,6 @@
     "related_documents": "Related documents of this subject",
     "search_documents": "Search documents of this subject"
   },
-  "document": {
-    "form_invalid_name": "Input a valid name"
-  },
   "edit_document": {
     "title_new": "New Document",
     "title_edit": "Edit Document",
@@ -157,5 +154,19 @@
   },
   "document_item": {
     "uploaded_by": "Uploaded by"
+  },
+  "document": {
+    "comments": "Comments",
+    "related_documents": "Related documents",
+    "form_invalid_name": "Input a valid name"
+  },
+  "objective":{
+    "type_upload_1": "First Document",
+    "type_upload_5": "Fifth Document",
+    "type_rate_1": "First Score",
+    "type_rate_5": "Fifth Score",
+    "type_comment_1": "First Comment",
+    "type_comment_5": "Fifth Comment",
+    "type_update_profile": "Update Profile"
   }
 }
