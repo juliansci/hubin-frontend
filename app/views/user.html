@@ -36,9 +36,9 @@
         <div class="col-md-4">
           <h2 style="margin-top:0px;">{{'user.medals_title' | translate }}</h2>
           <div class="content-medals">
-            <div class="medal medal-begin" title="Begin"></div>
-            <div class="medal medal-first-document" title="First document"></div>
-            <div class="medal medal-first-comment" title="First comment"></div>
+            <div ng-repeat="(key, objective) in objectives" class="tooltip-medal medal {{objective.tipo}}"  data-toggle="tooltip" title="{{'objective.type_'+objective.tipo | translate }}" ng-class="objectiveIsActive(objective)">
+              <img src="images/badges/{{objective.tipo}}.jpg">
+            </div>
           </div>
         </div>
       </div>

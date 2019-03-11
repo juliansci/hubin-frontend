@@ -10,7 +10,8 @@
 angular.module('hubinFrontendApp')
   .controller('UserCtrl', function ($rootScope, $scope, $location, $http, $route,
                                     userService, securityService, toastr,
-                                    $routeParams, documentService, $uibModal) {
+                                    $routeParams, documentService, $uibModal,
+                                    objectiveService) {
     var userId = securityService.getUser().id;
     if ($routeParams.id) {
       userId = $routeParams.id;
@@ -28,6 +29,8 @@ angular.module('hubinFrontendApp')
     $scope.uploadedDocuments = [];
     $scope.sharedDocuments = [];
     $scope.removedDocuments = [];
+    $scope.objectives = [];
+    $scope.userObjectives = [];
     userService.getDocuments()
       .then(function (response) {
         $scope.uploadedDocuments = response.data.documentosCreados;
@@ -40,8 +43,35 @@ angular.module('hubinFrontendApp')
       .catch(function (error) {
         console.log(error);
       });
-
-
+    objectiveService.getAll()
+      .then(function (response) {
+        $scope.objectives = response.data;
+        setTimeout(function(){
+          console.log('.tooltip-medal');
+          $('.tooltip-medal').tooltip({
+            placement: 'bottom'
+            });
+          }, 3000);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    objectiveService.getAllUser(userId)
+      .then(function (response) {
+        $scope.userObjectives = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    $scope.objectiveIsActive = function(objective){
+      var objetiveClass = '';
+      $.each($scope.userObjectives, function (i, item) {
+        if(item.id === objective.id) {
+          objetiveClass = 'active';
+        }
+      });
+      return objetiveClass;
+    };
     function initEdition() {
       $('body').on('click', '.js-edit-profile', function () {
         $scope.$apply(function () {
@@ -176,15 +206,16 @@ angular.module('hubinFrontendApp')
     };
     $scope.openManageVersions = function (document) {
       $scope.documentVersions = document;
-        var modalInstance = $uibModal.open({
-          templateUrl: 'views/modalVersions.html',
-          controller: 'ModalVersionsCtrl',
-          controllerAs: '$modalCtrl',
-          scope: $scope
-        });
-        modalInstance.result.then(function (data) {
-          console.log(data);
-        }, function(error){});
+      var modalInstance = $uibModal.open({
+        templateUrl: 'views/modalVersions.html',
+        controller: 'ModalVersionsCtrl',
+        controllerAs: '$modalCtrl',
+        scope: $scope
+      });
+      modalInstance.result.then(function (data) {
+        console.log(data);
+      }, function (error) {
+      });
     }
     $scope.openManageShared = function (document) {
       $scope.documentShared = document;
@@ -196,6 +227,7 @@ angular.module('hubinFrontendApp')
       });
       modalInstance.result.then(function (data) {
         console.log(data);
-      }, function(error){});
+      }, function (error) {
+      });
     }
   });

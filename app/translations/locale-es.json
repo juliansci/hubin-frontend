@@ -162,5 +162,14 @@
   },
   "document_item": {
     "uploaded_by": "Subido por"
+  },
+  "objective":{
+    "type_upload_1": "Primer documento",
+    "type_upload_5": "Quinto documento",
+    "type_rate_1": "Primera calificación",
+    "type_rate_5": "Quinta calificación",
+    "type_comment_1": "Primer comentario",
+    "type_comment_5": "Quinto comentario",
+    "type_update_profile": "Actualización de perfil"
   }
 }

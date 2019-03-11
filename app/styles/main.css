@@ -284,25 +284,17 @@ form .error {
 }
 
 #user #infoUser .content-medals .medal {
-  width: 57px;
-  height: 57px;
-  background: url('../images/badges.png') 0 0;
   display: inline-block;
   margin-right: 10px;
   margin-bottom: 10px;
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
-#user #infoUser .content-medals .medal.medal-begin {
-  background-position: -720px -120px;
-}
 
-#user #infoUser .content-medals .medal.medal-first-document {
-  background-position: -120px 0px;
-
-}
-
-#user #infoUser .content-medals .medal.medal-first-comment {
-  background-position: -480px -120px;
+#user #infoUser .content-medals .medal.active{
+  opacity: 1;
+  cursor: default;
 }
 
 /* END PROFILE */
