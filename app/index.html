@@ -17,7 +17,7 @@
   <link href="styles/angular-toastr.min.css" rel="stylesheet" type="text/css"/>
   <link href="styles/style.css" rel="stylesheet" type="text/css"/>
   <link href="styles/blue.css" rel="stylesheet" type="text/css"/>
-  <link href="styles/style-responsive.css" rel="stylesheet" />
+  <link href="styles/style-responsive.css" rel="stylesheet"/>
   <link href="styles/main.css" rel="stylesheet" type="text/css"/>
   <link href="favicon.ico" rel="shortcut icon"/>
 
@@ -51,9 +51,11 @@
       </div>
     </div>
 
+
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li ng-class="{active: isActive('/login') }" ng-if="user == undefined"><a href="#/login" class="js-login">Login</a></li>
+        <li ng-class="{active: isActive('/login') }" ng-if="user == undefined"><a href="#/login"
+                                                                                  class="js-login">Login</a></li>
         <li class="dropdown" ng-if="user != undefined">
           <a class="dropdown-toggle user-menu" data-close-others="false" data-delay="0" data-hover="dropdown"
              data-toggle="dropdown">
@@ -74,6 +76,33 @@
         </li>
       </ul>
     </div>
+
+    <div class="container-notifications">
+      <div class="icon-notification js-icon-notification with-new">
+        <div class="badge-quantity-notifications">2</div>
+        <i class="fa fa-bell"></i>
+      </div>
+      <ul class="list js-list-notifications"  style="display: none;">
+        <li class="active">
+          <div class="text">Un documento que sigue ha sido comentado!</div>
+          <div class="link">Ver más</div>
+        </li>
+        <li class="active">
+          <div class="text">Un documento que sigue ha sido actualizado!</div>
+          <div class="link">Ver más</div>
+        </li>
+        <li>
+          <div class="text">Una materia que sigue ha sido comentada!</div>
+          <div class="link">Ver más</div>
+        </li>
+        <li>
+          <div class="text">Se ha subido un nuevo documento a una materia que sigue!</div>
+          <div class="link">Ver más</div>
+        </li>
+      </ul>
+    </div>
+
+
   </div>
 </div>
 
@@ -106,7 +135,8 @@
       <div class="col-md-8 col-sm-8">
         <p>
           <span class="margin-right-10">Hubin 2019©. {{'footer.copyright'| translate }}</span>
-          <a href="#">{{'footer.privacy'| translate }}</a> | <a href="#">{{'footer.terms_and_conditions'| translate }}</a>
+          <a href="#">{{'footer.privacy'| translate }}</a> | <a href="#">{{'footer.terms_and_conditions'| translate
+          }}</a>
 
         </p>
       </div>

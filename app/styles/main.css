@@ -1107,3 +1107,67 @@ form .error {
   font-size: 11px;
   cursor: pointer;
 }
+
+.container-notifications {
+  display: inline-block;
+  margin-right: 11px;
+  float: right;
+
+}
+.container-notifications .icon-notification {
+  display: inline-block;
+  background-color: #62707f;
+  padding-top: 30px;
+  padding-bottom: 31px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-top: 0px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+}
+.container-notifications  .badge-quantity-notifications{
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #bb2413;
+  text-align: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 70px;
+  margin-top: 4px;
+  margin-right: 4px;
+  font-size: 11px;
+  font-weight: bolder;
+  border: 0px;
+  padding-top: 4px;
+  color: white;
+}
+
+.container-notifications .list {
+  list-style: none;
+  position: absolute;
+  background-color: #62707f;
+  width: 350px;
+  color: white;
+  padding-left: 0px;
+  margin-left: -285px;
+}
+.container-notifications .list li{
+  border-bottom: 1px solid white;
+  padding: 20px;
+}
+.container-notifications .list li.active{
+  background-color: #8196AE;
+}
+
+
+.container-notifications .list li .text{
+  font-size: 14px;
+}
+.container-notifications .list li .link{
+  text-align: right;
+  cursor: pointer;
+  font-weight: bolder;
+}
