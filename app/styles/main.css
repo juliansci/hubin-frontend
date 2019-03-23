@@ -1165,9 +1165,22 @@ form .error {
 
 .container-notifications .list li .text{
   font-size: 14px;
+  padding-bottom: 5px;
 }
+.container-notifications .list li .date{
+  text-align: left;
+  cursor: pointer;
+  font-weight: bolder;
+  float: left;
+}
+
 .container-notifications .list li .link{
   text-align: right;
   cursor: pointer;
   font-weight: bolder;
+
+}
+.container-notifications .list li .link a{
+  text-decoration: none;
+  color:white;
 }

@@ -26,6 +26,7 @@ angular.module('hubinFrontendApp')
       }
     }).catch(function (data) {
     });
+
     $scope.uploadedDocuments = [];
     $scope.sharedDocuments = [];
     $scope.removedDocuments = [];
@@ -46,11 +47,11 @@ angular.module('hubinFrontendApp')
     objectiveService.getAll()
       .then(function (response) {
         $scope.objectives = response.data;
-        setTimeout(function(){
+        setTimeout(function () {
           $('.tooltip-medal').tooltip({
             placement: 'bottom'
-            });
-          }, 1000);
+          });
+        }, 1000);
       })
       .catch(function (error) {
         console.log(error);
@@ -62,15 +63,16 @@ angular.module('hubinFrontendApp')
       .catch(function (error) {
         console.log(error);
       });
-    $scope.objectiveIsActive = function(objective){
+    $scope.objectiveIsActive = function (objective) {
       var objetiveClass = '';
       $.each($scope.userObjectives, function (i, item) {
-        if(item.id === objective.id) {
+        if (item.id === objective.id) {
           objetiveClass = 'active';
         }
       });
       return objetiveClass;
     };
+
     function initEdition() {
       $('body').on('click', '.js-edit-profile', function () {
         $scope.$apply(function () {

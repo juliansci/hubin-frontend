@@ -168,5 +168,15 @@
     "type_comment_1": "First Comment",
     "type_comment_5": "Fifth Comment",
     "type_update_profile": "Update Profile"
+  },
+  "notification":{
+    "document": {
+      "event.comment": "¡Un documento que sigue ha sido comentado!",
+      "event.update": "¡Un documento que sigue ha sido actualizado!"
+    },
+    "subject": {
+      "event.comment": "¡Una materia que sigue ha sido comentada!",
+      "event.new_document": "¡Se ha subido un nuevo documento a una materia que sigue!"
+    }
   }
 }

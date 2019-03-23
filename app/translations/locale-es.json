@@ -171,5 +171,15 @@
     "type_comment_1": "Primer comentario",
     "type_comment_5": "Quinto comentario",
     "type_update_profile": "Actualización de perfil"
+  },
+  "notification":{
+    "document": {
+      "event.comment": "¡Un documento que sigue ha sido comentado!",
+      "event.update": "¡Un documento que sigue ha sido actualizado!"
+    },
+    "subject": {
+      "event.comment": "¡Una materia que sigue ha sido comentada!",
+      "event.new_document": "¡Se ha subido un nuevo documento a una materia que sigue!"
+    }
   }
 }

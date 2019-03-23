@@ -92,7 +92,7 @@ angular
       .preferredLanguage('es');
   })
   .run(function ($rootScope, $location, $http, $timeout, $translate, $q, configService, securityService, sessionService,
-                 entityService, subjectService, levelService, languageService, userService) {
+                 entityService, subjectService, levelService, languageService, userService, notificationService) {
     $rootScope.$on('$routeChangeStart', function (event) {
       var logged = securityService.isLogged();
       if (!logged) {
@@ -141,13 +141,41 @@ angular
           $rootScope.scores = res[4];
           $rootScope.entitiesLoaded = true;
         });
+
+      }
+      console.log($rootScope.user);
+      console.log($rootScope.notificationTimeout);
+      $rootScope.quantNewNotifications = 0;
+      if ($rootScope.user !== null && $rootScope.notificationTimeout === undefined) {
+        getNotifications();
+        $rootScope.notificationTimeout = setInterval(function () {
+          getNotifications();
+          var dontReadNotifications = $rootScope.notifications.filter(function (notification) {
+            return !notification.leido;
+          });
+          $rootScope.quantNewNotifications = dontReadNotifications.length;
+        }, 5000);
+      }
+      if ($rootScope.user === null && $rootScope.notificationTimeout !== undefined) {
+        clearInterval($rootScope.notificationTimeout);
       }
     });
+
+    function getNotifications() {
+      notificationService.getAll()
+        .then(function (response) {
+          $rootScope.notifications = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
 
     $rootScope.user = securityService.getUser();
     $rootScope.logout = function () {
       sessionService.clearSession();
       $rootScope.user = null;
+      clearInterval($rootScope.notificationTimeout);
       $location.path('/');
     };
     $rootScope.changeLanguage = function (lang) {
@@ -157,6 +185,22 @@ angular
       var active = (path === $location.path());
       return active;
     };
+    $rootScope.markAsRead = function ($event, notification) {
+      if (!notification.leido) {
+        notificationService.markAsRead(notification).then(function (response) {
+          $($event.currentTarget).removeClass('active');
+          $rootScope.quantNewNotifications--;
+          console.log('response mark as read: ', response);
+        })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
+    };
+    $rootScope.closeNotifications = function () {
+      $('.js-list-notifications').toggle();
+    }
     $rootScope.urlServerBase = configService.getUrlServer();
     $rootScope.entitiesLoaded = false;
   });

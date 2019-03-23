@@ -79,25 +79,24 @@
 
     <div class="container-notifications">
       <div class="icon-notification js-icon-notification with-new">
-        <div class="badge-quantity-notifications">2</div>
+        <div class="badge-quantity-notifications">{{quantNewNotifications}}</div>
         <i class="fa fa-bell"></i>
       </div>
       <ul class="list js-list-notifications"  style="display: none;">
-        <li class="active">
-          <div class="text">Un documento que sigue ha sido comentado!</div>
-          <div class="link">Ver más</div>
-        </li>
-        <li class="active">
-          <div class="text">Un documento que sigue ha sido actualizado!</div>
-          <div class="link">Ver más</div>
-        </li>
-        <li>
-          <div class="text">Una materia que sigue ha sido comentada!</div>
-          <div class="link">Ver más</div>
-        </li>
-        <li>
-          <div class="text">Se ha subido un nuevo documento a una materia que sigue!</div>
-          <div class="link">Ver más</div>
+        <li ng-repeat="(key, notification) in notifications" ng-class="{active: !notification.leido}" ng-click="markAsRead($event, notification)">
+          <div class="text">
+            <span ng-if="notification.idDocumento !== null">
+              {{'notification.document.' + notification.evento | translate }}
+            </span>
+            <span ng-if="notification.idMateria !== null">
+              {{'notification.subject.' + notification.evento | translate }}
+            </span>
+          </div>
+          <div class="date">{{notification.fecha}}</div>
+          <div class="link">
+            <a href="#/document/{{notification.idDocumento}}" ng-if="notification.idDocumento !== null" ng-click="closeNotifications()">Ver más</a>
+            <a href="#/subject/{{notification.idMateria}}" ng-if="notification.idMateria !== null" ng-click="closeNotifications()">Ver más</a>
+          </div>
         </li>
       </ul>
     </div>
@@ -214,6 +213,7 @@
 <script src="scripts/services/reportService.js"></script>
 <script src="scripts/services/commentService.js"></script>
 <script src="scripts/services/objectiveService.js"></script>
+<script src="scripts/services/notificationService.js"></script>
 
 <script>
   window.fbAsyncInit = function () {
