@@ -13,10 +13,16 @@ angular.module('hubinFrontendApp').service('subjectService', function (configSer
     httpService.setHeadersNotLogged();
     return $http.get(configService.getUrlServer() + 'materia/destacadas', {data: ''});
   }
+  function checkFollow(id){
+    httpService.setHeaders();
+    return $http.get(configService.getUrlServer() + 'materia/follow/' + id, {data: ''});
+  }
+
   return {
     getById: getById,
     getAll: getAll,
-    getAllOutstanding: getAllOutstanding
+    getAllOutstanding: getAllOutstanding,
+    checkFollow: checkFollow
   }
 
 });

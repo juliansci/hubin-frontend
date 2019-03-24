@@ -9,12 +9,13 @@
  */
 angular.module('hubinFrontendApp')
   .controller('DocumentCtrl', function ($rootScope, $scope, $routeParams, $location, $q, $translate,
-                                        documentService, $uibModal, toastr, scoreService, userService) {
+                                        documentService, $uibModal, toastr, scoreService, userService, notificationService) {
 
     $scope.documentWithFile = false;
 
     $scope.isScored = false;
     $scope.documentScore = 0;
+    $scope.documentFollow = false;
 
     $scope.processScores = function () {
       for (var i = 0; i < $rootScope.scores.length; i++) {
@@ -46,6 +47,15 @@ angular.module('hubinFrontendApp')
             $scope.processScores();
             $scope.getRelatedDocuments();
 
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        documentService.checkFollow($routeParams.id)
+          .then(function (response) {
+            $scope.documentFollow = response.data;
           })
           .catch(function (error) {
             console.log(error);
@@ -167,5 +177,32 @@ angular.module('hubinFrontendApp')
         }
       }, function (error) {
       });
+    }
+
+
+    $scope.followDocument = function () {
+      console.log('follow subject');
+      var entitySubscription = {
+        documentoId: $scope.document.id
+      };
+      notificationService.subscription(entitySubscription)
+        .then(function (response) {
+          $scope.documentFollow = true;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+    $scope.unfollowDocument = function () {
+      var entitySubscription = {
+        documentoId: $scope.document.id
+      };
+      notificationService.desubscription(entitySubscription)
+        .then(function (response) {
+          $scope.documentFollow = false;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   });

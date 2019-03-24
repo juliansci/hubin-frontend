@@ -111,7 +111,7 @@ var AppTemplate = function () {
   };
 
   var handleNotifications = function () {
-    $('.js-icon-notification').on('click', function(){
+    $('body').on('click', '.js-icon-notification', function () {
       $('.js-list-notifications').toggle();
     });
   };

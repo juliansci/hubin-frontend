@@ -77,7 +77,7 @@
       </ul>
     </div>
 
-    <div class="container-notifications">
+    <div  ng-if="user != undefined" class="container-notifications">
       <div class="icon-notification js-icon-notification with-new">
         <div class="badge-quantity-notifications">{{quantNewNotifications}}</div>
         <i class="fa fa-bell"></i>

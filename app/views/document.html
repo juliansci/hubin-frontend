@@ -12,7 +12,15 @@
     <div class="container blog-item">
       <div id="contentDocument" class="row">
         <div class="col-md-12">
-          <div class="title">{{document.nombre}}</div>
+          <div class="title">
+            <span>{{document.nombre}}</span>
+            <button ng-if="!documentFollow" class="btn green btn-sm" title="Seguir documento" ng-click="followDocument()">
+              <i class="fa fa-eye"/>
+            </button>
+            <button ng-if="documentFollow" class="btn red btn-sm" title="Dejar de seguir documento" ng-click="unfollowDocument()">
+              <i class="fa fa-eye-slash"/>
+            </button>
+          </div>
           <div class="complaint" ng-click="reportDocument()">
             <img src="images/complaint-icon.png" alt="Denunciar">
           </div>

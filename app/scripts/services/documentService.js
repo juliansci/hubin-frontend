@@ -84,6 +84,11 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     httpService.setHeaders();
     return $http.delete(configService.getUrlServer() + 'documento/shared/'+documentId+'/alumno/'+alumnoId, {data: ''});
   }
+
+  function checkFollow(id){
+    httpService.setHeaders();
+    return $http.get(configService.getUrlServer() + 'documento/follow/' + id, {data: ''});
+  }
   return {
     getById: getById,
     getAllByFilters: getAllByFilters,
@@ -98,7 +103,8 @@ angular.module('hubinFrontendApp').service('documentService', function (configSe
     removeVersion: removeVersion,
     getUsersToShare: getUsersToShare,
     addUserShare: addUserShare,
-    removeUserShare: removeUserShare
+    removeUserShare: removeUserShare,
+    checkFollow: checkFollow
   }
     ;
 });

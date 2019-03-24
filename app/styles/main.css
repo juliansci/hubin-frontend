@@ -517,6 +517,7 @@ form .error {
 #entity #content .description {
   color: #656565;
   font-size: 14px;
+  text-align: justify;
 }
 
 #entity .search-result {
@@ -646,6 +647,11 @@ form .error {
   margin-bottom: 15px;
 }
 
+#subject #content .description {
+  color: #656565;
+  font-size: 14px;
+  text-align: justify;
+}
 #subject .search-result {
   padding-top: 10px;
 }

@@ -9,11 +9,11 @@
  */
 angular.module('hubinFrontendApp')
   .controller('SubjectCtrl', function ($rootScope, $scope, $routeParams, $location, $q,
-                                      documentService, subjectService) {
+                                      documentService, subjectService, notificationService) {
     $scope.searchDocumentName = '';
     $scope.subject = {};
     $scope.documents = [];
-
+    $scope.subjectFollow = false;
     $rootScope.$watch('entitiesLoaded',function(newValue) {
       if (newValue === true) {
         subjectService.getById($routeParams.id)
@@ -23,7 +23,13 @@ angular.module('hubinFrontendApp')
               $scope.documents = response.data;
               $scope.matchEntitiesDocuments();
             });
-            console.log($scope.subject);
+          })
+          .catch(function(error){
+            console.log(error);
+          });
+        subjectService.checkFollow($routeParams.id)
+          .then(function(response){
+            $scope.subjectFollow = response.data;
           })
           .catch(function(error){
             console.log(error);
@@ -50,4 +56,29 @@ angular.module('hubinFrontendApp')
       e.preventDefault();
       return false;
     };
+
+    $scope.followSubject = function(){
+      console.log('follow subject');
+      var entitySubscription = {
+        materiaId:  $scope.subject.id
+      };
+      notificationService.subscription(entitySubscription)
+        .then(function(response){
+          $scope.subjectFollow = true;
+      })
+        .catch(function(error){
+          console.log(error);
+        });
+    }
+    $scope.unfollowSubject = function(){
+      var entitySubscription = {
+        materiaId:  $scope.subject.id
+      };
+      notificationService.desubscription(entitySubscription)
+        .then(function(response){
+          $scope.subjectFollow = false;
+        })
+        .catch(function(error){
+          console.log(error);
+        });    }
   });

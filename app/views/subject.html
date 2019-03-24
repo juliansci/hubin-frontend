@@ -10,6 +10,28 @@
   </div>
   <div id="content">
     <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="first-title">
+            <span>{{subject.nombre}}</span>
+            <button ng-if="!subjectFollow" class="btn green btn-sm" title="Seguir materia" ng-click="followSubject()">
+              <i class="fa fa-eye"/>
+            </button>
+            <button ng-if="subjectFollow" class="btn red btn-sm" title="Dejar de seguir materia" ng-click="unfollowSubject()">
+              <i class="fa fa-eye-slash"/>
+            </button>
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="description">
+            {{subject.descripcion}}<br/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
 
       <div class="row">
         <div class="col-md-8">

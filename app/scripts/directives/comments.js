@@ -77,9 +77,7 @@ angular.module('hubinFrontendApp').directive('comments', ['$translate', 'toastr'
           if($scope.type === 'subject'){
             subjectService.getById($scope.entity.id)
               .then(function (response) {
-                console.log('response.data: ', response.data);
                 $scope.entity.comentarios = response.data.comentarios;
-                console.log('entidyyy after: ', $scope.entity);
               })
               .catch(function (error) {
                 console.log(error);
@@ -97,9 +95,6 @@ angular.module('hubinFrontendApp').directive('comments', ['$translate', 'toastr'
         };
         $scope.$watch('entity', function (newValue, oldValue) {
           if (newValue !== undefined && newValue.id !== oldValue.id) {
-
-            console.log('entidyyy', $scope.entity);
-
             $scope.refreshComments();
           }
         });

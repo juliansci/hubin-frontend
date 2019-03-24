@@ -143,17 +143,11 @@ angular
         });
 
       }
-      console.log($rootScope.user);
-      console.log($rootScope.notificationTimeout);
       $rootScope.quantNewNotifications = 0;
       if ($rootScope.user !== null && $rootScope.notificationTimeout === undefined) {
         getNotifications();
         $rootScope.notificationTimeout = setInterval(function () {
           getNotifications();
-          var dontReadNotifications = $rootScope.notifications.filter(function (notification) {
-            return !notification.leido;
-          });
-          $rootScope.quantNewNotifications = dontReadNotifications.length;
         }, 5000);
       }
       if ($rootScope.user === null && $rootScope.notificationTimeout !== undefined) {
@@ -165,6 +159,10 @@ angular
       notificationService.getAll()
         .then(function (response) {
           $rootScope.notifications = response.data;
+          var dontReadNotifications = $rootScope.notifications.filter(function (notification) {
+            return !notification.leido;
+          });
+          $rootScope.quantNewNotifications = dontReadNotifications.length;
         })
         .catch(function (error) {
           console.log(error);
@@ -190,7 +188,6 @@ angular
         notificationService.markAsRead(notification).then(function (response) {
           $($event.currentTarget).removeClass('active');
           $rootScope.quantNewNotifications--;
-          console.log('response mark as read: ', response);
         })
           .catch(function (error) {
             console.log(error);
