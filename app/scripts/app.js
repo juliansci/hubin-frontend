@@ -95,6 +95,7 @@ angular
                  entityService, subjectService, levelService, languageService, userService, notificationService) {
     $rootScope.$on('$routeChangeStart', function (event) {
       var logged = securityService.isLogged();
+      console.log('is logged: ', logged);
       if (!logged) {
         var restrictedUrls = securityService.getRestrictedUrls();
         var urlFind = restrictedUrls.find(function (element) {

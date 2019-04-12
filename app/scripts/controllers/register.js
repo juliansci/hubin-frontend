@@ -9,6 +9,7 @@
  */
 angular.module('hubinFrontendApp')
   .controller('RegisterCtrl', function ($rootScope, $scope, $location, securityService, sessionService) {
+
     $('#registerForm').on('submit', function () {
       var formError = $(this).find('.js-form-error');
       var usernameError = $(this).find('.js-username-error');
@@ -59,10 +60,39 @@ angular.module('hubinFrontendApp')
         password: password
       };
       securityService.register(registerData).then(function (response) {
-        sessionService.setItemSession('user', response.data);
-        sessionService.setAuthentication(response.data);
-        $rootScope.user = securityService.getUser();
-        $location.path('/');
+        console.log('response: ', response);
+        if (response.status === 200) {
+          var user = response.data;
+          var loginData = {
+            username: username,
+            password: password
+          };
+          securityService.login(loginData).then(function (response) {
+            if (response.status === 200) {
+              var user = response.data;
+              sessionService.setItemSession('user', user);
+              $rootScope.user = securityService.getUser();
+              $location.path('/home');
+              return;
+            } else {
+              sessionService.clearSession();
+              formError.text(response.data.message);
+              return;
+            }
+          }, function (response) {
+            sessionService.clearSession();
+            if (response.data && response.data.message) {
+              formError.text(response.data.message);
+            } else {
+              formError.text('Ha ocurrido un error. Intente luego.');
+            }
+            return;
+          });
+        } else {
+          sessionService.clearSession();
+          formError.text(response.data.message);
+          return;
+        }
       }, function (response) {
         formError.text(response.data.exception);
       });
@@ -105,4 +135,5 @@ angular.module('hubinFrontendApp')
       }, {scope: 'email'});
 
     });
+
   });

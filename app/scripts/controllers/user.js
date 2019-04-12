@@ -156,7 +156,7 @@ angular.module('hubinFrontendApp')
       var action = $rootScope.urlServerBase + form.attr('action');
       userService.addImageProfile(action, formData).then(function successCallback(response) {
         if (response.status !== 200) {
-          toastr.error('Ha ocurrido un error. Intente luego.');
+          toastr.error('La imagen debe ser un jpg.');
         } else {
           if (response.data.foto && response.data.foto.base64Src) {
             $('.js-img-profile').attr('src', response.data.foto.base64Src);
